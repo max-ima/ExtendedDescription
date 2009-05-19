@@ -1,0 +1,92 @@
+<h2>Extended Description</h2>
+
+<h3>Descripciones multilingües</h3>
+
+<p>Las descripciones multilingües se hacen entre las balizas [lang=xx] y [/lang], O xx es el código de la lengua (por ejemplo fr, en, es, it, de ....)
+Existen también 2 balizas especiales: [lang=default] y [lang=all]</p>
+
+<ul>
+  <li><b>Ejemplo de utilización</b>:<br>
+  <br>
+<code>[lang=default] Descripción por defecto [/lang]<br>
+[lang=fr] Descripción ello francais [/lang]<br>
+[lang=it] Descripción en italiano [/lang]</code>
+</li>
+</ul>
+
+<p>La descripción por defecto será utilizada si la descripción en la lengua del usuario no es definida.
+Si [lang=default] no existe, todo lo que está situado aparte de las balizas de lenguas estará considerado como descripción por defecto.</p>
+
+<p><u>Baliza  <i>all</i></u>: Todo lo que está situado entre las balizas [lang=all] y [/lang] será incluido en la descripción, cualquiera que sea la lengua del usuario.
+Esto es particularmente práctico para incluir del código html o javascript en una descripción.</p>
+
+
+<h3>Descripciones extensas</h3>
+
+<p>Las balizas de descripción extensa permiten tener una descripción reducida para la presentación de una categoría,
+ una descripción extendida para la descripción que se exhibe sobre la página de la categoría,
+ o dos descripciones diferentes sobre la página de la categoría.</p>
+
+<p>La baliza &lt;!--more--&gt; permite añadir del texto a la descripción reducida.<br>
+La baliza &lt;!--complete--&gt; permite tener 2 descripciones distintas.<br>
+La baliza &lt;!--up-down--&gt; Permite tener una descripción alta y un descrition bajo.</p>
+
+<ul>
+  <li><b>Baliza &lt;!--more--&gt;</b></li>
+</ul>
+<code>descripción reducida &lt;!--more--&gt; descripción detallada</code>
+<p>Sólo la descripción reducida será fijada para la presentación de la categoría.
+Sobre la categoría misma, la descripción será la descripción reducida + la descripción detallada.</p>
+
+<ul>
+  <li><b>Baliza &lt;!--complete--&gt;</b></li>
+</ul>
+<code>descripción reducida &lt;!--complete--&gt; descripción detallada</code>
+<p>Sólo la descripción reducida será fijada para la presentación de la categoría.
+En cambio, sobre la categoría misma, la descripción únicamente será la descripción detallada, es decir 2 descripciones diferentes.</p>
+
+<ul>
+  <li><b>Baliza &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>descripción alta &lt;!--up-down--&gt; descripción baja</code>
+<p>Sólo la descripción alta será fijada para la presentación de la categoría.
+Sobre la categoría misma, la descripción alta será fijada por encima de las miniaturas, mientras que
+ la descripción baja sea fijada debajo (en el emplazamiento normal de la descripción).</p>
+
+
+<h3>Insertar una categoría o una imagen</h3>
+
+<ul>
+  <li><b>Baliza [cat=xx]</b></li>
+</ul>
+<p>Esta baliza permite insertar una categoría en la descripción, con xx el número de la categoría</p>
+
+<ul>
+  <li><b>Baliza [img=xx;yyyy]</b></li>
+</ul>
+<p>Esta baliza permite insertar una imagen en la descripción, con:<br><br>
+- xx El número de la imagen; Es posible precisar el número de la categoría madre después del número de la imagen : <code>xx.ccc</code>.
+<br>
+- yyyy (facultativo) agarra o el valor <i>left</i>, sea el valor <i>right</i> y permite situar la viñeta de la imagen sobre la derecha o la izquierda.</p>
+
+<h3>Enmascarar una categoría</h3>
+
+<p>Ponemos la baliza <b>&lt;!--hidden--&gt;</b> En el nombre de la categoría :<br>
+<br>
+- Ésta no será fijada más sobre la página de la categoría allegada<br>
+- Queda visible en el menú de las categorías</p>
+
+<!-- TODO -->
+<h3>Hide a category in menu</h3>
+
+<p>Use tag <b>&lt;!--mb-hidden--&gt;</b> in the category name:<br>
+<br>
+- it won't be displayed in the category menu<br>
+- it remains visible in the parent category</p>
+
+<h3>Hide an image</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the image name:<br>
+<br>
+- it won't be displayed on the thumbnails page<br>
+- it remains visible inside the category</p>

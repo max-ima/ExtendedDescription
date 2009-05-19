@@ -1,0 +1,92 @@
+<h2>Extended Description</h2>
+
+<h3>Descriptions multilingues</h3>
+
+<p>Les descriptions multilingues se font entre les balises [lang=xx] et [/lang], ou xx est le code de la langue (par exemple fr, en, es, it, etc....)
+Il existe également 2 balises spéciales: [lang=default] et [lang=all]</p>
+
+<ul>
+  <li><b>Exemple d'utilisation</b>:<br>
+  <br>
+<code>[lang=default] description par défaut [/lang]<br>
+[lang=fr] description en francais [/lang]<br>
+[lang=it] description en italien [/lang]</code>
+</li>
+</ul>
+
+<p>La description par défaut sera utilisée si la description dans la langue de l'utilisateur n'est pas définie.
+Si [lang=default] n'existe pas, tout ce qui est situé en dehors des balises de langues sera considéré comme description par défaut.</p>
+
+<p><u>Balise <i>all</i></u>: tout ce qui est situé entre les balises [lang=all] et [/lang] sera inclus dans la description, quelle que soit la langue de l'utilisateur.
+Ceci est particulièrement pratique pour inclure du code html ou javascript dans une description.</p>
+
+
+<h3>Descriptions étendues</h3>
+
+<p>Les balises de description étendue permettent d'avoir une description réduite pour la présentation d'une catégorie,
+une description étendue pour la description qui s'affiche sur la page de la catégorie,
+ou deux descriptions différentes sur la page de la catégorie.</p>
+
+<p>La balise &lt;!--more--&gt; permet de rajouter du texte à la description réduite.<br>
+La balise &lt;!--complete--&gt; permet d'avoir 2 descriptions distinctes.<br>
+La balise &lt;!--up-down--&gt; permet d'avoir une description haute et une descrition basse.</p>
+
+<ul>
+  <li><b>Balise &lt;!--more--&gt;</b></li>
+</ul>
+<code>description réduite &lt;!--more--&gt; description détaillée</code>
+<p>Seule la description réduite sera affichée pour la présentation de la catégorie.
+Sur la catégorie elle-même, la description sera la description réduite + la description détaillée.</p>
+
+<ul>
+  <li><b>Balise &lt;!--complete--&gt;</b></li>
+</ul>
+<code>description réduite &lt;!--complete--&gt; description détaillée</code>
+<p>Seule la description réduite sera affichée pour la présentation de la catégorie.
+Par contre, sur la catégorie elle-même, la description sera uniquement la description détaillée, soit 2 descriptions différentes.</p>
+
+<ul>
+  <li><b>Balise &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>description haute &lt;!--up-down--&gt; description basse</code>
+<p>Seule la description haute sera affichée pour la présentation de la catégorie.
+Sur la catégorie elle-même, la description haute sera affichée au-dessus des miniatures, alors que la description basse sera affichée au-dessous (à l'emplacement normal de la description).</p>
+
+
+<h3>Insérer une catégorie ou une image</h3>
+
+<ul>
+  <li><b>Balise [cat=xx]</b></li>
+</ul>
+<p>Cette balise permet d'insérer une catégorie dans la description, avec xx le numéro de la catégorie</p>
+
+<ul>
+  <li><b>Balise [img=xx1 xx2 xx3 xxN;yyyy;name]</b></li>
+</ul>
+<p>Cette balise permet d'insérer une ou plusieurs vignettes dans la description, avec :<br><br>
+- xx le numéro de l'image ; il est possible de préciser le numéro de la catégorie mère après le numéro : <code>xx.ccc</code>.<br/>
+<br/>
+- yyyy (facultatif) prend soit la valeur <i>left</i>, soit la valeur <i>right</i> et permet de positionner la vignette de l'image sur la droite ou la gauche.
+<br/>
+- name (facultatif) : s'il est précisé, le nom de la photo sera affiché sous la vignette.</p>
+
+<h3>Masquer une catégorie</h3>
+
+<p>On met la balise <b>&lt;!--hidden--&gt;</b> dans le nom de la catégorie:<br>
+<br>
+- celle-ci ne sera plus affichée sur la page de la catégorie parente<br>
+- elle reste visible dans le menu des catégories</p>
+
+<h3>Masquer une catégorie dans le menu</h3>
+
+<p>On met la balise <b>&lt;!--mb-hidden--&gt;</b> dans le nom de la catégorie:<br>
+<br>
+- celle-ci ne sera plus affichée dans le menu des catégories<br>
+- elle reste visible sur la page de la catégorie parente</p>
+
+<h3>Masquer une image</h3>
+
+<p>On met la balise <b>&lt;!--hidden--&gt;</b> dans le nom de l'image :<br>
+<br>
+- celle-ci ne sera plus affichée sur la page des vignettes<br>
+- elle reste néanmoins visible au sein de la catégorie</p>
