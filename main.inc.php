@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Extended Description
-Version: 2.0.f
+Version: 2.0.g
 Description: Add multilinguale descriptions, banner, NMB, category name, etc...
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=175
 Author: P@t & Grum
@@ -9,17 +9,17 @@ Author: P@t & Grum
 --------------------------------------------------------------------------------
  history
 
-| date       | release |                                                       
+| date       | release |
 |            | 2.0.c   | P@t
-| 2009-04-01 | 2.0.d   | Grum 
-|            |         | * bug corrected, markup <!--hidden--> now works again 
+| 2009-04-01 | 2.0.d   | Grum
+|            |         | * bug corrected, markup <!--hidden--> now works again
 |            |         |   on categories name
-|            |         | * new functionality, can use a markup <!--hidden-->  
+|            |         | * new functionality, can use a markup <!--hidden-->
 |            |         |   on image's name
-|            |         | * new functionality, add a new parameter for the image   
-|            |         |   markup [img=] ; possibility to show the image name 
+|            |         | * new functionality, add a new parameter for the image
+|            |         |   markup [img=] ; possibility to show the image name
 |            |         |   with the "name" parameter
-|            |         | * new functionality, the image markup [img=] allows now 
+|            |         | * new functionality, the image markup [img=] allows now
 |            |         |   to display more than one image
 | 2009-04-30 | 2.0.e   | P@t
 |            |         | * bug corrected, avoid errors on categories pages when
@@ -27,7 +27,14 @@ Author: P@t & Grum
 | 2009-05-10 | 2.0.f   | P@t
 |            |         | * add possibility to remove a category from menubar
 |            |         |   with markup <!--mb-hidden-->
-|            |         | 
+| 2010-25-09 | 2.0.g   | Grum
+|            |         | * possibility to display the picture's name into the
+|            |         |   image title ('titleName' parameter) rather than under
+|            |         |    the picture ('name' parameter)
+|            |         | * add Id for image & anchor for [img=...] markup
+|            |         |
+|            |         |
+|            |         |
 
 */
 
@@ -53,17 +60,17 @@ $conf['ExtendedDescription'] = isset($conf['ExtendedDescription']) ?
 // Traite les balises [lang=xx]
 function get_user_language_desc($desc)
 {
-	global $user;
-  
-	$user_lang = substr($user['language'], 0, 2);
+  global $user;
 
-	if (!substr_count(strtolower($desc), '[lang=' . $user_lang . ']'))
-	{
-		$user_lang = 'default';
+  $user_lang = substr($user['language'], 0, 2);
+
+  if (!substr_count(strtolower($desc), '[lang=' . $user_lang . ']'))
+  {
+    $user_lang = 'default';
   }
-  
+
   if (substr_count(strtolower($desc), '[lang=' . $user_lang . ']'))
-	{
+  {
     // la balise avec la langue de l'utilisateur a été trouvée
     $patterns[] = '#(^|\[/lang\])(.*?)(\[lang=(' . $user_lang . '|all)\]|$)#is';
     $replacements[] = '';
@@ -85,29 +92,29 @@ function get_user_language_desc($desc)
 // Traite les autres balises
 function get_extended_desc($desc, $param='')
 {
-	global $conf;
-  
+  global $conf;
+
   $desc = get_user_language_desc($desc);
-  
+
   // Balises [cat=xx]
   $patterns[] = '#\[cat=(\d*)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_cat_thumb("$1")';
-  
-  // Balises [img=xx.yy,xx.yy,xx.yy;float;name]
-  //$patterns[] = '#\[img=(\d*)\.?(\d*|);?(left|right|);?(name|)\]#ie';
-  $patterns[] = '#\[img=([\d\s\.]*);?(left|right|);?(name|)\]#ie';
+
+  // Balises [img=xx.yy,xx.yy,xx.yy;left|rigtht|;name|titleName|]
+  //$patterns[] = '#\[img=(\d*)\.?(\d*|);?(left|right|);?(name|titleName|)\]#ie';
+  $patterns[] = '#\[img=([\d\s\.]*);?(left|right|);?(name|titleName|)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_img_thumb("$1", "$2", "$3")';
 
-  
+
   // Balises <!--complete-->, <!--more--> et <!--up-down-->
-	switch ($param)
-	{
-		case 'subcatify_category_description' :
+  switch ($param)
+  {
+    case 'subcatify_category_description' :
       $patterns[] = '#^(.*?)('. preg_quote($conf['ExtendedDescription']['complete']) . '|' . preg_quote($conf['ExtendedDescription']['more']) . '|' . preg_quote($conf['ExtendedDescription']['up-down']) . ').*$#is';
       $replacements[] = '$1';
       $desc = preg_replace($patterns, $replacements, $desc);
       break;
-			
+
     case 'main_page_category_description' :
       $patterns[] = '#^.*' . preg_quote($conf['ExtendedDescription']['complete']) . '|' . preg_quote($conf['ExtendedDescription']['more']) . '#is';
       $replacements[] = '';
@@ -118,21 +125,21 @@ function get_extended_desc($desc, $param='')
         add_event_handler('loc_end_index', 'add_top_description');
       }
       break;
-      
+
     default:
       $desc = preg_replace($patterns, $replacements, $desc);
-	}
+  }
 
   return $desc;
 }
 
 function extended_desc_mail_group_assign_vars($assign_vars)
 {
-	if (isset($assign_vars['CPL_CONTENT']))
-	{
-		$assign_vars['CPL_CONTENT'] = get_extended_desc($assign_vars['CPL_CONTENT']);
-	}
-	return $assign_vars;
+  if (isset($assign_vars['CPL_CONTENT']))
+  {
+    $assign_vars['CPL_CONTENT'] = get_extended_desc($assign_vars['CPL_CONTENT']);
+  }
+  return $assign_vars;
 }
 
 // Add top description
@@ -272,7 +279,7 @@ function get_img_thumb($elem_ids, $align='', $name='')
   $ids=explode(" ",$elem_ids);
   $assoc = array();
   foreach($ids as $key=>$val)
-  {    
+  {
     list($a,$b)=array_pad(explode(".",$val),2,"");
     $assoc[0][]=$a;
     $assoc[1][]=$b;
@@ -280,7 +287,7 @@ function get_img_thumb($elem_ids, $align='', $name='')
 
   $query = 'SELECT * FROM ' . IMAGES_TABLE . ' WHERE id in (' . implode(",",$assoc[0]). ');';
   $result = pwg_query($query);
-  
+
   if($result)
   {
     $template->set_filename('extended_description_content', dirname(__FILE__) . '/template/img.tpl');
@@ -309,14 +316,15 @@ function get_img_thumb($elem_ids, $align='', $name='')
       }
 
       $img[]=array(
+          'ID'          => $imglist[$assoc[0][$i]]['id'],
           'IMAGE'       => get_thumbnail_url($imglist[$assoc[0][$i]]),
           'IMAGE_ALT'   => $imglist[$assoc[0][$i]]['file'],
-          'IMG_TITLE'   => get_thumbnail_title($imglist[$assoc[0][$i]]),
+          'IMG_TITLE'   => ($name=="titleName")?htmlspecialchars($imglist[$assoc[0][$i]]['name'], ENT_QUOTES):get_thumbnail_title($imglist[$assoc[0][$i]]),
           'U_IMG_LINK'  => $url,
-          'LEGEND'  => ($name!="")?$imglist[$assoc[0][$i]]['name']:"",
+          'LEGEND'  => ($name=="name")?$imglist[$assoc[0][$i]]['name']:"",
           'FLOAT' => !empty($align) ? 'float: ' . $align . ';' : '',
           'COMMENT' => $imglist[$assoc[0][$i]]['file']);
-      
+
 
     }
      $template->assign('img', $img);

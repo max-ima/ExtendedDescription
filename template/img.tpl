@@ -3,8 +3,8 @@
   <li>
     <span class="wrap1">
       <span class="wrap2">
-        <a href="{$data.U_IMG_LINK}">
-            <img class="thumbnail" src="{$data.IMAGE}" alt="{$data.IMAGE_ALT}" title="{$data.IMG_TITLE}">
+        <a id="iImgAnchor{$data.ID}" href="{$data.U_IMG_LINK}">
+            <img id="iImgThumb{$data.ID}" class="thumbnail" src="{$data.IMAGE}" alt="{$data.IMAGE_ALT}" title="{$data.IMG_TITLE}">
         </a>
       </span>
     {if $data.LEGEND!=""}
