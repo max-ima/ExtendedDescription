@@ -3,7 +3,7 @@
 		<div class="thumbnailCategory">
 			<div class="illustration">
 			<a href="{$URL}">
-				<img src="{$TN_SRC}" alt="{$TN_ALT}" title="{'hint_category'|@translate}">
+				<img src="{$TN_SRC}" alt="{$TN_ALT}" title="{'shows images at the root of this category'|@translate}">
 			</a>
 			</div>
 			<div class="description">
