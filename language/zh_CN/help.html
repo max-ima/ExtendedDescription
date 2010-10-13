@@ -1,0 +1,84 @@
+<h2>扩展描述</h2>
+
+<h3>多语言描述</h3>
+
+<p>多语言描述可放在[lang=xx] 和 [/lang] 标签之间, 其中 xx 是语言代码（如 en,es,cn,fr)。另外还有2个特别的语言: [lang=default] 和 [lang=all]</p>
+
+<ul>
+  <li><b>例如</b>:<br>
+  <br>
+<code>[lang=default] 默认描述 [/lang]<br>
+[lang=en] description in english [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+<p>
+如果用户选择的语言不能使用，将显示默认描述。如果没有 [lang=default] 标签，所有在 [lang] 外的将会以默认描述显示。
+</p>
+
+<p><u> 特别语言<i>all</i></u>: 所有在 [lang=all] 标签里的将被包含进描述，不论用户指定了什么语言。这个主要的用处是对于 HTML/JavaScript 等代码在描述里的显示。</p>
+
+<h3>扩展描述</h3>
+
+<p>扩展描述的标记，使我们能够有一个简短描述在分类外部，同时有一个详细的描述在分类内部页面，或者甚至有2个不同的分类说明在一个分类页面里。</p>
+
+<p>tag &lt;!--more--&gt; 添加简短的描述文本.<br>
+tag &lt;!--complete--&gt; 让用户有2种不同的描述.<br>
+tag &lt;!--up-down--&gt; 让用户可有一个顶部和底部的描述.</p>
+
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>简短的描述 &lt;!--more--&gt; 详细描述</code>
+<p>只有简短的描述会在分类外显示，在分类页面里，您将看到简短描述 + 详细描述.</p>
+
+<ul>
+  <li><b>标签 &lt;!--complete--&gt;</b></li>
+</ul>
+<code>简短的描述 &lt;!--complete--&gt; 详细描述</code>
+<p>只有简短的描述会在分类外显示，在分类页面里，您只能看到详细描述，因此您可以有2种不同的描述.</p>
+
+<ul>
+  <li><b>标签 &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>顶部描述 &lt;!--up-down--&gt; 底部描述</code>
+<p>只有顶部描述会在分类外显示，在分类页面里，顶部描述会显示在缩略图上方，底部描述会显示在缩略图的下方.</p>
+
+<h3>插入一个分类或相片</h3>
+
+<ul>
+  <li><b>标签 [cat=xx]</b></li>
+</ul>
+<p>此标签将把一个分类插入到描述里，xx 即分类的ID.</p>
+
+<ul>
+  <li><b>标签 [img=xx1 xx2 xxN;yyyy;name]</b></li>
+</ul>
+<p>此标签可以在描述里插入一张或者多张缩略图:<br><br>
+- xx 是相片的ID; 您可以在相片ID旁边添加分类的ID: <code>xx.ccc</code>.
+<br>
+- yyyy (optional) : 可输入任何值，如：{left, right}.</p>
+- name (optional) : 可输入任何值，如：{name, titleName}. 如果填写了此项为 <i>name</i> ，那么将在缩略图下显示此相片的名称，如果填写为 <i>titleName</i> ,相片里的 &lt;title&gt; 标记里的内容将会替换了名称的内容.</p>
+
+
+<h3>隐藏一个分类</h3>
+
+<p>在分类名称里使用标签 <b>&lt;!--hidden--&gt;</b> :<br>
+<br>
+- 它将不会在父分类中显示<br>
+- 但它仍可在分类菜单中看见</p>
+
+<h3>隐藏菜单中的分类</h3>
+
+<p>在分类名称里使用标签 <b>&lt;!--mb-hidden--&gt;</b> :<br>
+<br>
+- 它将不会在分类菜单中显示<br>
+- 但它仍可在父级分类中看见</p>
+
+<h3>隐藏一张相片</h3>
+
+<p>在相片名称中使用标签 <b>&lt;!--hidden--&gt;</b>:<br>
+<br>
+- 它将不会在缩略图页面中显示<br>
+- 但它仍可在分类页面里看见</p> 
