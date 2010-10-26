@@ -1,0 +1,86 @@
+<h2>Kiterjesztett leírás</h2>
+
+<h3>Használat más nyelveken</h3>
+
+<p>Többnyelvű leírások között találhatók a [lang=xx] és [/lang] tag-ek, ahol az  xx a nyelv kódja (például: en, es, fr). Két speciális nyelv van : [lang=default] és [lang=all]</p>
+
+<ul>
+  <li><b>Példa</b>:<br>
+  <br>
+<code>[lang=default] alapértelmezett leírás [/lang]<br>
+[lang=en] angol leírás [/lang]<br>
+[lang=de] német leírás [/lang]</code>
+</li>
+</ul>
+
+<p>Az alapértelmezett nyelvet fogja használni, ha a leírás nem érhető el a csatlakozott felhasználó kiválasztott nyelvén.
+Amennyiben a [lang=default] nyelv nem érhető el, bármelyik további [lang] nyelv használata megfontolandó, mint alapértelmezett nyelv.</p>
+
+<p><u>Speciális nyelv <i>all</i></u>: Bármin belül a [lang=all] megjeleníti a leírást, függetlenül a felhasználó nyelvétől.
+Különösen hasznos HTML/JavaScript kódok belsejében lévő leírásoknál.</p>
+
+<h3>További lehetőségek</h3>
+
+<p>Az Extended description tag-ek lehetővé tesznek egy rövid leírást a kategóriáról a kategórián kívül,
+egy hosszabb leírást a kategórián belül a kategória oldalon,
+vagy akár 2 különböző leírást a kategória oldalon belül.</p>
+
+<p>tag &lt;!--more--&gt; rövid leírás hozzáadása.<br>
+tag &lt;!--complete--&gt; a felhasználó két külömböző leírást láthat.<br>
+tag &lt;!--up-down--&gt; a felhasználó egy felső és egy alsó leírást láthat.</p>
+
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>rövid leírás &lt;!--more--&gt; hosszú leírás</code>
+<p>A kategórián kívül csak a rövid leírás jelenik meg. A kategória oldalon a rövid és a hosszú leírás is látható.</p>
+
+<ul>
+  <li><b>tag &lt;!--complete--&gt;</b></li>
+</ul>
+<code>rövid leírás &lt;!--complete--&gt; hosszú leírás</code>
+<p>A kategórián kívül csak a rövid leírás jelenik meg. A kategória oldalon csak a hosszú leírás látható, így két különböző leírás jeleníthető meg.</p>
+
+<ul>
+  <li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>leírás fent &lt;!--up-down--&gt; leírás lent</code>
+<p>A kategórián kívül csak a felső leírás jelenik meg.  A kategória oldalon a bélyegképek fölött a felső leírás jelenik meg, a bélyegképek alatt pedig az alsó leírás látható.</p>
+
+<h3>Kategória vagy kép beszúrása</h3>
+
+<ul>
+  <li><b>tag [cat=xx]</b></li>
+</ul>
+<p>Ez a tag beszúr egy kategóriát a leírásba, ahol xx a kategória azonosító.</p>
+
+<ul>
+  <li><b>tag [img=xx1 xx2 xxN;yyyy;név]</b></li>
+</ul>
+<p>Ezzel a tag-el beszúrhat egy vagy több bélyegképet a leírásba:<br><br>
+- xx a kép azonosító; megadható egy kategória azonosító a kép azonosító mellett: <code>xx.ccc</code>.
+<br>
+- yyyy (választható) : bármilyen érték megadható közé {balra, jobbra}.</p>
+- név (választható) : bármilyen érték megadható közé {név, címNév}. amennyiben a <i>név</i> a bejelölt, a kép neve megjelenik a bélyegkép alatt, 
+<i>címNév</i> esetén a kép jelölö &lt;title&gt; kerül kitöltésre</p>
+
+<h3>Kategória elrejtése</h3>
+
+<p><b>&lt;!--hidden--&gt;</b> tag használata a kategória nevében:<br>
+<br>
+- nem fog megjelenni a szülő kategóriában<br>
+- továbbra is megjelenik a Kategóriák menüben</p>
+
+<h3>Kategória elrejtése a menüben</h3>
+
+<p><b>&lt;!--mb-hidden--&gt;</b> tag használata a kategória nevében:<br>
+<br>
+- nem fog megjelenni a Kategóriák menüben<br>
+- továbbra is megjelenik a szülő kategóriában</p>
+
+<h3>Kép elrejtése</h3>
+
+<p><b>&lt;!--hidden--&gt;</b> tag használata a kép nevében:<br>
+<br>
+- nem fog megjelenni a bélyegkép oldalon<br>
+- továbbra is megjelenik a kategóriában</p>
