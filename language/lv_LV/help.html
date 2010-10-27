@@ -1,0 +1,84 @@
+<h2>Paplašinātais Apraksts</h2>
+
+<h3>Apraksti vairākās valodās</h3>
+
+<p>Apraksti vairākās valodās ir izvietoti starp [lang=xx] un [/lang] iezīmēm, kur xx ir valodas kods (piemēram en, es, fr). Ir arī 2 valodas ar īpašu statusu : [lang=default] and [lang=all]</p>
+
+<ul>
+<li><b>Piemērs</b>:<br>
+<br>
+<code>[lang=default] apraksts pēc noklusējuma [/lang]<br>
+[lang=en] apraksts angļu valodā [/lang]<br>
+[lang=de] apraksts vācu valodā [/lang]</code>
+</li>
+</ul>
+
+<p>Apraksts pēc noklusējuma tiks lietots, ja apraksts savienojumā esošā lietotāja izvēlētajā valodā nav pieejams.
+If [lang=default] neeksistē, jebkas ārpus [lang] iezīmēm tiks uzskatīts par aprakstu pēc noklusējuma.</p>
+
+<p><u>Speciālā valoda <i>all</i></u>: jebkas iekšpus [lang=all] tiks ietverts aprakstā neskatoties, kāda ir lietotāja izvēlētā valoda.
+Tas galvenokārt lietderīgi, lai aprakstā ievietotu HTML/JavaScript kodu.</p>
+
+<h3>Paplašinātie apraksti</h3>
+
+<p>Paplašinātās apraksta iezīmes dod iespēju iegūt īsu kategorijas aprakstu ārpus kategorijas, garāku kategorijas aprakstu kategorijas lapā vai pat 2 apraksta variantus kategorijas lapā.</p>
+
+<p>tag &lt;!--more--&gt; pievieno tekstu īsajam aprakstam.<br>
+tag &lt;!--complete--&gt; ļauj lietotājam lietot 2 apraksta variantus.<br>
+tag &lt;!--up-down--&gt; ļauj lietotājam lietot augšā un apakšā novietoto aprakstu.</p>
+
+<ul>
+<li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>īsais apraksts &lt;!--more--&gt; garais apraksts</code>
+<p>Tikai īsais paraksts tiek rādīts ārpus kategorijas. Kategorijas lapā būs redzams īsais apralsts + garais apraksts.</p>
+
+<ul>
+<li><b>tag &lt;!--complete--&gt;</b></li>
+</ul>
+<code>īsais aprakts &lt;!--complete--&gt; garais apraksts</code>
+<p>Tikai īsais apraksts tiek rādīts ārpus kategorijas. Kategorijas lapā būs redzams vienīgi garais apraksts, tātad Jums ir 2 atšķirīgi apraksti.</p>
+
+<ul>
+<li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>augšējais apraksts &lt;!--up-down--&gt; apakšējais apraksts</code>
+<p>Tikai augšējais apraksts tiek rādīts ārpus kategorijas.  Kategorijas lapā augšējais apraksts tiek rādīts virs sīkbildēm, apakšējais apraksts tirk rādīts zem sīkbildēm.</p>
+
+<h3>Ievieto kategoriju vai attēlu</h3>
+
+<ul>
+<li><b>tag [cat=xx]</b></li>
+</ul>
+<p>Šī iezīme ievieto kategoriju aprakstā, kur xx ir kategorijas identifikātors.</p>
+
+<ul>
+<li><b>tag [img=xx1 xx2 xxN;yyyy;name]</b></li>
+</ul>
+<p>Šī iezīme ļauj ievietot aprakstā vienu vai vairākas sīkbildes ar:<br><br>
+- xx attēla identifikātoru; varat pievienot kategorijas identifikatoru blakus attēla identifikatoram: <code>xx.ccc</code>.
+<br>
+- yyyy (neobligāts) : var būt jebkura vērtība starp {left, right}.</p>
+- name (neobligāts) : var būt jebkura vērtība starp {name, titleName}. Ja iezīmēts ar <i>name</i> attēla vārds tiek rādīts zem sīkbildes, ar <i>titleName</i> attēla atzīme  &lt;title&gt; tiek aizpildīta ar nosaukumu.</p>
+
+
+<h3>Paslēpt kategoriju</h3>
+
+<p>Lietot iezīmi <b>&lt;!--hidden--&gt;</b> kategorijas nosaukumā:<br>
+<br>
+- netiks rādīta pamatkategorijā<br>
+- paliek redzama kategorijas izvēlnē</p>
+
+<h3>Paslēpt kategoriju izvēlnē</h3>
+
+<p>Lietot iezīmi <b>&lt;!--mb-hidden--&gt;</b> kategorijas nosaukumā:<br>
+<br>
+- netiks rādīta kategorijas izvēlnē<br>
+- paliek redzama pamatkategorijā</p>
+
+<h3>Paslēpt attēlu</h3>
+
+<p>Lietot iezīmi <b>&lt;!--hidden--&gt;</b> attēla nosaukumā:<br>
+<br>
+- netiks rādīta sīkbilžu lapā<br>
+- paliks redzama iekšpus kategorijas</p>
