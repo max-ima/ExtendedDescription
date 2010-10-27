@@ -13,6 +13,8 @@ function add_ed_js()
 
   if (!isset($page['page']) or !in_array($page['page'], $change)) return;
 
+  load_language('plugin.lang', EXTENDED_DESC_PATH);
+  
   $template->assign('ed_page', $page['page']);
   $template->set_filename('add_ed_popup', dirname(__FILE__) . '/template/add_popup.tpl');
   $template->append('footer_elements', $template->parse('add_ed_popup', true));
