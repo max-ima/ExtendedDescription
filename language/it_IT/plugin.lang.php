@@ -1,5 +1,5 @@
 <?php
 
-$lang['ExtendedDesc_help'] = 'Usare gli elementi di Extended Description ...';
+$lang['ExtendedDesc_help'] = 'Usare i tag di Extended Description ...';
 
 ?>
