@@ -1,5 +1,5 @@
 <?php
 
-$lang['ExtendedDesc_help'] = 'Používat elementy rozšíøeného popisu......';
+$lang['ExtendedDesc_help'] = 'PouÅ¾Ã­vat elementy rozÅ¡Ã­Å™enÃ©ho popisu......';
 
 ?>

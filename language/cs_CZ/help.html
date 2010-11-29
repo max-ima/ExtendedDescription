@@ -1,85 +1,85 @@
-<h2>Rozšíøenı popis</h2>
+<h2>RozÅ¡Ã­Å™enÃ½ popis</h2>
 
-<h3>Vícejazyèné popisy</h3>
+<h3>VÃ­cejazyÄnÃ© popisy</h3>
 
-<p>Vícejazyèné popisy jsou umístìny mezi elementy [lang=xx] a [/lang], kde xx je kód jazyka (napøíklad cs, en, es, fr). Dále jsou 2 speciální kódy jazyka: [lang=default] a [lang=all]</p>
+<p>VÃ­cejazyÄnÃ© popisy jsou umÃ­stÄ›ny mezi elementy [lang=xx] a [/lang], kde xx je kÃ³d jazyka (napÅ™Ã­klad cs, en, es, fr). DÃ¡le jsou 2 speciÃ¡lnÃ­ kÃ³dy jazyka: [lang=default] a [lang=all]</p>
 
 <ul>
-  <li><b>Pøíklad</b>:<br>
+  <li><b>PÅ™Ã­klad</b>:<br>
   <br>
 <code>[lang=default] default description [/lang]<br>
-[lang=cs] popis v èeštinì [/lang]<br>
+[lang=cs] popis v ÄeÅ¡tinÄ› [/lang]<br>
 [lang=en] description in english [/lang]<br>
 [lang=de] deutsche Beschreibung [/lang]</code>
 </li>
 </ul>
 
-<p>Vıchozí popis bude pouit v pøípadì, e popis není dostupnı v daném jazyce.
-Pokud [lang=default] neexistuje, tak bude jako vıchozí popis pouito cokoliv mimo elementy [lang].</p>
+<p>VÃ½chozÃ­ popis bude pouÅ¾it v pÅ™Ã­padÄ›, Å¾e popis nenÃ­ dostupnÃ½ v danÃ©m jazyce.
+Pokud [lang=default] neexistuje, tak bude jako vÃ½chozÃ­ popis pouÅ¾ito cokoliv mimo elementy [lang].</p>
 
-<p><u>Speciální jazyk <i>all</i></u>: všechno co je uvedeno uvnitø [lang=all] vdy bude vloeno do popisu bez ohledu na zvolenı jazyk.
-Toto je uiteèné zejména pro vkládání kódu HTML/JavaScript do popisu.</p>
+<p><u>SpeciÃ¡lnÃ­ jazyk <i>all</i></u>: vÅ¡echno co je uvedeno uvnitÅ™ [lang=all] vÅ¾dy bude vloÅ¾eno do popisu bez ohledu na zvolenÃ½ jazyk.
+Toto je uÅ¾iteÄnÃ© zejmÃ©na pro vklÃ¡dÃ¡nÃ­ kÃ³du HTML/JavaScript do popisu.</p>
 
-<h3>Rozšíøené popisy</h3>
+<h3>RozÅ¡Ã­Å™enÃ© popisy</h3>
 
-<p>Elementy rozšíøenıch popisù umoòují vytvoøit zkrácenı popis pro kategorii pro pouití mimo kategorii a podrobnı popis pro pouití uvnitø kategorie, nebo dokonce 2 rozdílné popisy pro pouití uvnitø kategorie.</p>
+<p>Elementy rozÅ¡Ã­Å™enÃ½ch popisÅ¯ umoÅ¾ÅˆujÃ­ vytvoÅ™it zkrÃ¡cenÃ½ popis pro kategorii pro pouÅ¾itÃ­ mimo kategorii a podrobnÃ½ popis pro pouÅ¾itÃ­ uvnitÅ™ kategorie, nebo dokonce 2 rozdÃ­lnÃ© popisy pro pouÅ¾itÃ­ uvnitÅ™ kategorie.</p>
 
-<p>Element &lt;!--more--&gt; definuje text pro zkrácenı popis.<br>
-element &lt;!--complete--&gt; umoòuje vytvoøit 2 rozdílné popisy.<br>
-element &lt;!--up-down--&gt; umoòuje vytvoøit popis do horní a dolní èásti.</p>
+<p>Element &lt;!--more--&gt; definuje text pro zkrÃ¡cenÃ½ popis.<br>
+element &lt;!--complete--&gt; umoÅ¾Åˆuje vytvoÅ™it 2 rozdÃ­lnÃ© popisy.<br>
+element &lt;!--up-down--&gt; umoÅ¾Åˆuje vytvoÅ™it popis do hornÃ­ a dolnÃ­ ÄÃ¡sti.</p>
 
 <ul>
   <li><b>Element &lt;!--more--&gt;</b></li>
 </ul>
-<code>krátkı popis &lt;!--more--&gt; dlouhı popis</code>
-<p>Krátkı popis je potom zobrazen mimo kategorii, ale na stránce kategorie je jako popis zobrazen krátkı popis + dlouhı popis.</p>
+<code>krÃ¡tkÃ½ popis &lt;!--more--&gt; dlouhÃ½ popis</code>
+<p>KrÃ¡tkÃ½ popis je potom zobrazen mimo kategorii, ale na strÃ¡nce kategorie je jako popis zobrazen krÃ¡tkÃ½ popis + dlouhÃ½ popis.</p>
 
 <ul>
   <li><b>Element &lt;!--complete--&gt;</b></li>
 </ul>
-<code>krátkı popis &lt;!--complete--&gt; dlouhı popis</code>
-<p>Krátkı popis je potom zobrazen mimo kategorii, ale na stránce kategorie je jako popis uveden dlouhı popis. Take pro kategorii existují 2 odlišné popisy.</p>
+<code>krÃ¡tkÃ½ popis &lt;!--complete--&gt; dlouhÃ½ popis</code>
+<p>KrÃ¡tkÃ½ popis je potom zobrazen mimo kategorii, ale na strÃ¡nce kategorie je jako popis uveden dlouhÃ½ popis. TakÅ¾e pro kategorii existujÃ­ 2 odliÅ¡nÃ© popisy.</p>
 
 <ul>
   <li><b>Element &lt;!--up-down--&gt;</b></li>
 </ul>
-<code>horní popis &lt;!--up-down--&gt; dolní popis</code>
-<p>Horní popis je potom zobrazen mimo kategorii, ale na stránce kategorie je jako popis zobrazen nahoøe horní popis a dole, pod náhledy, dolní popis.</p>
+<code>hornÃ­ popis &lt;!--up-down--&gt; dolnÃ­ popis</code>
+<p>HornÃ­ popis je potom zobrazen mimo kategorii, ale na strÃ¡nce kategorie je jako popis zobrazen nahoÅ™e hornÃ­ popis a dole, pod nÃ¡hledy, dolnÃ­ popis.</p>
 
-<h3>Vloení kategorie nebo fotografie</h3>
+<h3>VloÅ¾enÃ­ kategorie nebo fotografie</h3>
 
 <ul>
   <li><b>Element [cat=xx]</b></li>
 </ul>
-<p>Tento element vloí kategorii xx do popisu kategorie.</p>
+<p>Tento element vloÅ¾Ã­ kategorii xx do popisu kategorie.</p>
 
 <ul>
   <li><b>Element [img=xx1 xx2 xxN;yyyy;name]</b></li>
 </ul>
-<p>Tento elemenet umoòuje vloit jeden nebo více náhladovıch fotografii do popisu, kde:<br><br>
-- xx identifikátor fotografie; je také moné pøidat identifikátor kategorie za identifikátor fotografie: <code>xx.ccc</code>.
+<p>Tento elemenet umoÅ¾Åˆuje vloÅ¾it jeden nebo vÃ­ce nÃ¡hladovÃ½ch fotografii do popisu, kde:<br><br>
+- xx identifikÃ¡tor fotografie; je takÃ© moÅ¾nÃ© pÅ™idat identifikÃ¡tor kategorie za identifikÃ¡tor fotografie: <code>xx.ccc</code>.
 <br>
-- yyyy (volitelné) : je jedna z hodnot {left, right}.</p>
-- name (volitelné) : je jedna z hodnot {name, titleName}. Pokud je vyuito  <i>name</i> tak je název obrázku zobrazen pod jeho náhledem, pokud <i>titleName</i> znaèka obrázku &lt;title&gt; je naplnìna jménem.</p>
+- yyyy (volitelnÃ©) : je jedna z hodnot {left, right}.</p>
+- name (volitelnÃ©) : je jedna z hodnot {name, titleName}. Pokud je vyuÅ¾ito  <i>name</i> tak je nÃ¡zev obrÃ¡zku zobrazen pod jeho nÃ¡hledem, pokud <i>titleName</i> znaÄka obrÃ¡zku &lt;title&gt; je naplnÄ›na jmÃ©nem.</p>
 
 
-<h3>Skrytí kategorie</h3>
+<h3>SkrytÃ­ kategorie</h3>
 
-<p>Je mono vyuít element <b>&lt;!--hidden--&gt;</b> v názvu kategorie:<br>
+<p>Je moÅ¾no vyuÅ¾Ã­t element <b>&lt;!--hidden--&gt;</b> v nÃ¡zvu kategorie:<br>
 <br>
-- potom nebude viditelná v nadøízené kategorii<br>
-- zùstane ale viditelná v seznamu kategorií</p>
+- potom nebude viditelnÃ¡ v nadÅ™Ã­zenÃ© kategorii<br>
+- zÅ¯stane ale viditelnÃ¡ v seznamu kategoriÃ­</p>
 
-<h3>Skrytí kategorie v seznamu kategorií</h3>
+<h3>SkrytÃ­ kategorie v seznamu kategoriÃ­</h3>
 
-<p>Je mono vyuít element <b>&lt;!--mb-hidden--&gt;</b> v názvu kategorie:<br>
+<p>Je moÅ¾no vyuÅ¾Ã­t element <b>&lt;!--mb-hidden--&gt;</b> v nÃ¡zvu kategorie:<br>
 <br>
-- potom bude viditelná v nadøízené kategorii<br>
-- nebude ale viditelná v seznamu kategorií</p>
+- potom bude viditelnÃ¡ v nadÅ™Ã­zenÃ© kategorii<br>
+- nebude ale viditelnÃ¡ v seznamu kategoriÃ­</p>
 
-<h3>Skrytí fotografie</h3>
+<h3>SkrytÃ­ fotografie</h3>
 
-<p>Je mono vyuít element <b>&lt;!--hidden--&gt;</b> v názvu fotografie:<br>
+<p>Je moÅ¾no vyuÅ¾Ã­t element <b>&lt;!--hidden--&gt;</b> v nÃ¡zvu fotografie:<br>
 <br>
-- fotografie potom nebude viditelná mezi náhledy<br>
-- ale zùstane viditelná pøi prohlíení kategorie</p>
+- fotografie potom nebude viditelnÃ¡ mezi nÃ¡hledy<br>
+- ale zÅ¯stane viditelnÃ¡ pÅ™i prohlÃ­Å¾enÃ­ kategorie</p>
