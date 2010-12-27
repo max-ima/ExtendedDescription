@@ -1,41 +1,10 @@
 <?php
 /*
 Plugin Name: Extended Description
-Version: 2.0.g
+Version: 2.1.e
 Description: Add multilinguale descriptions, banner, NMB, category name, etc...
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=175
 Author: P@t & Grum
-
---------------------------------------------------------------------------------
- history
-
-| date       | release |
-|            | 2.0.c   | P@t
-| 2009-04-01 | 2.0.d   | Grum
-|            |         | * bug corrected, markup <!--hidden--> now works again
-|            |         |   on categories name
-|            |         | * new functionality, can use a markup <!--hidden-->
-|            |         |   on image's name
-|            |         | * new functionality, add a new parameter for the image
-|            |         |   markup [img=] ; possibility to show the image name
-|            |         |   with the "name" parameter
-|            |         | * new functionality, the image markup [img=] allows now
-|            |         |   to display more than one image
-| 2009-04-30 | 2.0.e   | P@t
-|            |         | * bug corrected, avoid errors on categories pages when
-|            |         |   $conf['show_thumbnail_caption'] = false
-| 2009-05-10 | 2.0.f   | P@t
-|            |         | * add possibility to remove a category from menubar
-|            |         |   with markup <!--mb-hidden-->
-| 2010-25-09 | 2.0.g   | Grum
-|            |         | * possibility to display the picture's name into the
-|            |         |   image title ('titleName' parameter) rather than under
-|            |         |    the picture ('name' parameter)
-|            |         | * add Id for image & anchor for [img=...] markup
-|            |         |
-|            |         |
-|            |         |
-
 */
 
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
@@ -92,9 +61,53 @@ function get_user_language_desc($desc)
 // Traite les autres balises
 function get_extended_desc($desc, $param='')
 {
-  global $conf;
+  global $conf, $page;
+
+  if (isset($page['category']) and !isset($page['image_id']) and preg_match('#\[redirect (.*?)\]#i', $desc, $m1))
+  {
+    if (preg_match('#^(img|cat|search)=(\d*)\.?(\d*|)$#i', $m1[1], $m2))
+    {
+      $url  = get_absolute_root_url();
+      switch ($m2[1])
+      {
+        case 'img':
+        $url_params = array('image_id' => $m2[2]);
+        if (!empty($m2[3]))
+        {
+          $url_params['category'] = array('id' => $m2[3], 'name' => '', 'permalink' => '');
+        }
+        $url .= make_picture_url($url_params);
+        break;
+
+        case 'cat':
+        $url_params = array('category' => array('id' => $m2[2], 'name' => '', 'permalink' => ''));
+        $url .= make_index_url($url_params);
+        break;
+
+        case 'search':
+        $url .= make_index_url(array('section' => 'search', 'search' => $m2[2]));
+      }
+    }
+    else
+    {
+      $url = $m1[1];
+    }
+    if (is_admin())
+    {
+      global $header_notes;
+      $header_notes[] = sprintf(l10n('This category is redirected to %s'), '<a href="'.$url.'">'.$url.'</a>');
+    }
+    else
+    {
+      redirect($url);
+    }
+  }
 
   $desc = get_user_language_desc($desc);
+
+  // Remove redirect tags for subcatify_category_description
+  $patterns[] = '#\[redirect .*?\]#i';
+  $replacements[] = ''; 
 
   // Balises [cat=xx]
   $patterns[] = '#\[cat=(\d*)\]#ie';

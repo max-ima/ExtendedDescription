@@ -1,0 +1,32 @@
+| date       | release |
+|------------|---------|------------------------------------------------------------
+|            | 2.0.c   | P@t
+|            |         |
+| 2009-04-01 | 2.0.d   | Grum
+|            |         | * bug corrected, markup <!--hidden--> now works again
+|            |         |   on categories name
+|            |         | * new functionality, can use a markup <!--hidden-->
+|            |         |   on image's name
+|            |         | * new functionality, add a new parameter for the image
+|            |         |   markup [img=] ; possibility to show the image name
+|            |         |   with the "name" parameter
+|            |         | * new functionality, the image markup [img=] allows now
+|            |         |   to display more than one image
+|            |         |
+| 2009-04-30 | 2.0.e   | P@t
+|            |         | * bug corrected, avoid errors on categories pages when
+|            |         |   $conf['show_thumbnail_caption'] = false
+|            |         |
+| 2009-05-10 | 2.0.f   | P@t
+|            |         | * add possibility to remove a category from menubar
+|            |         |   with markup <!--mb-hidden-->
+|            |         |
+| 2010-25-09 | 2.0.g   | Grum
+|            |         | * possibility to display the picture's name into the
+|            |         |   image title ('titleName' parameter) rather than under
+|            |         |    the picture ('name' parameter)
+|            |         | * add Id for image & anchor for [img=...] markup
+|            |         |
+| 2010-12-27 | 2.1.e   | P@t
+|            |         | * add redirect tag
+|            |         |
