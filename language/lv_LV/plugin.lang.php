@@ -1,6 +1,6 @@
 <?php
 
 $lang['ExtendedDesc_help'] = 'Lietot Paplašinātā Apraksta iezīmes...';
-/*TODO*/$lang['This category is redirected to %s'] = 'This category is redirected to %s';
+$lang['This category is redirected to %s'] = 'Šī kategorija ir novirzīta uz %s';
 
 ?>
