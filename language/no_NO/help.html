@@ -1,0 +1,120 @@
+<h2>Utvidet beskrivelse</h2>
+
+<h3>Flerspråkelig beskrivelse</h3>
+
+<p>Flerspråklig beskrivelse er plassert mellom [lang=xx] og [/lang] tagger, hvor xx er språk koden (for eksempel en, es, fr).
+
+Det er også 2 spesial språk : [lang=default] og [lang=all]</p>
+
+<ul>
+  <li><b>Eksampel</b>:<br>
+  <br>
+<code>[lang=default] standard beskrivelse [/lang]<br>
+[lang=en] beskrivelse på engelsk [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+<p>Standard beskrivelse vil bli bruktom beskrivelsen ikke er tilgjengelig på den tilkoblede brukers valgte språk.
+Om [lang=default] ikke eksisterer, alt utenom [lang] tagger vil bli satt som standard beskrivelse.</p>
+
+<p><u>Spesial språk <i>alle</i></u>: Alt inne i [lang=all] vil bli inkludert i beskrivelsen, uansett hvilket tilknyttet språ
+
+brukeren har.
+Dette er hovedsaklig nyttig for å inkludere HTML/JavaScript kode inne i en beskrivelse.</p>
+
+<h3>Utvidet beskrivelse</h3>
+
+<p>Utvidet beskrivelse tagger gjør det mulig å ha en kort beskrivelse for albumet, utenfor albumet, en lenger beskrivelse for
+
+albumet inne i album siden, eller til og med 2 spesifikke beskrivelser inne i albumets side.</p>
+
+<p>tag &lt;!--more--&gt; legger tekst til kort beskrivelse.<br>
+tag &lt;!--complete--&gt; la brukeren ha 2 spesifikke beskrivelser.<br>
+tag &lt;!--up-down--&gt; la brukeren ha en topp og bunn beskrivelse.</p>
+
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>kort beskrivelse &lt;!--more--&gt; lang beskrivelse</code>
+<p>Kun den korte beskrivelsen vises på utsiden av albumet. På album side, vil du se kort beskrivelse + lang beskrivelse.</p>
+
+<ul>
+  <li><b>tag &lt;!--Complete--&gt;</b></li>
+</ul>
+<code>Kort beskrivelse &lt;!--complete--&gt; lang beskrivelse</code>
+<p>Kun den korte beskrivelsen vises utenfor albumet. på album siden, vil du kun se den lange beskrivelsen, så du har 2
+
+spesifikke beskrivelser.</p>
+
+<ul>
+  <li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>topp beskrivelse &lt;!--up-down--&gt; bunn beskrivelse</code>
+<p>Kun topp beskrivelse vises utenfor albumet.  På album siden, vil topp beskrivelsen vises over miniatyr bildet, bunn
+
+beskrivelsen vises under miniatyr bildet.</p>
+
+<h3>Sett inn et album eller et bilde</h3>
+
+<ul>
+  <li><b>tagg [cat=xx]</b></li>
+</ul>
+<p>Denne taggen setter inn et album i beskrivelsen, hvor xx er album identifikatoren.</p>
+
+<ul>
+  <li><b>tagg [img=xx1 xx2 xxN;yyyy;name]</b></li>
+</ul>
+<p>Denne taggen lar deg sette inn en eller fler miniatyr bilder i beskrivelsen, med:<br><br>
+- xx bilde identifikatoren; du kan legge til album identifikatoren etter bildet identifikatoren: <code>xx.ccc</code>.
+<br>
+- yyyy (valgfri) : kan ta hvilken som helst verdi fra {venstre, høyre}.</p>
+- name (valgfri) : kan ta hvilken som helst verdi fra {navn, tittelnavn}. Om tagget, med <i>navn</i> vil navnet til bildet
+
+vises under miniatyr bildet, med <i>tittelNavn</i> vil bildets markering &lt;title&gt; fylles med navnet.</p>
+
+
+<h3>Gjemme et album</h3>
+
+<p>Bruke tagg <b>&lt;!--gjemt--&gt;</b> i album navn:<br>
+<br>
+- Det vil ikke vises i under album<br>
+- Det blir fortsatt synlig i album menyen</p>
+
+<h3>Gjem et album i menyen</h3>
+
+<p>Bruk tagg <b>&lt;!--mb-gjemt--&gt;</b> i album navn:<br>
+<br>
+- Det vil ikke vises i album menyen<br>
+- Det blir fortsatt synlig i under album</p>
+
+<h3>Gjem et bilde</h3>
+
+<p>Bruk tagg <b>&lt;!--gjemt--&gt;</b> i bilde navn:<br>
+<br>
+- Det vil ikke vises i miniatyr bilde side<br>
+- Det er fortatt synlig inne i albumet</p>
+
+<h3>Videresendt album</h3>
+
+<ul>
+  <li><b>[redirect http://piwigo.org]</b></li>
+</ul>
+<p>Sett inn denne taggen i en album beskrivelse for å videresende det til en URL du selv velger.</p>
+
+<ul>
+  <li><b>[redirect img=xx]</b></li>
+</ul>
+<p>Videresender til et bilde i ditt galleri der xx er bildets identifikator; du kan legge til album identifikator ved siden av
+
+bilde identifikator: <code>xx.ccc</code>.</p>
+
+<ul>
+  <li><b>[redirect cat=xx]</b></li>
+</ul>
+<p>Videresender til et album i ditt galleri der xx er album identifikator.</p>
+
+<ul>
+  <li><b>[Videresender til search=xx]</b></li>
+</ul>
+<p>Videresender til en søke side i ditt galleri der xx er søke identifikatoren.</p>
