@@ -76,12 +76,12 @@ function get_extended_desc($desc, $param='')
         {
           $url_params['category'] = array('id' => $m2[3], 'name' => '', 'permalink' => '');
         }
-        $url .= make_picture_url($url_params);
+        $url .= rtrim(make_picture_url($url_params), '-');
         break;
 
         case 'cat':
         $url_params = array('category' => array('id' => $m2[2], 'name' => '', 'permalink' => ''));
-        $url .= make_index_url($url_params);
+        $url .= rtrim(make_index_url($url_params), '-');
         break;
 
         case 'search':
