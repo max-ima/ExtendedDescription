@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Extended Description
-Version: 2.1.e
+Version: auto
 Description: Add multilinguale descriptions, banner, NMB, category name, etc...
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=175
 Author: P@t & Grum
@@ -63,11 +63,10 @@ function get_extended_desc($desc, $param='')
 {
   global $conf, $page;
 
-  if (isset($page['category']) and !isset($page['image_id']) and preg_match('#\[redirect (.*?)\]#i', $desc, $m1))
+  if ($param == 'main_page_category_description' and isset($page['category']) and !isset($page['image_id']) and preg_match('#\[redirect (.*?)\]#i', $desc, $m1))
   {
     if (preg_match('#^(img|cat|search)=(\d*)\.?(\d*|)$#i', $m1[1], $m2))
     {
-      $url  = get_absolute_root_url();
       switch ($m2[1])
       {
         case 'img':
@@ -76,16 +75,16 @@ function get_extended_desc($desc, $param='')
         {
           $url_params['category'] = array('id' => $m2[3], 'name' => '', 'permalink' => '');
         }
-        $url .= rtrim(make_picture_url($url_params), '-');
+        $url = rtrim(make_picture_url($url_params), '-');
         break;
 
         case 'cat':
         $url_params = array('category' => array('id' => $m2[2], 'name' => '', 'permalink' => ''));
-        $url .= rtrim(make_index_url($url_params), '-');
+        $url = rtrim(make_index_url($url_params), '-');
         break;
 
         case 'search':
-        $url .= make_index_url(array('section' => 'search', 'search' => $m2[2]));
+        $url = make_index_url(array('section' => 'search', 'search' => $m2[2]));
       }
     }
     else
