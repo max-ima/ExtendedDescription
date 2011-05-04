@@ -133,8 +133,8 @@ function get_extended_desc($desc, $param='')
       $desc = preg_replace($patterns, $replacements, $desc);
       if (substr_count($desc, $conf['ExtendedDescription']['up-down']))
       {
-        list($conf['ExtendedDescription']['top_comment'], $desc) = explode($conf['ExtendedDescription']['up-down'], $desc);
-        add_event_handler('loc_end_index', 'add_top_description');
+        list($desc, $conf['ExtendedDescription']['bottom_comment']) = explode($conf['ExtendedDescription']['up-down'], $desc);
+        add_event_handler('loc_end_index', 'add_bottom_description');
       }
       break;
 
@@ -154,13 +154,13 @@ function extended_desc_mail_group_assign_vars($assign_vars)
   return $assign_vars;
 }
 
-// Add top description
-function add_top_description()
+// Add bottom description
+function add_bottom_description()
 {
   global $template, $conf;
-  $template->concat('PLUGIN_INDEX_CONTENT_BEGIN', '
+  $template->concat('PLUGIN_INDEX_CONTENT_END', '
     <div class="additional_info">
-    ' . $conf['ExtendedDescription']['top_comment'] . '
+    ' . $conf['ExtendedDescription']['bottom_comment'] . '
     </div>');
 }
 

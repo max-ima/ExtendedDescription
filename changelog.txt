@@ -30,3 +30,6 @@
 | 2010-12-27 | 2.1.e   | P@t
 |            |         | * add redirect tag
 |            |         |
+| 2011-05-04 | 2.2.a   | P@t
+|            |         | * 2.2.x compatibility (top and bottom descriptions)
+|            |         |
