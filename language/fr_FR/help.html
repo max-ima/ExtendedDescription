@@ -23,9 +23,9 @@ Ceci est particulièrement pratique pour inclure du code html ou javascript dans
 
 <h3>Descriptions étendues</h3>
 
-<p>Les balises de description étendue permettent d'avoir une description réduite pour la présentation d'une catégorie,
-une description étendue pour la description qui s'affiche sur la page de la catégorie,
-ou deux descriptions différentes sur la page de la catégorie.</p>
+<p>Les balises de description étendue permettent d'avoir une description réduite pour la présentation d'un album,
+une description étendue pour la description qui s'affiche sur la page de l'album,
+ou deux descriptions différentes sur la page de l'album.</p>
 
 <p>La balise &lt;!--more--&gt; permet de rajouter du texte à la description réduite.<br>
 La balise &lt;!--complete--&gt; permet d'avoir 2 descriptions distinctes.<br>
@@ -35,78 +35,78 @@ La balise &lt;!--up-down--&gt; permet d'avoir une description haute et une descr
   <li><b>Balise &lt;!--more--&gt;</b></li>
 </ul>
 <code>description réduite &lt;!--more--&gt; description détaillée</code>
-<p>Seule la description réduite sera affichée pour la présentation de la catégorie.
-Sur la catégorie elle-même, la description sera la description réduite + la description détaillée.</p>
+<p>Seule la description réduite sera affichée pour la présentation de l'album.
+Sur l'album lui-même, la description sera la description réduite + la description détaillée.</p>
 
 <ul>
   <li><b>Balise &lt;!--complete--&gt;</b></li>
 </ul>
 <code>description réduite &lt;!--complete--&gt; description détaillée</code>
-<p>Seule la description réduite sera affichée pour la présentation de la catégorie.
-Par contre, sur la catégorie elle-même, la description sera uniquement la description détaillée, soit 2 descriptions différentes.</p>
+<p>Seule la description réduite sera affichée pour la présentation de l'album.
+Par contre, sur l'album lui-même, la description sera uniquement la description détaillée, soit 2 descriptions différentes.</p>
 
 <ul>
   <li><b>Balise &lt;!--up-down--&gt;</b></li>
 </ul>
 <code>description haute &lt;!--up-down--&gt; description basse</code>
-<p>Seule la description haute sera affichée pour la présentation de la catégorie.
-Sur la catégorie elle-même, la description haute sera affichée au-dessus des miniatures, alors que la description basse sera affichée au-dessous (à l'emplacement normal de la description).</p>
+<p>Seule la description haute sera affichée pour la présentation de l'album.
+Sur l'album lui-même, la description haute sera affichée au-dessus des miniatures, alors que la description basse sera affichée au-dessous (à l'emplacement normal de la description).</p>
 
 
-<h3>Insérer une catégorie ou une image</h3>
+<h3>Insérer un album ou une photo</h3>
 
 <ul>
   <li><b>Balise [cat=xx]</b></li>
 </ul>
-<p>Cette balise permet d'insérer une catégorie dans la description, avec xx le numéro de la catégorie</p>
+<p>Cette balise permet d'insérer un album dans la description, avec xx le numéro de l'album</p>
 
 <ul>
   <li><b>Balise [img=xx1 xx2 xx3 xxN;yyyy;name]</b></li>
 </ul>
 <p>Cette balise permet d'insérer une ou plusieurs vignettes dans la description, avec :<br><br>
-- xx le numéro de l'image ; il est possible de préciser le numéro de la catégorie mère après le numéro : <code>xx.ccc</code>.<br/>
+- xx le numéro de la photo ; il est possible de préciser le numéro de l'album parent après le numéro : <code>xx.ccc</code>.<br/>
 <br/>
 - yyyy (facultatif) prend soit la valeur <i>left</i>, soit la valeur <i>right</i> et permet de positionner la vignette de l'image sur la droite ou la gauche.
 <br/>
-- name (facultatif) prend soit la valeur <i>name</i>, soit la valeur <i>titleName</i> ; avec <i>name</i> le nom de la photo sera affiché sous la vignette, avec <i>titleName</i> le nom de la photo est renseigné dans la balise <i>&lt;title&gt;</i> de l'image.</p>
+- name (facultatif) prend soit la valeur <i>name</i>, soit la valeur <i>titleName</i> ; avec <i>name</i> le nom de la photo sera affiché sous la vignette, avec <i>titleName</i> le nom de la photo est renseigné dans la balise <i>&lt;title&gt;</i> de celle-ci.</p>
 
-<h3>Masquer une catégorie</h3>
+<h3>Masquer un album</h3>
 
-<p>On met la balise <b>&lt;!--hidden--&gt;</b> dans le nom de la catégorie:<br>
+<p>On met la balise <b>&lt;!--hidden--&gt;</b> dans le nom de l'album :<br>
 <br>
-- celle-ci ne sera plus affichée sur la page de la catégorie parente<br>
-- elle reste visible dans le menu des catégories</p>
+- celui-ci ne sera plus affichée sur la page de l'album parent<br>
+- il reste visible dans le menu des albums</p>
 
-<h3>Masquer une catégorie dans le menu</h3>
+<h3>Masquer un album dans le menu</h3>
 
-<p>On met la balise <b>&lt;!--mb-hidden--&gt;</b> dans le nom de la catégorie:<br>
+<p>On met la balise <b>&lt;!--mb-hidden--&gt;</b> dans le nom de l'album :<br>
 <br>
-- celle-ci ne sera plus affichée dans le menu des catégories<br>
-- elle reste visible sur la page de la catégorie parente</p>
+- celui-ci ne sera plus affichée dans le menu des albums<br>
+- il reste visible sur la page de l'album parent</p>
 
-<h3>Masquer une image</h3>
+<h3>Masquer une photo</h3>
 
-<p>On met la balise <b>&lt;!--hidden--&gt;</b> dans le nom de l'image :<br>
+<p>On met la balise <b>&lt;!--hidden--&gt;</b> dans le nom de la photo :<br>
 <br>
 - celle-ci ne sera plus affichée sur la page des vignettes<br>
-- elle reste néanmoins visible au sein de la catégorie</p>
+- elle reste néanmoins visible au sein de l'album</p>
 
-<h3>Catégorie redirigée</h3>
+<h3>Album redirigée</h3>
 
 <ul>
   <li><b>[redirect http://piwigo.org]</b></li>
 </ul>
-<p>Insérez cette balise dans la description d'une catégorie afin de la rediriger vers l'URL de votre choix.</p>
+<p>Insérez cette balise dans la description d'un album afin de le rediriger vers l'URL de votre choix.</p>
 
 <ul>
   <li><b>[redirect img=xx]</b></li>
 </ul>
-<p>Redirige vers une image de votre galerie où xx est l'identifiant de l'image; vous pouvez également préciser l'identifiant de la catégorie après le numéro de l'image: <code>xx.ccc</code>.</p>
+<p>Redirige vers une photo de votre galerie où xx est l'identifiant de celle-ci; vous pouvez également préciser l'identifiant de l'album après le numéro de la photo : <code>xx.ccc</code>.</p>
 
 <ul>
   <li><b>[redirect cat=xx]</b></li>
 </ul>
-<p>Redirige vers une catégorie de votre galerie où xx est l'identifiant de la catégorie.</p>
+<p>Redirige vers un album de votre galerie où xx est l'identifiant de celui-ci.</p>
 
 <ul>
   <li><b>[redirect search=xx]</b></li>
