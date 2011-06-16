@@ -2,7 +2,7 @@
 
 <h3>Descrizione multilingue</h3>
 
-<p>Le descrizioni multilingue si fanno tra gli elementi [lang=xx] e [/lang], dove xx è il codice della lingua (per esempio fr, en, es, it, ...)
+<p>Le descrizioni multilingue si fanno tra i tag [lang=xx] e [/lang], dove xx è il codice della lingua (per esempio fr, en, es, it, ...)
 Esistono anche 2 elementi speciali: [lang=default] e [lang=all]</p>
 
 <ul>
@@ -15,7 +15,7 @@ Esistono anche 2 elementi speciali: [lang=default] e [lang=all]</p>
 </ul>
 
 <p>La descrizione di default sarà utilizata se la descrizione nella lingua dell'utente non è definita.
-Se [lang=default] non esiste, tutto ciò che si trova al difuori degli elementi per la lingua sarà considerato come descrizione di default.</p>
+Se [lang=default] non esiste, tutto ciò che si trova al difuori degli tag di lingua sarà considerato come descrizione di default.</p>
 
 <p><u>Tag <i>all</i></u>: Tutto ciò che si trova tra [lang=all] e [/lang] sarà incluso nella descrizzione, qualsiasi sia la lingua dell'utente.
 Ciò è molto pratico per includere del codice html o javascript in una descrizione.</p>
@@ -23,9 +23,9 @@ Ciò è molto pratico per includere del codice html o javascript in una descrizi
 
 <h3>Descrizione estesa</h3>
 
-<p>Gli elementi di descrizione estesa permette di avere una descrizione ridotta per la presentazione di una categoria,
-una descrizione estesa per la descrizione che si trova sulla pagina della categoria,
-o due descrizioni differenti sulla pagina della categoria.</p>
+<p>I tab di descrizione estesa permette di avere una descrizione ridotta per la presentazione di un album,
+una descrizione estesa per la descrizione che si trova sulla pagina dell'album,
+o due descrizioni differenti sulla pagina dell'album.</p>
 
 <p>Il tag &lt;!--more--&gt; permette d'aggiungere del testo alla descrizione ridotta.<br>
 Il tag &lt;!--complete--&gt; permette d'avere 2 descrizioni distinte.<br>
@@ -35,78 +35,78 @@ Il tag &lt;!--up-down--&gt; permette d'avere una descrizione alta ed una bassa.<
   <li><b>Tag &lt;!--more--&gt;</b></li>
 </ul>
 <code>descrizione ridotta &lt;!--more--&gt; descrizione estesa</code>
-<p>Solo da descrizione ridotta apparirà per la presentazione della categoria.
-Sulla categoria, la descrizione sarà quella ridotta + quella dettagliat.</p>
+<p>Solo da descrizione ridotta apparirà per la presentazione dell'album.
+Sull'album stesso, la descrizione sarà quella ridotta + quella dettagliata.</p>
 
 <ul>
   <li><b>Tag &lt;!--complete--&gt;</b></li>
 </ul>
 <code>descrizione ridotta &lt;!--complete--&gt; descrizione estesa</code>
-<p>Solo da descrizione ridotta apparirà per la presentazione della categoria.
-Invece, sulla categoria, la descrizione sarà quella estesa unicamente, dunque 2 descrizioni differenti.</p>
+<p>Solo da descrizione ridotta apparirà per la presentazione dell'album.
+Invece, sull'album, la descrizione sarà quella estesa unicamente, dunque 2 descrizioni differenti.</p>
 
 <ul>
   <li><b>Tag &lt;!--up-down--&gt;</b></li>
 </ul>
 <code>descrizione alta &lt;!--up-down--&gt; descrizione bassa</code>
-<p>Solo da descrizione alta apparirà per la presentazione della categoria.
-Sulla categoria, la descrizione alta sarà visualizzata al disopra delle miniature, invece la descrizione bassa sarà visualizzata al disotto (li dove appare di solito la descrizione).</p>
+<p>Solo da descrizione alta apparirà per la presentazione dell'album.
+Sull'album, la descrizione alta sarà visualizzata al disopra delle miniature, invece la descrizione bassa sarà visualizzata al disotto (li dove appare di solito la descrizione).</p>
 
 
-<h3>Inserire una categoria o un'immagine</h3>
+<h3>Inserire un album o una foto</h3>
 
 <ul>
   <li><b>Tag [cat=xx]</b></li>
 </ul>
-<p>Questo tag permette d'inserire una categoria nella descrizione, con xx il numero della categoria</p>
+<p>Questo tag permette d'inserire un album nella descrizione, con xx il numero dell'album</p>
 
 <ul>
   <li><b>Tag [img=xx1 xx2 xx3 xxN;yyyy;name]</b></li>
 </ul>
 <p>Questo tag permette d'inserire una o più miniature nella descrizione, con :<br><br>
-- xx il numero dell'immagine ; È possibile pecisare il numero della categoria madre dopo il numero : <code>xx.ccc</code>.<br/>
+- xx il numero della foto ; È possibile pecisare il numero dell'album padre dopo il numero : <code>xx.ccc</code>.<br/>
 <br>
-- yyyy (facoltativo) prende sia il valore <i>left</i>, sia il valore <i>right</i> e permette di posizionare la miniatura dell'immagine sulla destra o sulla sinistra.
+- yyyy (facoltativo) prende sia il valore <i>left</i>, sia il valore <i>right</i> e permette di posizionare la miniatura della foto sulla destra o sulla sinistra.
 <br/>
-- Nome (facoltativo): può assumere qualsiasi valore tra {nome, il nome del titolo}. Se è taggata, con il <i>nome</ i>, il nome della foto è mostrata sotto la miniatura, con il <i> titolo del nome </i> il markup dell'immagine &lt;title&gt; è riempito con il nome.</P>
+- Name (facoltativo): può assumere qualsiasi valore tra {name, titleName}. Con <i>name</i>, il nome della foto viene mostrato sotto la miniatura, con <i>titleName</i> il nome della foto viene inserito in &lt;title&gt;.</p>
 
-<h3>Nascondere una categoria</h3>
+<h3>Nascondere un album</h3>
 
-<p>Si mette il tag <b>&lt;!--hidden--&gt;</b> nel nome della categoria :<br>
+<p>Si inserisce il tag <b>&lt;!--hidden--&gt;</b> nel nome dell'album :<br>
 <br>
-- La categoria non viene più visualizzata sulla pagina della categoria parente<br>
-- La categoria rimane visibile nel menù delle categorie</p>
+- L'album non viene più visualizzato sulla pagina dell'album parente<br>
+- L'album rimane visibile nel menù degli album</p>
 
-<h3>Nascondere una categoria nel menù</h3>
+<h3>Nascondere l'album nel menù</h3>
 
-<p>Si mette il tag <b>&lt;!--mb-hidden--&gt;</b> nel nome della categoria :<br>
+<p>Si inserisce il tag <b>&lt;!--mb-hidden--&gt;</b> nel nome dell'album :<br>
 <br>
-- La categoria non viene più visualizzata nel menù delle categorie<br>
-- La categoria rimane visibile nella pagina della categoria parente</p>
+- L'album non viene più visualizzato nel menù degli album<br>
+- L'album rimane visibile nella pagina dell'album parente</p>
 
-<h3>Nascondere un'immagine</h3>
+<h3>Nascondere una foto</h3>
 
-<p>Si mette il tag <b>&lt;!--hidden--&gt;</b> nel nome dell'immagine :<br>
+<p>Si inserisce il tag <b>&lt;!--hidden--&gt;</b> nel nome della foto :<br>
 <br>
-- L'immagine non viene più visualizzata sulla pagina delle miniature<br>
-- L'immagine rimane visibile nella categoria</p>
+- La foto non viene più visualizzata sulla pagina delle miniature<br>
+- La foto rimane visibile nell'album</p>
 
-<h3>Categoria reindirizzata</h3>
+<h3>Album reindirizzato</h3>
 
 <ul>
   <li><b>[redirect http://piwigo.org]</b></li>
 </ul>
-<p>Inserite questo tag nella descrizione di una categoria per reindirizzarla verso l'URL da voi scelta.</p>
+<p>Inserite questo tag nella descrizione di un album per reindirizzarlo verso l'URL da voi scelto.</p>
 
 <ul>
   <li><b>[redirect img=xx]</b></li>
 </ul>
-<p>Reindirizza verso una foto della galleria dove xx è l'ID dell'immagine; è possibile specificare anche l'ID della categoria dopo il numero dell'immagine : <code>xx.ccc</code>.</p>
+<p>Reindirizza verso una foto della galleria dove xx è l'ID della foto; è possibile specificare anche l'ID dell'album dopo il numero della foto : <code>xx.ccc</code>.</p>
 
 <ul>
   <li><b>[redirect cat=xx]</b></li>
 </ul>
-<p>Reindirizza verso una categoria della galleria dove xx è l'ID della categoria.</p>
+<p>Reindirizza verso un album della galleria dove xx è l'ID dell'album.</p>
 
 <ul>
   <li><b>[redirect search=xx]</b></li>
