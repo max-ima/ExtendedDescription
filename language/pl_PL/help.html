@@ -18,3 +18,47 @@ Jeżeli tag [lang=default] nie będzie istniał, wtedy wszystko poza tagami [lan
 
 <p><u>Specjalny tag językowy <i>all</i></u>: wszystko co jest zawarte w opisie w obrębie [lang=all] będzie wyświetlane w języku jakim domyślnie posługuje się połączony użytkownik.
 Głównie jest to przydatne do implementowania kodu HTML/JavaScript w opisie.</p>
+
+<h3>Rozszerzony opis</h3>
+
+<p>Tagi rozszerzonego opisu pozwalają na stworzenie krótkiego opisu albumu poza albumem,
+dłuższego opisu albumu na stronie albumu,
+a nawet dwóch różnych opisów na stronie albumu.</p>
+
+<p>tag &lt;!--more--&gt; dodaje tekst do krótkiego opisu.<br>
+tag &lt;!--complete--&gt; pozwala na stworzenie dwóch różnych opisów.<br>
+tag &lt;!--up-down--&gt; pozwala na stworzenie górnego i dolnego opisu.</p>
+
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code> krótki opis &lt;!--more--&gt; długi opis</code>
+<p>Poza albumem widnieje tylko krótki opis. Na stronie albumu widnieje opis krótki + opis długi.</p>
+
+<ul>
+  <li><b>tag &lt;!--complete--&gt;</b></li>
+</ul>
+<code>krótki opis &lt;!--complete--&gt; długi opis</code>
+<p>Poza albumem widnieje tylko krótki opis. Na stronie albumu widnieje tylko długi opis, więc tak naprawdę można stworzyć dwa różne opisy.</p>
+
+<ul>
+  <li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>górny opis &lt;!--up-down--&gt; dolny opis</code>
+<p>Poza albumem widnieje tylko górny opis. Na stronie albumu górny opis widnieje nad miniaturkami a dolny opis pod miniaturkami.</p>
+
+<h3>Wstawianie albumu lub zdjęcia</h3>
+
+<ul>
+  <li><b>tag [cat=xx]</b></li>
+</ul>
+<p>Ten tag pozwala na umieszczenie albumu w opisie, gdzie xx to identyfikator albumu.</p>
+
+<ul>
+  <li><b>tag [img=xx1 xx2 xxN;yyyy;name]</b></li>
+</ul>
+<p>Ten tag pozwala na umieszczenie jednej lub więcej miniaturek w opisie mając:<br><br>
+- xx jako identyfikator zdjęcia; można dodać identyfikator albumu obok identyfikatora zdjęcia: <code>xx.ccc</code>.
+<br>
+- yyyy (optional) : może przyjąć wartości {left, right}.</p>
+- name (optional) : może przyjąć wartości {name, titleName}. Jeśli otagujemy tagiem <i>name</i> pod miniaturką wyświetli się nazwa zdjęcia, zaś jeśli <i>titleName</i> wtedy zamiast nazwy wyświetli się oznaczenie &lt;title&gt; .</p>
