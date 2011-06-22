@@ -62,3 +62,46 @@ tag &lt;!--up-down--&gt; pozwala na stworzenie górnego i dolnego opisu.</p>
 <br>
 - yyyy (optional) : może przyjąć wartości {left, right}.</p>
 - name (optional) : może przyjąć wartości {name, titleName}. Jeśli otagujemy tagiem <i>name</i> pod miniaturką wyświetli się nazwa zdjęcia, zaś jeśli <i>titleName</i> wtedy zamiast nazwy wyświetli się oznaczenie &lt;title&gt; .</p>
+
+<h3>Ukryj album</h3>
+
+<p>Po użyciu tagu <b>&lt;!--hidden--&gt;</b> w nazwie albumu:<br>
+<br>
+- nie będzie wyświetlany w albumie wyższego poziomu<br>
+- pozostanie widoczny w menu albumów</p>
+
+<h3>Ukryj album w menu</h3>
+
+<p>Po użyciu tagu <b>&lt;!--mb-hidden--&gt;</b> w nazwie albumu:<br>
+<br>
+- nie będzie wyświetlany w menu albumów<br>
+- pozostanie widoczny w albumie wyższego poziomu</p>
+
+<h3>Ukryj zdjęcie</h3>
+
+<p>Po użyciu tagu <b>&lt;!--hidden--&gt;</b> w nazwie zdjęcia: <br>
+<br>
+- nie będzie wyświetlane na stronie z miniaturkami<br>
+- pozostanie widoczne wewnątrz albumu</p>
+
+<h3>Przekierowanie albumu</h3>
+
+<ul>
+<li><b>[redirect http://piwigo.org]</b></li>
+</ul>
+<p>Po użyciu tego tagu w opisie albumu będzie on wskazywał na URL wybrany przez Ciebie.</p>
+
+<ul>
+<li><b>[redirect img=xx]</b></li>
+</ul>
+<p>Spowoduje przekierowanie na konkretne zdjęcie w galerii, gdzie xx to identyfikator zdjęcia; można użyć identyfikator albumu zaraz obok identyfikatora zdjęcia: <code>xx.ccc</code>.</p>
+
+<ul>
+<li><b>[redirect cat=xx]</b></li>
+</ul>
+<p>Spowoduje przekierowanie na konkretny album w galerii, gdzie xx to identyfikator albumu.</p>
+
+<ul>
+<li><b>[redirect search=xx]</b></li>
+</ul>
+<p>Spowoduje przekierowanie na konkretną stronę wyszukiwarki w galerii, gdzie xx to identyfikator wyszukiwania.</p>
