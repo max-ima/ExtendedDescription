@@ -1,0 +1,108 @@
+<h2>Extended Description</h2>
+
+<h3>Multilanguage descriptions</h3>
+
+<p>Multilanguage descriptions are placed between [lang=xx] and [/lang] tags, where xx is the language code (for example en, es, fr). There is also 2 special languages : [lang=default] and [lang=all]</p>
+
+<ul>
+  <li><b>Example</b>:<br>
+  <br>
+<code>[lang=default] default description [/lang]<br>
+[lang=en] description in english [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+<p>The default description will be used if the description is not available in the connected user selected language.
+If [lang=default] does not exists, anything outside the [lang] tags will be considered as the default description.</p>
+
+<p><u>Special language <i>all</i></u>: anything inside [lang=all] will be included in the description, anywhat the connected user defined language is.
+This is mainly useful to include HTML/JavaScript code inside a description.</p>
+
+<h3>Extended descriptions</h3>
+
+<p>Extended description tags make it possible to have a short description for the album outside the album,
+a longer description for the album inside the album page,
+or even 2 distinct descriptions inside the album page.</p>
+
+<p>tag &lt;!--more--&gt; adds text to the short description.<br>
+tag &lt;!--complete--&gt; let the user have 2 distinct descriptions.<br>
+tag &lt;!--up-down--&gt; let the user have a top and a bottom description.</p>
+
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>short description &lt;!--more--&gt; long description</code>
+<p>Only the short description is displayed outside the album. On the album page, you will see short description + long description.</p>
+
+<ul>
+  <li><b>tag &lt;!--complete--&gt;</b></li>
+</ul>
+<code>short description &lt;!--complete--&gt; long description</code>
+<p>Only the short description is displayed outside the album. On the album page, you will only see the long description, so you have 2 distinct descriptions.</p>
+
+<ul>
+  <li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>top description &lt;!--up-down--&gt; bottom description</code>
+<p>Only the top description is displayed outside the album.  On the album page, the top description is displayed above the thumbnails, the bottom description is displayed below the thumbnails.</p>
+
+<h3>Insert a album or a photo</h3>
+
+<ul>
+  <li><b>tag [cat=xx]</b></li>
+</ul>
+<p>This tag inserts a album in the description, where xx is the album identifier.</p>
+
+<ul>
+  <li><b>tag [img=xx1 xx2 xxN;yyyy;name]</b></li>
+</ul>
+<p>This tag allows to insert one or more thumbnail in the description, with:<br><br>
+- xx the photo identifier; you can add the album identifier next to the photo identifier: <code>xx.ccc</code>.
+<br>
+- yyyy (optional) : can take any value among {left, right}.</p>
+- name (optional) : can take any value among {name, titleName}. If tagged, with <i>name</i> the name of the picture is diplayed under the thumbnail, with <i>titleName</i> the photo markup &lt;title&gt; is fill with the name.</p>
+
+
+<h3>Hide a album</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the album name:<br>
+<br>
+- it won't be displayed in the parent album<br>
+- it remains visible in the album menu</p>
+
+<h3>Hide a album in menu</h3>
+
+<p>Use tag <b>&lt;!--mb-hidden--&gt;</b> in the album name:<br>
+<br>
+- it won't be displayed in the album menu<br>
+- it remains visible in the parent album</p>
+
+<h3>Hide a photo</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the photo name:<br>
+<br>
+- it won't be displayed on the thumbnails page<br>
+- it remains visible inside the album</p>
+
+<h3>Redirected album</h3>
+
+<ul>
+  <li><b>[redirect http://piwigo.org]</b></li>
+</ul>
+<p>Insert this tag into a album description to redirect it to the URL of your choice.</p>
+
+<ul>
+  <li><b>[redirect img=xx]</b></li>
+</ul>
+<p>Redirect to a photo of your gallery where xx is the photo identifier; you can add the album identifier next to the photo identifier: <code>xx.ccc</code>.</p>
+
+<ul>
+  <li><b>[redirect cat=xx]</b></li>
+</ul>
+<p>Redirect to a album of your gallery where xx the album identifier.</p>
+
+<ul>
+  <li><b>[redirect search=xx]</b></li>
+</ul>
+<p>Redirect to a search page of your gallery where xx is the search identifier.</p>
