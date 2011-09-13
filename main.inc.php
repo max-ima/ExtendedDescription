@@ -117,6 +117,9 @@ function get_extended_desc($desc, $param='')
   $patterns[] = '#\[img=([\d\s\.]*);?(left|right|);?(name|titleName|)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_img_thumb("$1", "$2", "$3")';
 
+    // [random album=xx]
+    $patterns[] = '#\[random\s+(?:album|cat)=\s*?(\d+)\s*?\]#ie';
+    $replacements[] = 'extdesc_get_random_photo("$1")';
 
   // Balises <!--complete-->, <!--more--> et <!--up-down-->
   switch ($param)
@@ -345,6 +348,26 @@ function get_img_thumb($elem_ids, $align='', $name='')
   return '';
 }
 
+
+function extdesc_get_random_photo($category_id)
+{
+  $query = '
+SELECT
+    path
+  FROM '.IMAGES_TABLE.'
+    JOIN '.IMAGE_CATEGORY_TABLE.' ON image_id = id
+  WHERE category_id = '.$category_id.'
+  ORDER BY '.DB_RANDOM_FUNCTION.'()
+  LIMIT 1
+;';
+  $result = pwg_query($query);
+  while ($row = pwg_db_fetch_assoc($result))
+  {
+    return '<img src="'.$row['path'].'">';
+  }
+
+  return '';
+}
 
 if (script_basename() == 'admin' or script_basename() == 'popuphelp')
 {
