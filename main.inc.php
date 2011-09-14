@@ -351,8 +351,11 @@ function get_img_thumb($elem_ids, $align='', $name='')
 
 function extdesc_get_random_photo($category_id)
 {
+  include_once(PHPWG_ROOT_PATH.'include/functions_picture.inc.php');
+  
   $query = '
 SELECT
+    id,
     path
   FROM '.IMAGES_TABLE.'
     JOIN '.IMAGE_CATEGORY_TABLE.' ON image_id = id
@@ -363,7 +366,7 @@ SELECT
   $result = pwg_query($query);
   while ($row = pwg_db_fetch_assoc($result))
   {
-    return '<img src="'.$row['path'].'">';
+    return '<img src="'.get_element_url($row).'">';
   }
 
   return '';
