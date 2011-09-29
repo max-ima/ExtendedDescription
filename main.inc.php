@@ -380,6 +380,7 @@ if (script_basename() == 'admin' or script_basename() == 'popuphelp')
 add_event_handler ('render_page_banner', 'get_user_language_desc');
 add_event_handler ('render_category_name', 'get_user_language_desc');
 add_event_handler ('render_category_description', 'get_extended_desc', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
+add_event_handler ('render_tag_name', 'get_user_language_desc');
 add_event_handler ('render_element_description', 'get_extended_desc');
 add_event_handler ('nbm_render_user_customize_mail_content', 'get_extended_desc');
 add_event_handler ('mail_group_assign_vars', 'extended_desc_mail_group_assign_vars');
