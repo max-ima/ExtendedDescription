@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Extended Description
-Version: auto
+Version: 2.3.a
 Description: Add multilinguale descriptions, banner, NMB, category name, etc...
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=175
 Author: P@t & Grum
@@ -237,49 +237,49 @@ function ext_remove_image($tpl_var, $pictures)
 // Return html code for  caterogy thumb
 function get_cat_thumb($elem_id)
 {
-  global $template;
+  global $template, $user;
 
-  $query = 'SELECT cat.id, cat.name, cat.comment, cat.representative_picture_id, cat.permalink,
-            uc.nb_images, uc.count_images, uc.count_categories,
-            img.path, img.tn_ext
-            FROM ' . CATEGORIES_TABLE . ' AS cat
-            INNER JOIN '.USER_CACHE_CATEGORIES_TABLE.' as uc
-            INNER JOIN ' . IMAGES_TABLE . ' AS img
-            ON cat.id = uc.cat_id
-            AND img.id = cat.representative_picture_id
-            WHERE cat.id = ' . $elem_id . ';';
+  $query = 'SELECT 
+cat.id, cat.name, cat.comment, cat.representative_picture_id, cat.permalink, uc.nb_images, uc.count_images, uc.count_categories, img.path, img.tn_ext
+FROM ' . CATEGORIES_TABLE . ' AS cat
+INNER JOIN '.USER_CACHE_CATEGORIES_TABLE.' as uc
+  ON cat.id = uc.cat_id AND user_id = '.$user['id'].'
+INNER JOIN ' . IMAGES_TABLE . ' AS img
+  ON img.id = uc.user_representative_picture_id
+WHERE cat.id = ' . $elem_id . ';';
   $result = pwg_query($query);
 
-  if($result)
+  if($result and $category = mysql_fetch_array($result))
   {
     $template->set_filename('extended_description_content', dirname(__FILE__) . '/template/cat.tpl');
-    while($category=mysql_fetch_array($result))
-    {
-      $template->assign(array(
-          'ID'    => $category['id'],
-          'TN_SRC'   => get_thumbnail_url($category),
-          'TN_ALT'   => strip_tags($category['name']),
-          'URL'   => make_index_url(array('category' => $category)),
-          'CAPTION_NB_IMAGES' => get_display_images_count
-                                  (
-                                    $category['nb_images'],
-                                    $category['count_images'],
-                                    $category['count_categories'],
-                                    true,
-                                    '<br />'
-                                  ),
-          'DESCRIPTION' =>
-            trigger_event('render_category_literal_description',
-              trigger_event('render_category_description',
-                @$category['comment'],
-                'subcatify_category_description')),
-          'NAME'  => trigger_event(
-                       'render_category_name',
-                       $category['name'],
-                       'subcatify_category_name'
-                     ),
-        ));
-    }
+
+    $template->assign(
+      array(
+        'ID'    => $category['id'],
+        'TN_SRC'   => get_thumbnail_url($category),
+        'TN_ALT'   => strip_tags($category['name']),
+        'URL'   => make_index_url(array('category' => $category)),
+        'CAPTION_NB_IMAGES' => get_display_images_count
+                                (
+                                  $category['nb_images'],
+                                  $category['count_images'],
+                                  $category['count_categories'],
+                                  true,
+                                  '<br />'
+                                ),
+        'DESCRIPTION' =>
+          trigger_event('render_category_literal_description',
+            trigger_event('render_category_description',
+              @$category['comment'],
+              'subcatify_category_description')),
+        'NAME'  => trigger_event(
+                     'render_category_name',
+                     $category['name'],
+                     'subcatify_category_name'
+                   ),
+      )
+    );
+
     return $template->parse('extended_description_content', true);
   }
   return '';
