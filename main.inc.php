@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Extended Description
-Version: 2.3.a
+Version: auto
 Description: Add multilinguale descriptions, banner, NMB, category name, etc...
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=175
 Author: P@t & Grum
@@ -27,11 +27,13 @@ $conf['ExtendedDescription'] = isset($conf['ExtendedDescription']) ?
 
 
 // Traite les balises [lang=xx]
-function get_user_language_desc($desc)
+function get_user_language_desc($desc, $user_lang=null)
 {
-  global $user;
-
-  $user_lang = substr($user['language'], 0, 2);
+  if (is_null($user_lang))
+  {
+    global $user;
+    $user_lang = substr($user['language'], 0, 2);
+  }
 
   if (!substr_count(strtolower($desc), '[lang=' . $user_lang . ']'))
   {
@@ -56,6 +58,11 @@ function get_user_language_desc($desc)
     $replacements[] = '';
   }
   return preg_replace($patterns, $replacements, $desc);
+}
+
+function get_user_language_tag_url($tag)
+{
+  return get_user_language_desc($tag, get_default_language());
 }
 
 // Traite les autres balises
@@ -381,6 +388,7 @@ add_event_handler ('render_page_banner', 'get_user_language_desc');
 add_event_handler ('render_category_name', 'get_user_language_desc');
 add_event_handler ('render_category_description', 'get_extended_desc', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
 add_event_handler ('render_tag_name', 'get_user_language_desc');
+add_event_handler ('render_tag_url', 'get_user_language_tag_url', 40);
 add_event_handler ('render_element_description', 'get_extended_desc');
 add_event_handler ('nbm_render_user_customize_mail_content', 'get_extended_desc');
 add_event_handler ('mail_group_assign_vars', 'extended_desc_mail_group_assign_vars');
