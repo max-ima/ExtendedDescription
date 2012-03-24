@@ -1,0 +1,108 @@
+<h2>Розширений опис</h2>
+
+<h3>Багатомовні описи</h3>
+
+<p>Багатомовний описи розміщено між [lang=xx] та [/lang] теґами, де xx є мовним кодом (для прикладу en, es, fr, uk). Є також 2 спеціальні мови : [lang=default] and [lang=all]</p>
+
+<ul>
+  <li><b>Приклад</b>:<br>
+  <br>
+<code>[lang=default] default description [/lang]<br>
+[lang=en] description in english [/lang]<br>
+[lang=uk] опис на українській [/lang]</code>
+</li>
+</ul>
+
+<p>Опис за замовчуванням буде використовуватися, якщо опис недоступний в вибраної користувачем мови.
+Якщо [lang=default] не існує , все, що поза теґом [lang] будуть розглядатися як опис за замовчуванням.</p>
+
+<p><u>Спеціальні мови <i>всі</i></u>: все, що всередині [lang=all] будуте включено в опис, все що пов'язане з мовою певного користувача.
+Це головним чином корисно, щоб включати код HTML/JavaScript усередині опису.</p>
+
+<h3>Розширені описи</h3>
+
+<p>Extended description tags make it possible to have a short description for the album outside the album,
+a longer description for the album inside the album page,
+or even 2 distinct descriptions inside the album page.</p>
+
+<p>tag &lt;!--more--&gt; adds text to the short description.<br>
+tag &lt;!--complete--&gt; let the user have 2 distinct descriptions.<br>
+tag &lt;!--up-down--&gt; let the user have a top and a bottom description.</p>
+
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>short description &lt;!--more--&gt; long description</code>
+<p>Only the short description is displayed outside the album. On the album page, you will see short description + long description.</p>
+
+<ul>
+  <li><b>tag &lt;!--complete--&gt;</b></li>
+</ul>
+<code>short description &lt;!--complete--&gt; long description</code>
+<p>Only the short description is displayed outside the album. On the album page, you will only see the long description, so you have 2 distinct descriptions.</p>
+
+<ul>
+  <li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>top description &lt;!--up-down--&gt; bottom description</code>
+<p>Only the top description is displayed outside the album.  On the album page, the top description is displayed above the thumbnails, the bottom description is displayed below the thumbnails.</p>
+
+<h3>Вставте альбом або зображення</h3>
+
+<ul>
+  <li><b>теґ [cat=xx]</b></li>
+</ul>
+<p>Цей теґ вставляє альбом в описі, де хх це ідентифікатор альбому.</p>
+
+<ul>
+  <li><b>теґ [img=xx1 xx2 xxN;yyyy;name]</b></li>
+</ul>
+<p>Цей теґ дозволяє вставляти одну або декілька мініатюр в описі, де:<br><br>
+- xx ідентифікатор зображення; ви можете додати ідентифікатор альбому поряд з ідентифікатором зображення: <code>xx.ccc</code>.
+<br>
+- yyyy (необов'язковий) : може прийняти будь-яке значення між {вліво, вправо}.</p>
+- name (необов'язковий) : може прийняти будь-яке значення між {name, titleName}. Якщо теґ, з <i>name</i> назва зображення відображається під слайдами, з <i>titleName</i> розмітку зображення &lt;title&gt; заповнити з ім'ям.</p>
+
+
+<h3>Hide a album</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the album name:<br>
+<br>
+- it won't be displayed in the parent album<br>
+- it remains visible in the album menu</p>
+
+<h3>Hide a album in menu</h3>
+
+<p>Use tag <b>&lt;!--mb-hidden--&gt;</b> in the album name:<br>
+<br>
+- it won't be displayed in the album menu<br>
+- it remains visible in the parent album</p>
+
+<h3>Hide a photo</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the photo name:<br>
+<br>
+- it won't be displayed on the thumbnails page<br>
+- it remains visible inside the album</p>
+
+<h3>Переадресація альбому</h3>
+
+<ul>
+  <li><b>[redirect http://piwigo.org]</b></li>
+</ul>
+<p>Вставте цей теґ в опис альбому, щоб перенаправити його до URL-адреси на ваш вибір.</p>
+
+<ul>
+  <li><b>[redirect img=xx]</b></li>
+</ul>
+<p>Переадресація до зображення галереї, де xx є ідентифікатором зображення; Ви можете додати ідентифікатор альбому поруч із пунктом ідентифікатор зображення: <code>xx.ccc</code>.</p>
+
+<ul>
+  <li><b>[redirect cat=xx]</b></li>
+</ul>
+<p>Переадресація до альбому з галереї, де xx ідентифікатор альбому.</p>
+
+<ul>
+  <li><b>[redirect search=xx]</b></li>
+</ul>
+<p>Переадресація на сторінку пошуку з галереї, де xx є пошуковим ідентифікатором.</p>
