@@ -1,0 +1,126 @@
+<h2>Uitgebreide omschrijving</h2>
+
+<h3>Multilanguage beschrijvingen</h3>
+
+<p>Multilanguage beschrijvingen worden geplaatst tussen [lang=xx] en [/lang] tags, waar xx de taalcode is (bv: en, es, fr). Er zijn ook 2 speciale talen: [lang=default] en [lang=all]</p>
+
+<ul>
+  <li><b>Voorbeeld</b>:<br>
+  <br>
+<code>[lang=default] default description [/lang]<br>
+[lang=en] description in english [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+
+
+<p>De standaard omschrijving zal gebruikt worden als de beschrijving niet beschikbaar is in de voor de huidige gebruiker geselecteerde taal.
+Als [lang = default] niet bestaat, zal alles buiten de [lang] tags worden beschouwd als de standaard omschrijving.</p>
+
+
+
+<p><u>Special language <i>all</i></u>: alles binnen [lang=all] zal worden ingevoegd ,ongeacht wat de taal van de gebruiker is.
+Dit is handig voor het invoegen van HTML/JavaScript code binnen een omschijving.</p>
+
+
+<h3>Uitgebreide omschrijvingen</h3>
+
+
+
+
+<p>Uitgebreide omschrijving tags maken het mogelijk om een korte omschrijving te maken voor eht album buiten het album, en een langere omschrijving of zelfs 2 verschillende omschrijvingen binnen de album pagina.</p>
+
+<p>tag &lt;!--more--&gt; tekst voor de korte omschrijving.<br>
+tag &lt;!--complete--&gt; laat de gebruiker 2 verschillende omschrijvingen.<br>
+tag &lt;!--up-down--&gt; laat de gebruiker een kop en voet omschrijving.</p>
+
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>korte omschrijving &lt;!--more--&gt; lange omschrijving</code>
+
+<p>Alleen de korte omschijving word getoond buiten het album. Op de album pagina, zie je een korte en lange omschrijving.</p>
+
+<ul>
+  <li><b>tag &lt;!--complete--&gt;</b></li>
+</ul>
+<code>korte omschrijving &lt;!--complete--&gt; lange omschrijving</code>
+
+<p>>Alleen de korte omschijving word getoond buiten het album. Op de album pagina, zie je alleen de lange omschrijving. Zo   heb je 2 verschillende omschrijvingen.</p>
+
+<ul>
+  <li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>top description &lt;!--up-down--&gt; bottom description</code>
+
+<p>Alleen de top omschrijving is zichtbaar buiten het album.  Op de album pagina, de kop omschrijving wordt getoond boven de miniaturen, de voet omschrijving wordt getoond onder de miniaturen.</p>
+
+<h3>Invoegen van foto of album</h3>
+
+<ul>
+  <li><b>label [cat=xx]</b></li>
+</ul>
+
+<p>Deze label voegt een album in de omschrijving in, waar xx is het album ID.</p>
+
+<ul>
+  <li><b>label [img=xx1 xx2 xxN;yyyy;name]</b></li>
+</ul>
+
+
+<p>Dit label laat je &eacute;&eacute;n of meer miniaturen in de omschrijving invoegen, met:<br><br>
+- xx als het afbeelding ID; Je kan album ID naast afbeelding ID gebruiken: <code>xx.ccc</code>.
+<br>
+- yyyy (optioneel) : kan elke waarde onder de {left, right}.</p>
+- name (optioneel) : kan elke waarde onder de {name, titleName}. Als label <i>name</i> wordt de naam van de afbeelding onder de miniatuur getoond, met <i>titleName</i> wordt de foto markup &lt;title&gt; gevuld met de naam.</p>
+
+
+<h3>Verberg een album</h3>
+
+<p>Gebruik het label <b>&lt;!--hidden--&gt;</b> in de album naam:<br>
+<br>
+
+- het wordt niet getoond in het bovenliggende album<br>
+- het blijft zichtbaar in het album menu</p>
+
+<h3Verberg een album in een menu</h3>
+
+<p>Gebruik het label <b>&lt;!--mb-hidden--&gt;</b> in de album naam:<br>
+<br>
+- het wordt niet getoond in het album menu<br>
+
+- het blijft zichtbaar in het bovenliggende album</p>
+
+<h3>Verberg een foto</h3>
+
+<p>Gebruik het label <b>&lt;!--hidden--&gt;</b> in de foto naam:<br>
+<br>
+
+
+- het wordt niet getoond op de miniaturen pagina<br>
+- het blijft zichtbaar binnen het album</p>
+
+<h3>Doorgestuurd album</h3>
+
+<ul>
+  <li><b>[redirect http://piwigo.org]</b></li>
+</ul>
+
+<p>Voeg dit label in , in een album omschrijving, om het door te sturenaar een URL naar keuze.</p>
+
+<ul>
+  <li><b>[redirect img=xx]</b></li>
+</ul>
+
+<p>verwijs naar een foto in de gallerie, waar xx is het foto ID; je kan ook het album ID gebruiken naast het foto ID: <code>xx.ccc</code>.</p>
+
+<ul>
+  <li><b>[redirect cat=xx]</b></li>
+</ul>
+<p>Verwijs naar een album uit je gallerie waar xx het album ID is.</p>
+
+<ul>
+  <li><b>[redirect search=xx]</b></li>
+</ul>
+<p>Verwijs naar een zoek pagina van je gallerie waar xx het zoek ID is.</p>
