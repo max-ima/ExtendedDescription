@@ -1,0 +1,106 @@
+<h2> Descri&ccedil;&atilde;o extensa </h2>
+
+<h3> Descri&ccedil;&otilde;es multi-idioma </h3>
+
+<p> Descri&ccedil;&otilde;es multi-idioma s&atilde;o colocados entre etiquetas [lang = xx] e [/lang], onde xx &eacute; o c&oacute;digo da l&iacute;ngua (por exemplo, en, es, fr,pt). H&aacute; tamb&eacute;m 2 linguagens especiais: [lang = default] e [lang = all] </p>
+
+<ul>
+<li> <b> Exemplo </b>: <br>
+<br>
+<code> [lang = default] default description [/lang] <br>
+[Lang = en] description in english [/lang] <br>
+[Lang = de] deutsche Beschreibung [/lang] <br>
+[Lang = pt] descri&ccedil;&atilde;o portugu&ecirc;s [/lang]</code>
+</li>
+</ul>
+
+<p> A descri&ccedil;&atilde;o padr&atilde;o ser&aacute; usada se a descri&ccedil;&atilde;o n&atilde;o est&aacute; dispon&iacute;vel no idioma seleccionado pelo utilizador ligado.
+Se [lang = default] n&atilde;o existe, qualquer coisa fora das etiquetas [Lang] ser&aacute; considerada como descri&ccedil;&atilde;o padr&atilde;o. </p>
+
+<p> <u> Idioma especial <i> todos </i> </u>: nada dentro [lang = all] ser&aacute; inclu&iacute;do na descri&ccedil;&atilde;o, qualquer que seja o idioma definido pelo utilizador.
+Isto &eacute; principalmente &uacute;til para incluir c&oacute;digos HTML / JavaScript numa descri&ccedil;&atilde;o.</p>
+
+<h3> Descri&ccedil;&otilde;es extensas</h3>
+
+<p> Descri&ccedil;&atilde;o extensa torna poss&iacute;vel ter uma breve descri&ccedil;&atilde;o para o album fora do album, uma descri&ccedil;&atilde;o mais longa do album dentro da p&aacute;gina do album,ou at&eacute; 2 descri&ccedil;&otilde;es distintas dentro da p&aacute;gina do album.</p>
+
+<p>tag &lt;!--more--&gt; adiciona texto &agrave; descri&ccedil;&atilde;o curta <br>.
+tag &lt;!--complete--&gt; permite que o utilizador tenha 2 descri&ccedil;&otilde;es distintas.<br>
+tag &lt;!--up-down--&gt; permite que o utilizador tenha uma descri&ccedil;&atilde;o superior e uma descri&ccedil;&atilde;o inferior </p>.
+
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>short description &lt;!--more--&gt; descri&ccedil;&atilde;o longa</code>
+<p>Apenas a descri&ccedil;&atilde;o curta &eacute; exibida fora do album. Na p&aacute;gina do album, ver-se-&aacute; a descri&ccedil;&atilde;o curta +  a descri&ccedil;&atilde;o extensa.</p>
+
+<ul>
+<li><b>tag &lt;!--complete--&gt;</b></li>
+</ul>
+<code>short description &lt;!--complete--&gt; long description</code>
+<p> apenas a descri&ccedil;&atilde;o curta &eacute; exibida fora do album. Na p&aacute;gina do album,  ver-se--&aacute; a descri&ccedil;&atilde;o longa, ent&atilde;o temos 2 descri&ccedil;&otilde;es distintas.</p>
+
+<ul>
+<li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>top description &lt;!--up-down--&gt; bottom description</code>
+<p> Apenas descri&ccedil;&atilde;o topo &eacute; exibida fora do album. Na p&aacute;gina do album, a descri&ccedil;&atilde;o topo &eacute; exibida acima das miniaturas, a descri&ccedil;&atilde;o inferior &eacute; exibida abaixo das miniaturas.</p>
+
+<h3>Inserir um album ou uma foto</h3>
+
+<ul>
+  <li><b>tag [cat=xx]</b></li>
+</ul>
+<p> Esta etiqueta insere um album na descri&ccedil;&atilde;o, onde xx &eacute; o identificador do album.</p>
+
+<ul>
+  <li><b>tag [img=xx1 xx2 xxN;yyyy;name]</b></li>
+</ul>
+<p>Esta etiqueta permite inserir uma ou mais miniaturas na descri&ccedil;&atilde;o, com: :<br><br>
+- Xx Identificador da foto, pode adicionar o identificador do album pr&oacute;ximo do identificador da foto: <code> xx.ccc </code>.
+<br>
+- Yyyy (optional): pode assumir qualquer valor entre {left, right} </p>.
+- Nome (opcional): pode assumir qualquer valor entre {name, TitleName,}. Se etiquetado, com <i>name</i> o nome da foto &eacute; mostrado sob a miniatura, com <i> TitleName</i> a marca&ccedil;&atilde;o da foto  &lt;title&gt; &eacute; preenchida com o nome.</p>
+
+
+<h3>Omitir um album</h3>
+
+<p>Use a etiqueta <b>&lt;!--hidden--&gt;</b> no nome do album:<br>
+<br>
+- Se n&atilde;o deseja mostra-lo no album pai<br>
+- Mant&eacute;m-se vis&iacute;vel no men&uacute; do album</p>
+
+<h3> Omitir um album no menu </h3>
+
+<p>Use a etiqueta <b>&lt;!--mb-hidden--&gt;</b> no nome do album: <br><br>
+- Se n&atilde;o deseja mostra-lo no men&uacute; do album<br>
+- Mant&eacute;m-se vis&iacute;vel no album pai </p>
+
+<h3>Omitir uma photo</h3>
+
+<p>Use a etiqueta <b>&lt;!--hidden--&gt;</b> no nome da foto : <br>
+<br>
+- Se n&atilde;o deseja mostra-lo na p&aacute;gina de miniaturas<br>
+- Mant&eacute;m-se vis&iacute;vel no interior do album</p>
+
+<h3> Album Redirecionado </h3>
+
+<ul>
+  <li><b>[redirect http://piwigo.org]</b></li>
+</ul>
+<p> Insira esta etiqueta na descri&ccedil;&atilde;o de um album para redirecion&aacute;-lo para uma URL de sua escolha. </p>
+
+<ul>
+  <li><b>[redirect img=xx]</b></li>
+</ul>
+<p> Redirecionar para uma foto da sua galeria, onde xx &eacute; o identificador de foto; voc&ecirc; pode adicionar o identificador do album pr&oacute;ximo do identificador da foto: <code>xx.ccc</code> </p>
+
+<ul>
+  <li><b>[redirect cat=xx]</b></li>
+</ul>
+<p> Redirecionar para um album da sua galeria, onde xx  &eacute; o identificador do album. </p>
+
+<ul>
+  <li><b>[redirect search=xx]</b></li>
+</ul>
+<p> Redirecionar para uma p&aacute;gina de pesquisa da sua galeria; onde xx &eacute; o identificador de busca. </p>
