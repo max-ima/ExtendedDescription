@@ -2,113 +2,107 @@
 
 <h3>Descripcions multiling&uuml;es</h3>
 
-<p>Las descripciones multiling&uuml;es se hacen entre las balizas [lang=xx] y [/lang], O xx es el c&oacute;digo de la lengua (por ejemplo fr, en, es, it, de ....)
-Existen tambi&eacute;n 2 balizas especiales: [lang=default] y [lang=all]</p>
+<p>Las descripciones multiling&uuml;es es col&middot;loquen entre les etiquetes [lang=xx] i [/lang], O xx &eacute;s el c&oacute;di de l'idioma (per exemple ca, fr, en, es, it, de...)
+Existeixen tamb&eacute; 2 etiquetes especials: [lang=default] i [lang=all]</p>
 
 <ul>
-  <li><b>Ejemplo de utilizaci&oacute;n</b>:<br>
+  <li><b>Exemple d'utilitzaci&oacute;:</b>:<br>
   <br>
-<code>[lang=default] Descripci&oacute;n por defecto [/lang]<br>
+<code>[lang=default] Descripci&oacute; predeterminada [/lang]<br>
+[lang=ca] Descripci&oacute; en catal&agrave; [/lang]<br>
 [lang=fr] Descripci&oacute;n ello francais [/lang]<br>
 [lang=it] Descripci&oacute;n en italiano [/lang]</code>
 </li>
 </ul>
 
-<p>La descripci&oacute;n por defecto ser&aacute; utilizada si la descripci&oacute;n en la lengua del usuario no es definida.
-Si [lang=default] no existe, todo lo que est&aacute; situado aparte de las balizas de lenguas estar&aacute; considerado como descripci&oacute;n por defecto.</p>
+<p>La descripci&oacute; predeterminada s'utilitza si la descripci&oacute; no est&agrave; disponible en l'idioma que l'usuari ha seleccionat.
+Si [lang=default] no existeix, tot el que estigui situat entre les etiquetes d'idioma estar&agrave; considerat como a descripci&oacute;n predeterminada.</p>
 
-<p><u>Baliza  <i>all</i></u>: Todo lo que est&aacute; situado entre las balizas [lang=all] y [/lang] ser&aacute; incluido en la descripci&oacute;n, cualquiera que sea la lengua del usuario.
-Esto es particularmente pr&aacute;ctico para incluir del c&oacute;digo html o javascript en una descripci&oacute;n.</p>
+<p><u>Etiqueta especial  <i>all</i></u>: Tot el que estigui situat entre les etiquetes [lang=all] i [/lang] ser&agrave; incl&ograve;s en la descripci&oacute;, sigui quin sigui l'idioma de l'usuari.
+Aix&ograve; &eacute;s especialment pr&agrave;ctic per a incloure codi html o javascript en una descripci&oacute;.</p>
 
 
-<h3>Descripciones extensas</h3>
+<h3>Descripcions extenses</h3>
 
-<p>Las balizas de descripci&oacute;n extensa permiten tener una descripci&oacute;n reducida para la presentaci&oacute;n de una categor&iacute;a,
- una descripci&oacute;n extendida para la descripci&oacute;n que se exhibe sobre la p&aacute;gina de la categor&iacute;a,
- o dos descripciones diferentes sobre la p&aacute;gina de la categor&iacute;a.</p>
+<p>Les etiquetes de descripci&oacute; extensa permeten tindre una descripci&oacute; redu&iuml;da per a la presentaci&oacute; d'un &agrave;lbum, una descripci&oacute; extensa per  la descripcio que s'exibeix sobre la p&agrave;gina de l'&agrave;lbum, o dos descripcions diferents sobre la p&agrave;gina de l'&agrave;lbum.</p>
 
-<p>La baliza &lt;!--more--&gt; permite a&ntilde;adir del texto a la descripci&oacute;n reducida.<br>
-La baliza &lt;!--complete--&gt; permite tener 2 descripciones distintas.<br>
-La baliza &lt;!--up-down--&gt; Permite tener una descripci&oacute;n alta y un descrition bajo.</p>
+<p>L'etiqueta &lt;!--more--&gt; permet afegir text a la descripci&oacute; redu&iuml;da.<br>
+L'etiqueta &lt;!--complete--&gt; permet a l'usuari tenir 2 descripcions diferents.<br>
+L'etiqueta &lt;!--up-down--&gt; permet a l'usuari posar una descripci&oacute; per sota i una altra per sobre.</p>
 
 <ul>
-  <li><b>Baliza &lt;!--more--&gt;</b></li>
+  <li><b>Etiqueta &lt;!--more--&gt;</b></li>
 </ul>
-<code>descripci&oacute;n reducida &lt;!--more--&gt; descripci&oacute;n detallada</code>
-<p>S&oacute;lo la descripci&oacute;n reducida ser&aacute; fijada para la presentaci&oacute;n de la categor&iacute;a.
-Sobre la categor&iacute;a misma, la descripci&oacute;n ser&aacute; la descripci&oacute;n reducida + la descripci&oacute;n detallada.</p>
+<code>Descripci&oacute; reducida &lt;!--more--&gt; Descripci&oacute;n detallada</code>
+<p>Nom&eacute;s la descripci&oacute; breu es mostra fora de l'&agrave;lbum. A la p&agrave;gina de l'&agrave;lbum, veur&agrave;s la descripci&oacute; curta + descripci&oacute; llarga.</p>
 
 <ul>
-  <li><b>Baliza &lt;!--complete--&gt;</b></li>
+  <li><b>Etiqueta &lt;!--complete--&gt;</b></li>
 </ul>
-<code>descripci&oacute;n reducida &lt;!--complete--&gt; descripci&oacute;n detallada</code>
-<p>S&oacute;lo la descripci&oacute;n reducida ser&aacute; fijada para la presentaci&oacute;n de la categor&iacute;a.
-En cambio, sobre la categor&iacute;a misma, la descripci&oacute;n &uacute;nicamente ser&aacute; la descripci&oacute;n detallada, es decir 2 descripciones diferentes.</p>
+<code>Descripci&oacute; reducida &lt;!--more--&gt; Descripci&oacute;n detallada</code>
+<p>Nom&eacute;s la descripci&oacute; de la part superior es mostra fora de l'&agrave;lbum. A la p&agrave;gina de l'&agrave;lbum, la descripci&oacute; de la part superior es mostra per sobre de les miniatures, la descripci&oacute; de la part inferior es mostra sota de les miniatures.</p>
 
 <ul>
-  <li><b>Baliza &lt;!--up-down--&gt;</b></li>
+  <li><b>Etiqueta &lt;!--up-down--&gt;</b></li>
 </ul>
 <code>descripci&oacute;n alta &lt;!--up-down--&gt; descripci&oacute;n baja</code>
-<p>S&oacute;lo la descripci&oacute;n alta ser&aacute; fijada para la presentaci&oacute;n de la categor&iacute;a.
-Sobre la categor&iacute;a misma, la descripci&oacute;n alta ser&aacute; fijada por encima de las miniaturas, mientras que
- la descripci&oacute;n baja sea fijada debajo (en el emplazamiento normal de la descripci&oacute;n).</p>
+<p>Nom&eacute;s la descripci&oacute; de la part superior es mostra fora de l'&agrave;lbum. A la p&agrave;gina de l'&agrave;lbum, la descripci&oacute; de la part superior es mostra per sobre de les miniatures, la descripci&oacute; de la part inferior es mostra sota de les miniatures.</p>
 
-
-<h3>Insertar una categor&iacute;a o una imagen</h3>
+<h3>Insertar un &agrave;lbum o una imatge</h3>
 
 <ul>
-  <li><b>Baliza [cat=xx]</b></li>
+  <li><b>Etiqueta [cat=xx]</b></li>
 </ul>
-<p>Esta baliza permite insertar una categor&iacute;a en la descripci&oacute;n, con xx el n&uacute;mero de la categor&iacute;a</p>
+<p>Aquesta etiqueta permet insertar un &agrave;lbum en la descripci&oacute;n, on xx &eacute;s l'&agrave;lbum identificador</p>
 
 <ul>
-  <li><b>Baliza [img=xx1 xx2 xxN;yyyy;name]</b></li>
+  <li><b>Etiqueta [img=xx1 xx2 xxN;yyyy;name]</b></li>
 </ul>
-<p>Esta baliza permite insertar una imagen en la descripci&oacute;n, con:<br><br>
-- xx El n&uacute;mero de la imagen; Es posible precisar el n&uacute;mero de la categor&iacute;a madre despu&eacute;s del n&uacute;mero de la imagen : <code>xx.ccc</code>.
+<p>Aquesta etiqueta permet insertar una imatge en la descripci&oacute;, amb:<br><br>
+- xx L'identificador de la imatge; &Eacute;s possible afegir l'identificador de l'&agrave;lbum al costat de l'identificador de la imatge: <code>xx.ccc</code>.
 <br>
-- yyyy (facultativo) agarra o el valor <i>left</i>, sea el valor <i>right</i> y permite situar la vi&ntilde;eta de la imagen sobre la derecha o la izquierda.</p>
-- nombre (facultativo) sea toma el valor <i>nombre</i>, sea el valor <i>titleName</i> ; con <i>name</i> el nombre de la foto sera visualizado bajo la miniatura, con  <i>titleName</i> el nombre de la foto se informa en la etiqueta <i>&lt;title&gt;</i> de la imagen.</p>
+- yyyy (opcional): Pot prendre qualsevol valor entre {left, right}.</p>
+- Nom (opcional): Pot prendre qualsevol valor entre {left, titleName}. Si est&agrave; etiquetat amb el valor <i>name</i>, el nom de la imatge es visualitza sota la miniatura. Amb <i>titleName</i> el nom de la imatge s'informa a l'etiqueta <i>&lt;title&gt;</i> de la imatge.</p>
 
-<h3>Enmascarar una categor&iacute;a</h3>
+<h3>Ocultar un &agrave;lbum</h3>
 
-<p>Ponemos la baliza <b>&lt;!--hidden--&gt;</b> En el nombre de la categor&iacute;a :<br>
+<p>Utilitzar la etiqueta <b>&lt;!--hidden--&gt;</b> en el nom de l'&agrave;lbum:<br>
 <br>
-- &Eacute;sta no ser&aacute; fijada m&aacute;s sobre la p&aacute;gina de la categor&iacute;a allegada<br>
-- Queda visible en el men&uacute; de las categor&iacute;as</p>
+- No es mostrar&agrave; en l'&agrave;lbum pare (el seu nivell superior directe)<br>
+- Segueix sent visible al men&uacute; &Agrave;lbums</p>
 
-<h3>Enmascarar una categor&iacute;a en el men&uacute;</h3>
+<h3>Ocultar un &agrave;lbum en el men&uacute;</h3>
 
-<p>Ponemos la baliza <b>&lt;!--mb-hidden--&gt;</b> en el nombre de la categor&iacute;a:<br>
+<p>Utilitzar l'etiqueta <b>&lt;!--mb-hidden--&gt;</b> en el nom de l'&agrave;lbum:<br>
 <br>
-- &Eacute;sta no ser&aacute; fijada m&aacute;s en el men&uacute; de las categor&iacute;as<br>
-- Queda visible sobre la p&aacute;gina de la categor&iacute;a allegada</p>
+- No es mostrar&agrave; en l'&agrave;lbum pare (el seu nivell superior directe)<br>
+- Segueix sent visible al men&uacute; &Agrave;lbums</p>
 
-<h3>Enmascarar una imagen</h3>
+<h3>Ocultar una imatge</h3>
 
-<p>Ponemos la baliza <b>&lt;!--hidden--&gt;</b> en el nombre de la imagen :<br>
+<p>Utilitzar l'etiqueta <b>&lt;!--hidden--&gt;</b> en el nom de la imatge:<br>
 <br>
-- &Eacute;sta no ser&aacute; fijada m&aacute;s sobre la p&aacute;gina de las vi&ntilde;etas<br>
-- Queda sin embargo visible en el seno de la categor&iacute;a</p>
+- No es mostrar&agrave; a la p&agrave;gina de miniatures<br>
+- Continua sent visible a l'interior de l'&agrave;lbum</p>
 
-<h3>Categor&iacute;a redirigida</h3>
+<h3>&Agrave;lbum redirigit</h3>
 
 <ul>
 <li><b>[redirect http://piwigo.org]</b></li>
 </ul>
-<p>Inserte esta etiqueta en la descripci&oacute;n de una categor&iacute;a para redirigirla a la URL que desee.</p>
+<p>Afegir la seg&uuml;ent etiqueta en la descripci&oacute; de l'&agrave;lbum per redirigir-lo a una URL determinada.</p>
 
 <ul>
 <li><b>[redirect img=xx]</b></li>
 </ul>
-<p>Redirige a la imagen de la galer&iacute;a indicada (sustituya xx por el identificador de la imagen); puede a&ntilde;adir el identificador de este modo junto a la imagen: <code>xx.ccc</code>.</p>
+<p>Redirigir a una imatge de la galeria indicada on <code>xx</code> &eacute;s l'identificador de la imatge. Es pot afegir l'identificador junt a la imatge: <code>xx.ccc</code>.</p>
 
 <ul>
 <li><b>[redirect cat=xx]</b></li>
 </ul>
-<p>Redirige a una categor&iacute;a de la galer&iacute;a (sustituya xx por la categor&iacute;a).</p>
+<p>Redirigeis a un &agrave;lbum de la galeria (substitueix xx per un &agrave;lbum).</p>
 
 <ul>
 <li><b>[redirect search=xx]</b></li>
 </ul>
-<p>Redirige a una p&aacute;gina de b&uacute;squeda de la galer&iacute;a (sustituya xx por el identificador de la b&uacute;squeda)'.</p>
+<p>Redirigeix a una p&agrave;gina de cerca de la galeria (substitueix xx per l'identificador de cerca)'.</p>
