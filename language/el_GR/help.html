@@ -1,4 +1,3 @@
-
 <h2>Εκτεταμένη Περιγραφή</h2>
 
 <h3>Πολυγλωσσικές Περιγραφές</h3>
@@ -46,64 +45,64 @@ tag &lt;!--up-down--&gt; επιτρέπει στο χρήστη να έχει π
   <li><b>tag &lt;!--up-down--&gt;</b></li>
 </ul>
 <code>περιγραφή κορυφής &lt;!--up-down--&gt; περιγραφή τέλους σελίδας</code>
-<p>Only the top description is displayed outside the album.  On the album page, the top description is displayed above the thumbnails, the bottom description is displayed below the thumbnails.</p>
+<p>Μόνο η περιγραφή κορυφής εμφανίζεται έξω από το λεύκωμα.  Στη σελίδα του λευκώματος, η περιγραφή κορυφής εμφανίζεται πάνω από τις μικρογραφίες, η περιγραφή του τέλους της σελίδας εμφανίζεται κάτω κάτω από τις μικρογραφίες.</p>
 
-<h3>Insert a album or a photo</h3>
+<h3>Εισάγετε ένα λεύκωμα ή μια φωτογραφία</h3>
 
 <ul>
   <li><b>tag [cat=xx]</b></li>
 </ul>
-<p>This tag inserts a album in the description, where xx is the album identifier.</p>
+<p>Αυτή η ετικέτα εισάγει ένα λεύκωμα στην περιγραφή, όπου xx είναι το αναγνωριστικό του λευκώματος.</p>
 
 <ul>
   <li><b>tag [img=xx1 xx2 xxN;yyyy;name]</b></li>
 </ul>
-<p>This tag allows to insert one or more thumbnail in the description, with:<br><br>
-- xx the photo identifier; you can add the album identifier next to the photo identifier: <code>xx.ccc</code>.
+<p>Αυτή η ετικέτα επιτρέπει να εισάγετεμια ή περισσότερες μικρογραφίεςστην περιγραφή, με:<br><br>
+- xx το αναγνωριστικό της φωτογραφίας; μπορείται να προσθέσεται το αναγνωριστικό του λευκώματος δίπλα στο αναγνωριστικό της φωτογραφίας: <code>xx.ccc</code>.
 <br>
-- yyyy (optional) : can take any value among {left, right}.</p>
-- name (optional) : can take any value among {name, titleName}. If tagged, with <i>name</i> the name of the picture is diplayed under the thumbnail, with <i>titleName</i> the photo markup &lt;title&gt; is fill with the name.</p>
+- yyyy (προαιρετικό) : μπορεί να πάρει οποιαδήποτε τιμή μεταξύ {αριστερά, δεξιά}.</p>
+- name (προαιρετικό) : μπορεί να πάρει οποιαδήποτε τιμή μεταξύ {όνομα, τίτλος ονόματος}. Αν έχει ετικέτα, με <i>name</i> το όνομα της εικόνας φαίνεται κάτω από τη μικρογραφία, με <i>titleName</i> η φωτογραφία έχει σήμανση &lt;title&gt; συμπληρώνεται με το όνομα.</p>
 
 
-<h3>Hide a album</h3>
+<h3>Απόκρυψη ένός λευκώματος</h3>
 
-<p>Use tag <b>&lt;!--hidden--&gt;</b> in the album name:<br>
+<p>Χρησιμοποιήστε την ετικέτα <b>&lt;!--hidden--&gt;</b> στο όνομα του λευκώματος:<br>
 <br>
-- it won't be displayed in the parent album<br>
-- it remains visible in the album menu</p>
+- αυτό δεν θα εμφανίζεται στο μητρικό λεύκωμα.<br>
+- παραμένει ορατή στο μενού του λευκώματος</p>
 
-<h3>Hide a album in menu</h3>
+<h3>Απόκρυψη ενός λευκώματος στο μενού</h3>
 
-<p>Use tag <b>&lt;!--mb-hidden--&gt;</b> in the album name:<br>
+<p>Χρησιμοποιήστε την ετικέτα <b>&lt;!--mb-hidden--&gt;</b> στο όνομα του λευκώματος:<br>
 <br>
-- it won't be displayed in the album menu<br>
-- it remains visible in the parent album</p>
+- δεν εμφανίζεται στο μενού του λευκώματος<br>
+- παραμένει ορατό στο μητρικό λεύκωμα</p>
 
-<h3>Hide a photo</h3>
+<h3>Απόκρυψη μιας φωτογραφίας</h3>
 
-<p>Use tag <b>&lt;!--hidden--&gt;</b> in the photo name:<br>
+<p>Χρησιμοποιήστε την ετικέτα <b>&lt;!--hidden--&gt;</b> στο όνομα της φωτογραφίας:<br>
 <br>
-- it won't be displayed on the thumbnails page<br>
-- it remains visible inside the album</p>
+- δεν εμφανίζεται στη σελίδα μικρογραφιών<br>
+- παραμένει ορατό μέσα στο λεύκωμα</p>
 
-<h3>Redirected album</h3>
+<h3>Ανακατεύθυνση λευκώματος</h3>
 
 <ul>
-  <li><b>[redirect http://piwigo.org]</b></li>
+  <li><b>[ανακατεύθυνση http://piwigo.org]</b></li>
 </ul>
-<p>Insert this tag into a album description to redirect it to the URL of your choice.</p>
+<p>Τοποθετήστε αυτήν την ετικέτα σε μια περιγραφή του άλμπουμ για να ανακατευθύνονται στη διεύθυνση URL της επιλογής σας.</p>
 
 <ul>
-  <li><b>[redirect img=xx]</b></li>
+  <li><b>[ανακατεύθυνση img=xx]</b></li>
 </ul>
-<p>Redirect to a photo of your gallery where xx is the photo identifier; you can add the album identifier next to the photo identifier: <code>xx.ccc</code>.</p>
+<p>Ανακατεύθυνση σε μια φωτογραφία της γκαλερί σας όπου xx είναι το αναγνωριστικό της φωτογραφίας; μπορείτε να προσθέσετε το αναγνωριστικό λευκώματος δίπλα από το αναγνωριστικό φωτογραφίας: <code>xx.ccc</code>.</p>
 
 <ul>
-  <li><b>[redirect cat=xx]</b></li>
+  <li><b>[ανακατεύθυνση cat=xx]</b></li>
 </ul>
-<p>Redirect to a album of your gallery where xx the album identifier.</p>
+<p>Ανακατεύθυνση σε ένα λεύκωμα της γκαλερί σας όπου xx το αναγνωριστικό λευκώματος.</p>
 
 <ul>
-  <li><b>[redirect search=xx]</b></li>
+  <li><b>[ανακατεύθυνση search=xx]</b></li>
 </ul>
-<p>Redirect to a search page of your gallery where xx is the search identifier.</p>
+<p>Ανακατεύθυνση στη σελίδα αναζήτησης της γκαλερί σας όπου xx είναι το αναγνωριστικό αναζήτησης.</p>
