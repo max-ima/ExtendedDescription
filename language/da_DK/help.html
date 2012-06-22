@@ -1,0 +1,111 @@
+Udvidet beskrivelse »en_UK engelsk [UK] Vis normal
+Fil indhold
+
+<h2>Udvidet Beskrivelse</h2>
+
+<h3>Multisprogede beskrivelser</h3>
+
+<p>Multisprogede beskrivelser er placeret mellem [lang=xx] og [/lang] tags, hvor xx er sprogkoden (for eksempel en, es, fr). Der er også 2 specielle sprog: [lang=standard] og [lang=alle]</p>
+
+<ul>
+  <li><b>Eksempel</b>:<br>
+  <br>
+<code>[lang=standard] standard beskrivelse [/lang]<br>
+[Lang=da] beskrivelse på engelsk [/lang]<br>
+[Lang = de] Deutsche Beschreibung [/lang] </code>
+</Li>
+</Ul>
+
+<p>standard beskrivelse vil blive anvendt, hvis beskrivelse ikke er tilgængelig i den tilsluttede brugeren valgte sprog.
+Hvis [lang=standard] ikke eksisterer, noget uden for de [Lang] tags, vil blive betragtet som standard beskrivelsen. </P>
+
+<p><u>Special sprog <i>alle</i></u>: noget inde i [lang=alle] vil blive medtaget i beskrivelsen, anywhat den tilsluttede brugerdefinerede sprog er.
+Dette er først og fremmest nyttigt at inkludere HTML/JavaScript-kode inde i en beskrivelse.</P>
+
+<h3>Udvidet beskrivelser</h3>
+
+<p>uddybende beskrivelse tags gør det muligt at have en kort beskrivelse for albummet uden for albummet,
+en længere beskrivelse af albummet inde i albummet siden,
+eller endda 2 forskellige beskrivelser i albummet siden.</p>
+
+<p>tag &lt;!--mere--&gt; tilføjer tekst til den korte beskrivelse<br>.
+tag &lt;!--komplet--&gt;. lade brugeren har 2 forskellige beskrivelser<br>
+tag <- op-ned--&gt; lade brugeren har en top og en bund beskrivelse</p>.
+
+<ul>
+  <li><b> tag &lt;!--mere--&gt; </b></li>
+</Ul>
+<code>kort beskrivelse &lt;!--mere--&gt; lang beskrivelse</code>
+<p>Kun den korte beskrivelse vises uden for albummet. På albummet siden, vil du se kort beskrivelse + lang beskrivelse.</P>
+
+<ul>
+  <li><b> tag &lt;!--komplet--&gt;</b></li>
+</Ul>
+<code>kort beskrivelse &lt;!--komplet--&gt; lang beskrivelse</code>
+<p> Kun den korte beskrivelse vises uden for albummet. På albummet siden, vil du kun se den lange beskrivelse, så du har 2 forskellige beskrivelser.</P>
+
+<ul>
+  <li><b>tag &lt;!--up-down--&gt;</b></li>
+Ul>
+<code>toppen Beskrivelse &lt;!--up-down--&gt; bund beskrivelse</code>
+<p>Kun den øverste beskrivelsen vises uden for albummet. På albummet siden, er den øverste beskrivelsen vises over miniaturerne, er den nederste beskrivelsen vises under de små billeder.</P>
+
+<h3>Indsæt et album eller et billede</h3>
+
+<ul>
+  <li><b>tag [cat=xx]</b></li>
+</Ul>
+<p>tag indsætter et album i beskrivelsen, hvor xx er albummet identifikator.</p>
+
+<ul>
+  <li><b>tag [img = XX1 xx2 xxN; yyyy; navn]</b></li>
+</Ul>
+<p>Denne kode gør det muligt at indsætte en eller flere miniature i beskrivelsen, med:<br>
+- Xx foto identifikator, og du kan tilføje albummet identifikator ud for det billede identifikator: <code> xx.ccc</code>.
+<br>
+- Yyyy (valgfri): kan tage hvilken som helst værdi blandt {venstre, højre}</p>.
+- Navn (valgfrit): kan tage hvilken som helst værdi blandt {navn, titleName}. Hvis mærket med <i>navn</i> navnet på billedet Derunder under miniaturen, med <i>titleName</i> billedet markup <title> er fyldt med navnet.</P>
+
+
+<h3>Skjule et album</h3>
+
+<p>Brug tag <b>&lt;!--skjult--&gt;</b>i albummets navn:<br>
+<br>
+- Det vil ikke blive vist i moderselskabet albummet<br>
+- Det forbliver synlig i albummet menu</p>
+
+<h3>Skjul et album i menuen</h3>
+
+<p>Brug tag <b>&lt;!--mb-skjult--&gt;</b> i albummets navn:<br>
+<br>
+- Det vil ikke blive vist i albummet menuen<br>
+- Det forbliver synlig i moderselskabet album</p>
+
+<h3>Skjul et foto</h3>
+
+<p>Brug tag <b>&lt;!--skjult--&gt;</b> i billedet navn:<br>
+<br>
+- Det vil ikke blive vist på thumbnails side<br>
+- Det forbliver synligt inde i albummet</p>
+
+<h3>Omdirigeret album</h3>
+
+<ul>
+  <li><b>[omdirigere http://piwigo.org] </b></li>
+</Ul>
+<p>Indsæt denne kode i et album beskrivelse at omdirigere det til webadressen på dit valg.</p>
+
+<ul>
+  <li><b>[omdirigere img = xx] </b></li>
+</Ul>
+<p>Omdiriger til et billede af dit galleri hvor xx er det billede identifikator, og du kan tilføje albummet identifikator ud for det billede identifikator:. <code> xx.ccc</code></p>
+
+<ul>
+  <li><b>[redirect cat = xx] </b></li>
+</Ul>
+<p>Omdiriger til et album af dit galleri hvor xx albummet identifikator.</p>
+
+<ul>
+  <li><b>[omdirigere search = xx] </b></li>
+</Ul>
+<p>Omdiriger til en søgeside på dit galleri, hvor xx er søgningen identifikator.</p>
