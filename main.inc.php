@@ -124,9 +124,9 @@ function get_extended_desc($desc, $param='')
   $patterns[] = '#\[img=([\d\s\.]*);?(left|right|);?(name|titleName|)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_img_thumb("$1", "$2", "$3")';
   
-  // Balises [photo=xx.yy;SQ|TH|XXS|XS|S|M|L|XL|XXL]
-  $patterns[] = '#\[photo=([\d\.]*);?(SQ|TH|XXS|XS|S|M|L|XL|XXL|)\]#ie';
-  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1", "$2")';
+  // Balises [photo=xx.yy;SQ|TH|XXS|XS|S|M|L|XL|XXL;true|false]
+  $patterns[] = '#\[photo=([\d\.]*);?(SQ|TH|XXS|XS|S|M|L|XL|XXL|);?(true|false|)\]#ie';
+  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1", "$2", "$3")';
 
   // [random album=xx]
   $patterns[] = '#\[random\s+(?:album|cat)=\s*?(\d+)\s*?\]#ie';
@@ -371,9 +371,12 @@ function get_img_thumb($elem_ids, $align='', $name='')
 }
 
 // Return html code for a photo
-function get_photo_sized($elem_id, $size)
+function get_photo_sized($elem_id, $size, $show_url)
 {
   global $template;
+  
+  if (empty($size)) $size = 'M';
+  if (empty($show_url)) $show_url = 'true';
 
   list($image_id, $cat_id) = array_pad(explode(".",$elem_id), 2, "");
   
@@ -389,7 +392,6 @@ function get_photo_sized($elem_id, $size)
     'XXL' => IMG_XXLARGE,
     );
     
-  if (empty($size)) $size = 'M';
   $deriv_type = $size_map[ strtoupper($size) ];
 
   $query = 'SELECT * FROM ' . IMAGES_TABLE . ' WHERE id = '.$image_id.';';
@@ -433,7 +435,15 @@ function get_photo_sized($elem_id, $size)
       $template-assign('COMMENT_IMG', trigger_event('render_element_description', $picture['comment']));
     }
 
-    return '<a href="'.$url.'">'.$template->parse('extended_description_content', true).'</a>';
+    $content = $template->parse('extended_description_content', true);
+    if (get_boolean($show_url)) 
+    {
+      return '<a href="'.$url.'">'.$content.'</a>';
+    }
+    else
+    {
+      return $content;
+    }
   }
   
   return '';
