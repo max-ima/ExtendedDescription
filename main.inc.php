@@ -128,9 +128,9 @@ function get_extended_desc($desc, $param='')
   $patterns[] = '#\[photo=([\d\.]*);?(SQ|TH|XXS|XS|S|M|L|XL|XXL|);?(true|false|)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1", "$2", "$3")';
 
-  // [random album=xx]
-  $patterns[] = '#\[random\s+(?:album|cat)=\s*?(\d+)\s*?\]#ie';
-  $replacements[] = 'extdesc_get_random_photo("$1")';
+  // [random album=xx size=SQ|TH|XXS|XS|S|M|L|XL|XXL]
+  $patterns[] = '#\[random\s+(?:album|cat)=(\d+)(\s+size=(SQ|TH|XXS|XS|S|M|L|XL|XXL))?\]#ie';
+  $replacements[] = 'extdesc_get_random_photo("$1", "$3")';
 
   // Balises <!--complete-->, <!--more--> et <!--up-down-->
   switch ($param)
@@ -397,11 +397,11 @@ function get_photo_sized($elem_id, $size, $show_url)
   $query = 'SELECT * FROM ' . IMAGES_TABLE . ' WHERE id = '.$image_id.';';
   $result = pwg_query($query); 
 
-  if ($result)
+  if (pwg_db_num_rows($result))
   {
     $template->set_filename('extended_description_content', 'picture_content.tpl');
     
-    $picture = mysql_fetch_assoc($result);
+    $picture = pwg_db_fetch_assoc($result);
     
     // url
     if (!empty($cat_id))
@@ -451,14 +451,12 @@ function get_photo_sized($elem_id, $size, $show_url)
 
 
 
-function extdesc_get_random_photo($category_id)
+function extdesc_get_random_photo($category_id, $size="M")
 {
   include_once(PHPWG_ROOT_PATH.'include/functions_picture.inc.php');
   
   $query = '
-SELECT
-    id,
-    path
+SELECT id
   FROM '.IMAGES_TABLE.'
     JOIN '.IMAGE_CATEGORY_TABLE.' ON image_id = id
   WHERE category_id = '.$category_id.'
@@ -466,9 +464,11 @@ SELECT
   LIMIT 1
 ;';
   $result = pwg_query($query);
-  while ($row = pwg_db_fetch_assoc($result))
+  
+  if (pwg_db_num_rows($result))
   {
-    return '<img src="'.get_element_url($row).'">';
+    list($img_id) = pwg_db_fetch_row($result);
+    return get_photo_sized($img_id, $size, 'false');
   }
 
   return '';
