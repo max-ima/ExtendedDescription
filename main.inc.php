@@ -119,14 +119,18 @@ function get_extended_desc($desc, $param='')
   $patterns[] = '#\[cat=(\d*)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_cat_thumb("$1")';
 
-  // Balises [img=xx.yy,xx.yy,xx.yy;left|rigtht|;name|titleName|]
+  // Balises [img=xx.yy,xx.yy,xx.yy;left|right|;name|titleName|]
   //$patterns[] = '#\[img=(\d*)\.?(\d*|);?(left|right|);?(name|titleName|)\]#ie';
   $patterns[] = '#\[img=([\d\s\.]*);?(left|right|);?(name|titleName|)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_img_thumb("$1", "$2", "$3")';
+  
+  // Balises [photo=xx.yy;SQ|TH|XXS|XS|S|M|L|XL|XXL]
+  $patterns[] = '#\[photo=([\d\.]*);?(SQ|TH|XXS|XS|S|M|L|XL|XXL|)\]#ie';
+  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1", "$2")';
 
-    // [random album=xx]
-    $patterns[] = '#\[random\s+(?:album|cat)=\s*?(\d+)\s*?\]#ie';
-    $replacements[] = 'extdesc_get_random_photo("$1")';
+  // [random album=xx]
+  $patterns[] = '#\[random\s+(?:album|cat)=\s*?(\d+)\s*?\]#ie';
+  $replacements[] = 'extdesc_get_random_photo("$1")';
 
   // Balises <!--complete-->, <!--more--> et <!--up-down-->
   switch ($param)
@@ -365,6 +369,76 @@ function get_img_thumb($elem_ids, $align='', $name='')
   }
   return '';
 }
+
+// Return html code for a photo
+function get_photo_sized($elem_id, $size)
+{
+  global $template;
+
+  list($image_id, $cat_id) = array_pad(explode(".",$elem_id), 2, "");
+  
+  $size_map = array(
+    'SQ' => IMG_SQUARE,
+    'TH' => IMG_THUMB,
+    'XXS' => IMG_XXSMALL,
+    'XS' => IMG_XSMALL,
+    'S' => IMG_SMALL,
+    'M' => IMG_MEDIUM,
+    'L' => IMG_LARGE,
+    'XL' => IMG_XLARGE,
+    'XXL' => IMG_XXLARGE,
+    );
+    
+  if (empty($size)) $size = 'M';
+  $deriv_type = $size_map[ strtoupper($size) ];
+
+  $query = 'SELECT * FROM ' . IMAGES_TABLE . ' WHERE id = '.$image_id.';';
+  $result = pwg_query($query); 
+
+  if ($result)
+  {
+    $template->set_filename('extended_description_content', 'picture_content.tpl');
+    
+    $picture = mysql_fetch_assoc($result);
+    
+    // url
+    if (!empty($cat_id))
+    {
+      $url = make_picture_url(array(
+        'image_id' => $picture['id'],
+        'category' => array(
+          'id' => $cat_id,
+          'name' => '',
+          'permalink' => '')));
+    }
+    else
+    {
+      $url = make_picture_url(array('image_id' => $picture['id']));
+    }
+    
+    // image
+    $src_image = new SrcImage($picture);
+    $derivatives = DerivativeImage::get_all($src_image);
+    $selected_derivative = $derivatives[$deriv_type];
+
+    $template->assign(array(
+      'current' => array(
+        'selected_derivative' => $selected_derivative,
+        'TITLE' => $picture['name'],
+        ),
+      'ALT_IMG' => $picture['file'],
+      ));
+    if (!empty($picture['comment']))
+    {
+      $template-assign('COMMENT_IMG', trigger_event('render_element_description', $picture['comment']));
+    }
+
+    return '<a href="'.$url.'">'.$template->parse('extended_description_content', true).'</a>';
+  }
+  
+  return '';
+}
+
 
 
 function extdesc_get_random_photo($category_id)
