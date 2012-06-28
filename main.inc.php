@@ -124,13 +124,13 @@ function get_extended_desc($desc, $param='')
   $patterns[] = '#\[img=([\d\s\.]*);?(left|right|);?(name|titleName|)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_img_thumb("$1", "$2", "$3")';
   
-  // Balises [photo=xx.yy;SQ|TH|XXS|XS|S|M|L|XL|XXL;true|false]
-  $patterns[] = '#\[photo=([\d\.]*);?(SQ|TH|XXS|XS|S|M|L|XL|XXL|);?(true|false|)\]#ie';
-  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1", "$2", "$3")';
+  // Balises [photo id=xx album=yy size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
+  $patterns[] = '#\[photo\s+id=(\d+)(?:\s+album=(\d+))?(?:\s+size=(SQ|TH|XXS|XS|S|M|L|XL|XXL))?(?:\s+html=(yes|no))?(?:\s+link=(yes|no))?\]#ie';
+  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1", "$2", "$3", "$4", "$5")';
 
-  // [random album=xx size=SQ|TH|XXS|XS|S|M|L|XL|XXL]
-  $patterns[] = '#\[random\s+(?:album|cat)=(\d+)(\s+size=(SQ|TH|XXS|XS|S|M|L|XL|XXL))?\]#ie';
-  $replacements[] = 'extdesc_get_random_photo("$1", "$3")';
+  // Balises [random album=xx size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
+  $patterns[] = '#\[random\s+(?:album|cat)=(\d+)(?:\s+size=(SQ|TH|XXS|XS|S|M|L|XL|XXL))?(?:\s+html=(yes|no))?(?:\s+link=(yes|no))?\]#ie';
+  $replacements[] = 'extdesc_get_random_photo("$1", "$2", "$3", "$4")';
 
   // Balises <!--complete-->, <!--more--> et <!--up-down-->
   switch ($param)
@@ -371,14 +371,9 @@ function get_img_thumb($elem_ids, $align='', $name='')
 }
 
 // Return html code for a photo
-function get_photo_sized($elem_id, $size, $show_url)
+function get_photo_sized($image_id, $cat_id, $size, $html, $link)
 {
   global $template;
-  
-  if (empty($size)) $size = 'M';
-  if (empty($show_url)) $show_url = 'true';
-
-  list($image_id, $cat_id) = array_pad(explode(".",$elem_id), 2, "");
   
   $size_map = array(
     'SQ' => IMG_SQUARE,
@@ -391,6 +386,10 @@ function get_photo_sized($elem_id, $size, $show_url)
     'XL' => IMG_XLARGE,
     'XXL' => IMG_XXLARGE,
     );
+    
+  if (!array_key_exists($size, $size_map)) $size = 'M';
+  $link = $link=='no' ? false: true;
+  $html = $html=='no' ? false: true;
     
   $deriv_type = $size_map[ strtoupper($size) ];
 
@@ -435,14 +434,16 @@ function get_photo_sized($elem_id, $size, $show_url)
       $template-assign('COMMENT_IMG', trigger_event('render_element_description', $picture['comment']));
     }
 
-    $content = $template->parse('extended_description_content', true);
-    if (get_boolean($show_url)) 
+    
+    if ($html) 
     {
-      return '<a href="'.$url.'">'.$content.'</a>';
+      $content = $template->parse('extended_description_content', true);
+      if ($link) return '<a href="'.$url.'">'.$content.'</a>';
+      else       return $content;
     }
     else
     {
-      return $content;
+      return $selected_derivative->get_url();
     }
   }
   
@@ -451,7 +452,7 @@ function get_photo_sized($elem_id, $size, $show_url)
 
 
 
-function extdesc_get_random_photo($category_id, $size="M")
+function extdesc_get_random_photo($category_id, $size, $html, $link)
 {
   include_once(PHPWG_ROOT_PATH.'include/functions_picture.inc.php');
   
@@ -468,7 +469,7 @@ SELECT id
   if (pwg_db_num_rows($result))
   {
     list($img_id) = pwg_db_fetch_row($result);
-    return get_photo_sized($img_id, $size, 'false');
+    return get_photo_sized($img_id, $category_id, $size, $html, $link);
   }
 
   return '';
