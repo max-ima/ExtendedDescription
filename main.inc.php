@@ -246,13 +246,22 @@ function get_cat_thumb($elem_id)
 {
   global $template, $user;
 
-  $query = 'SELECT 
-cat.id, cat.name, cat.comment, cat.representative_picture_id, cat.permalink, uc.nb_images, uc.count_images, uc.count_categories, img.path, img.tn_ext
+  $query = '
+SELECT 
+  cat.id, 
+  cat.name, 
+  cat.comment, 
+  cat.representative_picture_id, 
+  cat.permalink, 
+  uc.nb_images, 
+  uc.count_images, 
+  uc.count_categories, 
+  img.path
 FROM ' . CATEGORIES_TABLE . ' AS cat
-INNER JOIN '.USER_CACHE_CATEGORIES_TABLE.' as uc
-  ON cat.id = uc.cat_id AND user_id = '.$user['id'].'
-INNER JOIN ' . IMAGES_TABLE . ' AS img
-  ON img.id = uc.user_representative_picture_id
+  INNER JOIN '.USER_CACHE_CATEGORIES_TABLE.' as uc
+    ON cat.id = uc.cat_id AND uc.user_id = '.$user['id'].'
+  INNER JOIN ' . IMAGES_TABLE . ' AS img
+    ON img.id = uc.user_representative_picture_id
 WHERE cat.id = ' . $elem_id . ';';
   $result = pwg_query($query);
 
@@ -263,7 +272,10 @@ WHERE cat.id = ' . $elem_id . ';';
     $template->assign(
       array(
         'ID'    => $category['id'],
-        'TN_SRC'   => get_thumbnail_url($category),
+        'TN_SRC'   => DerivativeImage::thumb_url(array(
+                                  'id' => $category['representative_picture_id'],
+                                  'path' => $category['path'],
+                                )),
         'TN_ALT'   => strip_tags($category['name']),
         'URL'   => make_index_url(array('category' => $category)),
         'CAPTION_NB_IMAGES' => get_display_images_count
@@ -303,11 +315,10 @@ function get_img_thumb($elem_ids, $align='', $name='')
   foreach($ids as $key=>$val)
   {
     list($a,$b)=array_pad(explode(".",$val),2,"");
-    $assoc[0][]=$a;
-    $assoc[1][]=$b;
+    $assoc[$a] = $b;
   }
 
-  $query = 'SELECT * FROM ' . IMAGES_TABLE . ' WHERE id in (' . implode(",",$assoc[0]). ');';
+  $query = 'SELECT * FROM ' . IMAGES_TABLE . ' WHERE id in (' . implode(',', array_keys($assoc)) . ');';
   $result = pwg_query($query);
 
   if($result)
@@ -321,35 +332,35 @@ function get_img_thumb($elem_ids, $align='', $name='')
     }
 
     $img=array();
-    for($i=0;$i<count($assoc[0]);$i++)
+    foreach ($imglist as $id => $picture)
     {
-      if (!empty($assoc[1][$i]))
+      if (!empty($assoc[$id]))
       {
         $url = make_picture_url(array(
-          'image_id' => $imglist[$assoc[0][$i]]['id'],
+          'image_id' => $picture['id'],
           'category' => array(
-            'id' => $assoc[1][$i],
+            'id' => $assoc[$id],
             'name' => '',
             'permalink' => '')));
       }
       else
       {
-        $url = make_picture_url(array('image_id' => $imglist[$assoc[0][$i]]['id']));
+        $url = make_picture_url(array('image_id' => $picture['id']));
       }
-
+      
       $img[]=array(
-          'ID'          => $imglist[$assoc[0][$i]]['id'],
-          'IMAGE'       => get_thumbnail_url($imglist[$assoc[0][$i]]),
-          'IMAGE_ALT'   => $imglist[$assoc[0][$i]]['file'],
-          'IMG_TITLE'   => ($name=="titleName")?htmlspecialchars($imglist[$assoc[0][$i]]['name'], ENT_QUOTES):get_thumbnail_title($imglist[$assoc[0][$i]]),
+          'ID'          => $picture['id'],
+          'IMAGE'       => DerivativeImage::thumb_url($picture),
+          'IMAGE_ALT'   => $picture['file'],
+          'IMG_TITLE'   => ($name=="titleName")?htmlspecialchars($picture['name'], ENT_QUOTES):get_thumbnail_title($picture, $picture['name'], null),
           'U_IMG_LINK'  => $url,
-          'LEGEND'  => ($name=="name")?$imglist[$assoc[0][$i]]['name']:"",
-          'FLOAT' => !empty($align) ? 'float: ' . $align . ';' : '',
-          'COMMENT' => $imglist[$assoc[0][$i]]['file']);
-
-
+          'LEGEND'      => ($name=="name")?$picture['name']:"",
+          'COMMENT'     => $picture['file'],
+          );
     }
-     $template->assign('img', $img);
+    
+    $template->assign('img', $img);
+    $template->assign('FLOAT', !empty($align) ? 'float: ' . $align . ';' : '');
     return $template->parse('extended_description_content', true);
   }
   return '';
