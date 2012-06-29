@@ -3,21 +3,51 @@
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
 add_event_handler('get_popup_help_content', 'extended_desc_popup', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
-add_event_handler('loc_end_page_tail', 'add_ed_js');
+add_event_handler('loc_begin_admin_page', 'add_ed_help');
 
-function add_ed_js()
+function add_ed_help()
 {
   global $page, $template;
   
-  $change = array('cat_modify', 'picture_modify', 'configuration', 'notification_by_mail');
-
-  if (!isset($page['page']) or !in_array($page['page'], $change)) return;
-
-  load_language('plugin.lang', EXTENDED_DESC_PATH);
+  $target = null;
+  switch ($page['page'])
+  {
+    case 'album':
+      $target = 'album_properties';
+      break;
+    case 'photo':
+      $target = 'picture_modify';
+      break;
+    case 'configuration':
+      $target = 'config';
+      break;
+    case 'notification_by_mail':
+      $target = 'notification_by_mail';
+      break;
+    case 'plugin':
+      if ($_GET['section'] == 'AdditionalPages/admin.php') $target = 'plugin_admin_content';
+      if ($_GET['section'] == 'header_manager/admin.php')  $target = 'header_manager';
+      break;
+  }
   
-  $template->assign('ed_page', $page['page']);
-  $template->set_filename('add_ed_popup', dirname(__FILE__) . '/template/add_popup.tpl');
-  $template->append('footer_elements', $template->parse('add_ed_popup', true));
+  if (!empty($target))
+  {
+    load_language('plugin.lang', EXTENDED_DESC_PATH);
+    $template->set_prefilter($target, 'add_ed_help_prefilter');
+  }
+}
+
+function add_ed_help_prefilter($content)
+{
+  global $template;
+  $themeconf = $template->get_template_vars('themeconf');
+  
+  $search = '</textarea>';
+  $add = '
+{combine_script id=\'core.scripts\' load=\'async\' path=\'themes/default/js/scripts.js\'}
+<a href="./admin/popuphelp.php?page=extended_desc" onclick="popuphelp(this.href); return false;" title="'.l10n('ExtendedDesc_help').'" style="vertical-align: middle; border: 0; margin: 0.5em;"><img src="'.$themeconf['admin_icon_dir'].'/help.png" class="button" alt="'.l10n('ExtendedDesc_help').'"></a>';
+  
+  return str_replace($search, $search.$add, $content);
 }
 
 function  extended_desc_popup($help_content, $get)

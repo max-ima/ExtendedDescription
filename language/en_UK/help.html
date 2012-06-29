@@ -1,3 +1,4 @@
+<div style="text-align:left;">
 <h2>Extended Description</h2>
 
 <h3>Multilanguage descriptions</h3>
@@ -6,7 +7,6 @@
 
 <ul>
   <li><b>Example</b>:<br>
-  <br>
 <code>[lang=default] default description [/lang]<br>
 [lang=en] description in english [/lang]<br>
 [lang=de] deutsche Beschreibung [/lang]</code>
@@ -30,48 +30,62 @@ tag &lt;!--complete--&gt; let the user have 2 distinct descriptions.<br>
 tag &lt;!--up-down--&gt; let the user have a top and a bottom description.</p>
 
 <ul>
-  <li><b>tag &lt;!--more--&gt;</b></li>
+  <li><b>&lt;!--more--&gt;</b></li>
 </ul>
 <code>short description &lt;!--more--&gt; long description</code>
 <p>Only the short description is displayed outside the album. On the album page, you will see short description + long description.</p>
 
 <ul>
-  <li><b>tag &lt;!--complete--&gt;</b></li>
+  <li><b>&lt;!--complete--&gt;</b></li>
 </ul>
 <code>short description &lt;!--complete--&gt; long description</code>
 <p>Only the short description is displayed outside the album. On the album page, you will only see the long description, so you have 2 distinct descriptions.</p>
 
 <ul>
-  <li><b>tag &lt;!--up-down--&gt;</b></li>
+  <li><b>&lt;!--up-down--&gt;</b></li>
 </ul>
 <code>top description &lt;!--up-down--&gt; bottom description</code>
 <p>Only the top description is displayed outside the album.  On the album page, the top description is displayed above the thumbnails, the bottom description is displayed below the thumbnails.</p>
 
-<h3>Insert a album or a photo</h3>
+<h3>Insert an album or a photo</h3>
 
 <ul>
-  <li><b>tag [cat=xx]</b></li>
+  <li><b>[cat=xx]</b></li>
 </ul>
 <p>This tag inserts a album in the description, where xx is the album identifier.</p>
 
 <ul>
-  <li><b>tag [img=xx1 xx2 xxN;yyyy;name]</b></li>
+  <li><b>[img=xx1 xx2 xxN;yyyy;name]</b></li>
 </ul>
 <p>This tag allows to insert one or more thumbnail in the description, with:<br><br>
-- xx the photo identifier; you can add the album identifier next to the photo identifier: <code>xx.ccc</code>.
-<br>
-- yyyy (optional) : can take any value among {left, right}.</p>
-- name (optional) : can take any value among {name, titleName}. If tagged, with <i>name</i> the name of the picture is diplayed under the thumbnail, with <i>titleName</i> the photo markup &lt;title&gt; is fill with the name.</p>
+- <code>xx</code> the photo identifier; you can add the album identifier next to the photo identifier: <code>xx.ccc</code>.<br>
+- <code>yyyy</code> (optional) : can take any value among <i>{left, right}</i>.<br>
+- <code>name</code> (optional) : can take any value among <i>{name, titleName}</i>. If tagged, with <i>name</i> the name of the picture is diplayed under the thumbnail, with <i>titleName</i> the photo markup &lt;title&gt; is fill with the name.</p>
+
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>This tag allows to insert one picture at any size you want, with:<br><br>
+- <code>id</code> the photo identifier<br>
+- <code>album</code> (optional) the parent album identifier<br>
+- <code>size</code> (optional) the size of the photo, among <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (optional) if set to <i>no</i> the tag only returns the URL of the photo, without HTML<br>
+- <code>link</code> (optional) if set to <i>yes</i> the photo is wrapped into a link to the picture page</p>
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Same thin as above, except that the photo is choosed randomly into <code>album</code></p>
 
 
-<h3>Hide a album</h3>
+<h3>Hide an album</h3>
 
 <p>Use tag <b>&lt;!--hidden--&gt;</b> in the album name:<br>
 <br>
 - it won't be displayed in the parent album<br>
 - it remains visible in the album menu</p>
 
-<h3>Hide a album in menu</h3>
+<h3>Hide an album from the menu</h3>
 
 <p>Use tag <b>&lt;!--mb-hidden--&gt;</b> in the album name:<br>
 <br>
@@ -106,3 +120,4 @@ tag &lt;!--up-down--&gt; let the user have a top and a bottom description.</p>
   <li><b>[redirect search=xx]</b></li>
 </ul>
 <p>Redirect to a search page of your gallery where xx is the search identifier.</p>
+</div>
