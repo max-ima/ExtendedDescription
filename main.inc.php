@@ -431,7 +431,7 @@ function get_photo_sized($image_id, $cat_id, $size, $html, $link)
       ));
     if (!empty($picture['comment']))
     {
-      $template-assign('COMMENT_IMG', trigger_event('render_element_description', $picture['comment']));
+      $template->assign('COMMENT_IMG', trigger_event('render_element_description', $picture['comment']));
     }
 
     
