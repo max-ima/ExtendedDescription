@@ -398,7 +398,7 @@ function get_photo_sized($image_id, $cat_id, $size, $html, $link)
 
   if (pwg_db_num_rows($result))
   {
-    $template->set_filename('extended_description_content', 'picture_content.tpl');
+    $template->set_filename('extended_description_content', dirname(__FILE__).'/template/picture_content.tpl');
     
     $picture = pwg_db_fetch_assoc($result);
     
@@ -425,7 +425,6 @@ function get_photo_sized($image_id, $cat_id, $size, $html, $link)
     $template->assign(array(
       'current' => array(
         'selected_derivative' => $selected_derivative,
-        'TITLE' => $picture['name'],
         ),
       'ALT_IMG' => $picture['file'],
       ));
