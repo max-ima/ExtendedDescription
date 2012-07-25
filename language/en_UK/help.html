@@ -75,7 +75,23 @@ tag &lt;!--up-down--&gt; let the user have a top and a bottom description.</p>
 <ul>
   <li><b>[random album=yy size=M html=yes link=yes]</b></li>
 </ul>
-<p>Same thin as above, except that the photo is choosed randomly into <code>album</code></p>
+<p>Same thing as above, except that the photo is choosed randomly into <code>album</code></p>
+
+<ul>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+</ul>
+<p>This tag allows to insert a slideshow (NivoSlider), with (you must set <code>album</code> OR <code>list</code>):<br><br>
+- <code>album</code> (optional) source album<br>
+- <code>nb_images</code> (optional) max number of photos to display in the slideshow<br>
+- <code>random</code> (optional) choose photos randomly in the album<br>
+- <code>list</code> (optional) a list of photos ids separated by a comma<br>
+- <code>size</code> (optional) the size of the photos, among <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>speed</code> (optional) the slideshow speed (in seconds)<br>
+- <code>title</code> (optional) display photo title<br>
+- <code>effect</code> (optional) transition effect (see <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">NivoSlider doc</a>)<br>
+- <code>arrows</code> (optional) display navigation arrows<br>
+- <code>control</code> (optional) display navigation controls<br>
+- <code>elastic</code> (optional) adapt slideshow size to each photo</p>
 
 
 <h3>Hide an album</h3>

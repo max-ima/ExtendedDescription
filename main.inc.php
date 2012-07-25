@@ -121,16 +121,23 @@ function get_extended_desc($desc, $param='')
 
   // Balises [img=xx.yy,xx.yy,xx.yy;left|right|;name|titleName|]
   //$patterns[] = '#\[img=(\d*)\.?(\d*|);?(left|right|);?(name|titleName|)\]#ie';
-  $patterns[] = '#\[img=([\d\s\.]*);?(left|right|);?(name|titleName|)\]#ie';
+  $patterns[] = '#\[img=([\d\s\.,]*);?(left|right|);?(name|titleName|)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_img_thumb("$1", "$2", "$3")';
   
   // Balises [photo id=xx album=yy size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
-  $patterns[] = '#\[photo\s+id=(\d+)(?:\s+album=(\d+))?(?:\s+size=(SQ|TH|XXS|XS|S|M|L|XL|XXL))?(?:\s+html=(yes|no))?(?:\s+link=(yes|no))?\]#ie';
-  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1", "$2", "$3", "$4", "$5")';
+  // $patterns[] = '#\[photo(?:(?:\s+(id)=(\d+))|(?:\s+(album)=(\d+))|(?:\s+(size)=(SQ|TH|XXS|XS|S|M|L|XL|XXL))|(?:\s+(html)=(yes|no))|(?:\s+(link)=(yes|no))){1,5}\s*\]#ie'; //10
+  $patterns[] = '#\[photo ([^\]]+)\]#ie';
+  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1")';
 
   // Balises [random album=xx size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
-  $patterns[] = '#\[random\s+(?:album|cat)=(\d+)(?:\s+size=(SQ|TH|XXS|XS|S|M|L|XL|XXL))?(?:\s+html=(yes|no))?(?:\s+link=(yes|no))?\]#ie';
-  $replacements[] = 'extdesc_get_random_photo("$1", "$2", "$3", "$4")';
+  // $patterns[] = '#\[random(?:(?:\s+(album|cat)=(\d+))|(?:\s+(size)=(SQ|TH|XXS|XS|S|M|L|XL|XXL))|(?:\s+(html)=(yes|no))|(?:\s+(link)=(yes|no))){1,4}\s*\]#ie'; //8
+  $patterns[] = '#\[random ([^\]]+)\]#ie';
+  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'extdesc_get_random_photo("$1")';
+  
+  // Balises [slider album=xx nb_images=yy random=yes|no list=aa,bb,cc size=SQ|TH|XXS|XS|S|M|L|XL|XXL speed=z title=yes|no effect=... arrows=yes|no control=yes|no elastic=yes|no]
+  // $patterns[] = '#\[slider(?:(?:\s+(album)=(\d+))|(?:\s+(nb_images)=(\d+))|(?:\s+(random)=(yes|no))|(?:\s+(list)=([\d,]+))|(?:\s+(size)=(SQ|TH|XXS|XS|S|M|L|XL|XXL))|(?:\s+(speed)=(\d+))|(?:\s+(title)=(yes|no))|(?:\s+(effect)=([a-zA-Z]+))|(?:\s+(arrows)=(yes|no))|(?:\s+(control)=(yes|no))|(?:\s+(elastic)=(yes|no))){1,11}\s*\]#ie'; //22
+  $patterns[] = '#\[slider ([^\]]+)\]#ie';
+  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_slider("$1")';
 
   // Balises <!--complete-->, <!--more--> et <!--up-down-->
   switch ($param)
@@ -370,51 +377,62 @@ function get_img_thumb($elem_ids, $align='', $name='')
   return '';
 }
 
-// Return html code for a photo
-function get_photo_sized($image_id, $cat_id, $size, $html, $link)
+/**
+ * Return html code for a photo
+ *
+ * @int    id:    picture id
+ * @int    album: album to display picture in    (default: null)
+ * @string size:  picture size                   (default: M)
+ * @string html:  return complete html structure (default: yes)
+ * @string link:  add a link to the picture      (default: yes)
+ */
+function get_photo_sized($param)
 {
   global $template;
   
-  $size_map = array(
-    'SQ' => IMG_SQUARE,
-    'TH' => IMG_THUMB,
-    'XXS' => IMG_XXSMALL,
-    'XS' => IMG_XSMALL,
-    'S' => IMG_SMALL,
-    'M' => IMG_MEDIUM,
-    'L' => IMG_LARGE,
-    'XL' => IMG_XLARGE,
-    'XXL' => IMG_XXLARGE,
+  $default_params = array(
+    'id' =>    array('\d+', null),
+    'album' => array('\d+', null),
+    'size' =>  array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
+    'html' =>  array('yes|no', 'yes'),
+    'link' =>  array('yes|no', 'yes'),
     );
     
-  if (!array_key_exists($size, $size_map)) $size = 'M';
-  $link = $link=='no' ? false: true;
-  $html = $html=='no' ? false: true;
-    
-  $deriv_type = $size_map[ strtoupper($size) ];
+  $params = parse_parameters($param, $default_params);
+  
+  // check picture id
+  if (empty($params['id'])) return 'missing picture id';
+  
+  // parameters
+  $params['link'] = $params['link']=='no' ? false : true;
+  $params['html'] = $params['html']=='no' ? false : true;
+  $deriv_type = get_deriv_type($params['size']);
 
-  $query = 'SELECT * FROM ' . IMAGES_TABLE . ' WHERE id = '.$image_id.';';
+  // get picture
+  $query = 'SELECT * FROM ' . IMAGES_TABLE . ' WHERE id = '.$params['id'].';';
   $result = pwg_query($query); 
 
   if (pwg_db_num_rows($result))
   {
-    $template->set_filename('extended_description_content', dirname(__FILE__).'/template/picture_content.tpl');
-    
     $picture = pwg_db_fetch_assoc($result);
     
     // url
-    if (!empty($cat_id))
+    if ($params['link'])
     {
-      $url = make_picture_url(array(
-        'image_id' => $picture['id'],
-        'category' => array(
-          'id' => $cat_id,
-          'name' => '',
-          'permalink' => '')));
-    }
-    else
-    {
-      $url = make_picture_url(array('image_id' => $picture['id']));
+      if (!empty($params['album']))
+      {
+        $url = make_picture_url(array(
+          'image_id' => $picture['id'],
+          'category' => array(
+            'id' => $params['album'],
+            'name' => '',
+            'permalink' => '',
+            )));
+      }
+      else
+      {
+        $url = make_picture_url(array('image_id' => $picture['id']));
+      }
     }
     
     // image
@@ -428,17 +446,14 @@ function get_photo_sized($image_id, $cat_id, $size, $html, $link)
         ),
       'ALT_IMG' => $picture['file'],
       ));
-    if (!empty($picture['comment']))
-    {
-      $template->assign('COMMENT_IMG', trigger_event('render_element_description', $picture['comment']));
-    }
 
-    
-    if ($html) 
+    // output
+    if ($params['html']) 
     {
+      $template->set_filename('extended_description_content', dirname(__FILE__).'/template/picture_content.tpl');
       $content = $template->parse('extended_description_content', true);
-      if ($link) return '<a href="'.$url.'">'.$content.'</a>';
-      else       return $content;
+      if ($params['link']) return '<a href="'.$url.'">'.$content.'</a>';
+      else                 return $content;
     }
     else
     {
@@ -446,25 +461,42 @@ function get_photo_sized($image_id, $cat_id, $size, $html, $link)
     }
   }
   
-  return '';
+  return 'invalid picture id';
 }
 
-
-
-function extdesc_get_random_photo($category_id, $size, $html, $link)
+/**
+ * Return html code for a random photo
+ *
+ * @int    album: select picture from this album
+ * @string size:  picture size                   (default: M)
+ * @string html:  return complete html structure (default: yes)
+ * @string link:  add a link to the picture      (default: no)
+ */
+function extdesc_get_random_photo($param)
 {
-  if ('yes' != $link)
-  {
-    $link = 'no';
-  }
-
-  include_once(PHPWG_ROOT_PATH.'include/functions_picture.inc.php');
+  $default_params = array(
+    'album' => array('\d+', null),
+    'cat' =>   array('\d+', null), // historical
+    'size' =>  array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
+    'html' =>  array('yes|no', 'yes'),
+    'link' =>  array('yes|no', 'no'),
+    );
+    
+  $params = parse_parameters($param, $default_params);
   
+  // check album id
+  if (empty($params['album']))
+  {
+    if (empty($params['cat'])) return 'missing album id';
+    $params['album'] = $params['cat'];
+  }
+  
+  // get picture id
   $query = '
 SELECT id
   FROM '.IMAGES_TABLE.'
     JOIN '.IMAGE_CATEGORY_TABLE.' ON image_id = id
-  WHERE category_id = '.$category_id.'
+  WHERE category_id = '.$params['album'].'
   ORDER BY '.DB_RANDOM_FUNCTION.'()
   LIMIT 1
 ;';
@@ -473,18 +505,205 @@ SELECT id
   if (pwg_db_num_rows($result))
   {
     list($img_id) = pwg_db_fetch_row($result);
-    return get_photo_sized($img_id, $category_id, $size, $html, $link);
+    return get_photo_sized('id='.$img_id.' album='.$params['album'].' size='.$params['size'].' html='.$params['html'].' link='.$params['link']);
   }
 
   return '';
 }
+
+/** 
+ * Return html code for a nivo slider (album or list is mandatory)
+ *
+ * @int    album:     select pictures from this album
+ * @int    nb_images: display only x pictures           (default: 10)
+ * @string random:    random sort order                 (default: no)
+ *
+ * @string list:      pictures id separated by a comma
+ *
+ * @string size:      picture size                      (default: M)
+ * @int    speed:     slideshow duration                (default: 3)
+ * @string title:     display picture name              (default: no)
+ * @string effect:    transition effect                 (default: fade)
+ * @string arrows:    display navigation arrows         (default: yes)
+ * @string control:   display navigation bar            (default: yes)
+ * @string elastic:   adapt slider size to each picture (default: no)
+ */
+function get_slider($param)
+{
+  global $template, $conf;
+  
+  $default_params = array(
+    'album' =>     array('\d+', null),
+    'nb_images' => array('\d+', 10),
+    'random' =>    array('yes|no', 'no'),
+    'list' =>      array('[\d,]+', null),
+    'size' =>      array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
+    'speed' =>     array('\d+', 3),
+    'title' =>     array('yes|no', 'no'),
+    'effect' =>    array('[a-zA-Z]+', 'fade'),
+    'arrows' =>    array('yes|no', 'yes'),
+    'control' =>   array('yes|no', 'yes'),
+    'elastic' =>   array('yes|no', 'no'),
+    );
+    
+  $params = parse_parameters($param, $default_params);
+  
+  // check size
+  $deriv_type = get_deriv_type($params['size']);
+  $enabled = ImageStdParams::get_defined_type_map();
+  if (empty($enabled[ $deriv_type ])) return 'size disabled';
+  
+  // parameters
+  $params['arrows'] = $params['arrows']==='no' ? 'false' : 'true';
+  $params['control'] = $params['control']==='no' ? 'false' : 'true';
+  $params['elastic'] = $params['elastic']==='yes' ? true : false;
+  $params['title'] = $params['title']==='yes' ? true : false;
+  
+  // pictures from album...
+  if (!empty($params['album']))
+  {
+    // parameters
+    $params['random'] = $params['random']==='yes' ? true : false;
+    
+    // get image order inside category
+    if ($params['random'])
+    {
+      $order_by = DB_RANDOM_FUNCTION.'()';
+    }
+    else
+    {
+      $query = '
+SELECT image_order
+  FROM '.CATEGORIES_TABLE.'
+  WHERE id = '.$params['album'].'
+;';
+      list($order_by) = pwg_db_fetch_row(pwg_query($query));
+      if (empty($order_by))
+      {
+        $order_by = str_replace('ORDER BY ', null, $conf['order_by_inside_category']);
+      }
+    }
+    
+    // get pictures ids
+    $query = '
+SELECT image_id
+  FROM '.IMAGE_CATEGORY_TABLE.' as ic
+    INNER JOIN '.IMAGES_TABLE.' as i
+    ON i.id = ic.image_id
+  WHERE category_id = '.$params['album'].'
+  ORDER BY '.$order_by.'
+  LIMIT '.$params['nb_images'].'
+;';
+    $params['list'] = implode(',', array_from_query($query, 'image_id'));
+  }
+  // ...or pictures list
+  if (empty($params['list']))
+  {
+    return 'missing album id or empty picture list';
+  }
+  
+  // get pictures
+  $query = '
+SELECT *
+  FROM '.IMAGES_TABLE.'
+  WHERE id IN ('.$params['list'].')
+;';
+  $pictures = hash_from_query($query, 'id');
+    
+  foreach ($pictures as $row)
+  {
+    // url
+    if (!empty($params['album']))
+    {
+      $url = make_picture_url(array(
+        'image_id' => $row['id'],
+        'category' => array(
+          'id' => $params['album'],
+          'name' => '',
+          'permalink' => '',
+          )));
+    }
+    else
+    {
+      $url = make_picture_url(array('image_id' => $row['id']));
+    }
+
+    $name = render_element_name($row);
+    
+    $tpl_vars[] = array_merge($row, array(
+      'TN_ALT' => htmlspecialchars(strip_tags($name)),
+      'NAME' => $name,
+      'URL' => $url,
+      'src_image' => new SrcImage($row),
+      ));
+  }
+  
+  list($img_size['w'], $img_size['h']) = $enabled[ $deriv_type ]->sizing->ideal_size;
+  
+  $template->assign(array(
+    'EXTENDED_DESC_PATH' => EXTENDED_DESC_PATH,
+    'slider_id' => crc32(uniqid($params['list'])), // need a unique id if we have multiple sliders
+    'slider_content' => $tpl_vars,
+    'derivative_params' => ImageStdParams::get_by_type( $deriv_type ),
+    'img_size' => $img_size,
+    'pauseTime' => $params['speed']*1000,
+    'controlNav' => $params['control'],
+    'effect' => $params['effect'],
+    'directionNav' => $params['arrows'],
+    'elastic_size' => $params['elastic'],
+    'show_title' => $params['title'],
+    ));
+  
+  $template->set_filename('extended_description_content', dirname(__FILE__).'/template/slider.tpl');
+  return $template->parse('extended_description_content', true);
+}
+
+
+function parse_parameters($param, $default_params)
+{
+  $params = array();
+  
+  foreach ($default_params as $name => $value)
+  {
+    if (preg_match('#'.$name.'=('.$value[0].')#', $param, $matches))
+    {
+      $params[$name] = $matches[1];
+    }
+    else
+    {
+      $params[$name] = $value[1];
+    }
+  }
+  
+  return $params;
+}
+
+function get_deriv_type($size)
+{
+  $size_map = array(
+    'SQ' => IMG_SQUARE,
+    'TH' => IMG_THUMB,
+    'XXS' => IMG_XXSMALL,
+    'XS' => IMG_XSMALL,
+    'S' => IMG_SMALL,
+    'M' => IMG_MEDIUM,
+    'L' => IMG_LARGE,
+    'XL' => IMG_XLARGE,
+    'XXL' => IMG_XXLARGE,
+    );
+    
+  if (!array_key_exists($size, $size_map)) $size = 'M';
+  
+  return $size_map[ strtoupper($size) ];
+}
+
 
 if (script_basename() == 'admin' or script_basename() == 'popuphelp')
 {
   include(EXTENDED_DESC_PATH . 'admin.inc.php');
 }
 
-add_event_handler ('render_page_banner', 'get_user_language_desc');
+add_event_handler ('render_page_banner', 'get_extended_desc');
 add_event_handler ('render_category_name', 'get_user_language_desc');
 add_event_handler ('render_category_description', 'get_extended_desc', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
 add_event_handler ('render_tag_name', 'get_user_language_desc');
