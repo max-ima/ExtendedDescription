@@ -1,86 +1,131 @@
-Descrições Multi-idioma são colocadas entre as etiquetas [lang = xx] e [/ lang], onde xx é o código da linguagem (por exemplo, en, es, fr, pt). Há também 2 tipos de idioma especiais: [lang = default] e [lang = all] 
-Exemplo:
-[Lang = default] descrição padrão 
-[/ lang][Lang = en] Descrição em Inglês 
-[/ lang][Lang = de] Descrição em Alemão 
-[/ lang]A descrição padrão será usada se a descrição não está disponível no idioma seleccionado pelo utilizador ligado. 
-Se [lang = default] não existe, qualquer coisa fora das etiquetas [Lang] sera considerados como a descrição padrão.
+<div style="text-align:left;">
+<h2> Descri&ccedil;&atilde;o extensa </h2>
 
-Linguagem especial de tudo: nada dentro das etiquetas [lang = all] será incluído na descrição, independentemente da definição  idioma do utilizador ligado. Isto é principalmente útil para incluir ódigos HTML / JavaScript dentro de uma descrição.
+<h3> Descri&ccedil;&otilde;es multi-idioma </h3>
 
-Descrições extensas
-Etiquetas (tags) de descrição extensa tornam possível ter uma breve descrição para o album fora do album, uma descrição mais longa para o album dentro da página do album, ou até mesmo duas descrições distintas dentro da página do album.
+<p> Descri&ccedil;&otilde;es multi-idioma s&atilde;o colocados entre etiquetas [lang = xx] e [/lang], onde xx &eacute; o c&oacute;digo da l&iacute;ngua (por exemplo, en, es, fr,pt). H&aacute; tamb&eacute;m 2 linguagens especiais: [lang = default] e [lang = all] </p>
 
-tag <!--more--> adiciona texto a uma curta descrição.
-tag <!--complete--> permitir que o utlizador tenha 2 descrições distintas.
-tag <!--up-down--> informa o utilizador que tem uma descrição superior e outra inferior.
+<ul>
+<li> <b> Exemplo </b>: <br>
+<br>
+<code> [lang = default] default description [/lang] <br>
+[Lang = en] description in english [/lang] <br>
+[Lang = de] deutsche Beschreibung [/lang] <br>
+[Lang = pt] descri&ccedil;&atilde;o portugu&ecirc;s [/lang]</code>
+</li>
+</ul>
 
-<!--more-->
-curta descrição <!--more--> extensa descrição
-Apenas uma breve descrição é exibida fora do album. Na página do album, ver-se-á a descrição curta + descrição extensa.
+<p> A descri&ccedil;&atilde;o padr&atilde;o ser&aacute; usada se a descri&ccedil;&atilde;o n&atilde;o est&aacute; dispon&iacute;vel no idioma seleccionado pelo utilizador ligado.
+Se [lang = default] n&atilde;o existe, qualquer coisa fora das etiquetas [Lang] ser&aacute; considerada como descri&ccedil;&atilde;o padr&atilde;o. </p>
 
-<!--Complete-->
-curta descrição <!--completa--> extensa descrição
-Apenas uma breve descrição é exibida fora do album. Na página do album, a descrição superior surgirá sobre as miniaturas, enquanto que a inferior surgirá sob as miniaturas
- 
-<!--up-down--> 
-descrição superior <!--up-down--> descrição inferior
-Apenas a descrição superior será exibida fora do album. Na página do album, a descrição do superior é exibida fora do album. Na página do album. a descrição superior  é mostrada sobre as miniaturas,a descrição inferior é exibida sob as miniaturas.
+<p> <u> Idioma especial <i> todos </i> </u>: nada dentro [lang = all] ser&aacute; inclu&iacute;do na descri&ccedil;&atilde;o, qualquer que seja o idioma definido pelo utilizador.
+Isto &eacute; principalmente &uacute;til para incluir c&oacute;digos HTML / JavaScript numa descri&ccedil;&atilde;o.</p>
 
-Inserir um album ou uma foto
-[Cat=xx]
-Esta etiqueta insere um album na descrição, onde xx é o identificador do album.
-[Photo id=xx album=yy tamanho=M  html=sim ligação=sim]
-Esta etiqueta permite inserir uma imagem de qualquer tamanho que você queira, com:
+<h3> Descri&ccedil;&otilde;es extensas</h3>
 
--ID identificador da foto 
--Album (opcional) o identificador do album pai
--Tamanho (opcional) o tamanho da foto, entre {SQ, TH, XXS, S, M, L, XL, XXL}
--Html (opcional) se definido para NÃO retorna a URL da foto, sem HTML
--Link (opcional) se definido para SIM a foto é incluida num link para a página da foto
+<p> Descri&ccedil;&atilde;o extensa torna poss&iacute;vel ter uma breve descri&ccedil;&atilde;o para o album fora do album, uma descri&ccedil;&atilde;o mais longa do album dentro da p&aacute;gina do album,ou at&eacute; 2 descri&ccedil;&otilde;es distintas dentro da p&aacute;gina do album.</p>
 
-[Album random=yy tamanho=M  html=sim link=sim]
-A Mesma coisa que acima, exceto que a foto é escolhida aleatoriamente em random dentro do album
+<p>tag &lt;!--more--&gt; adiciona texto &agrave; descri&ccedil;&atilde;o curta <br>.
+tag &lt;!--complete--&gt; permite que o utilizador tenha 2 descri&ccedil;&otilde;es distintas.<br>
+tag &lt;!--up-down--&gt; permite que o utilizador tenha uma descri&ccedil;&atilde;o superior e uma descri&ccedil;&atilde;o inferior </p>.
 
-[Album deslizante=xx  nb_images=10 random=não lista=aa,bb,cc tamanho=M  velocidade=3 titulo=não  efeito= desaparece setas=sim controle=sim elástica=não]
-Esta etiqueta permite inserir um slideshow (NivoSlider), com (você deve definir album OU lista):
--Album(opcional)fonte album
--Nb_imagens (opcional)máximo numero de fotos para exibir no slideshow
--Aleatório (opcional) escolhe fotos aleatoriamente no álbum
--Lista (opcional) uma lista de fotos com ids separados por vírgula
--Tamanho (opcional) o tamanho das fotos, entre {SQ, TH, XXS, S, M, L, XL, XXL}
--Velocidade (opcional) Velocidade de transição ver ( Doc NivoSlider)
--Título (opcional) mostra título da foto.
--Efeito efeito de transição (opcional) (ver NivoSlider doc)
--Setas (opcional) mostra setas de navegação
--Controle (opcional) exibe os controles de navegação
--Elástica (opcional) adapta o tamanho do slideshow para cada foto 
+<ul>
+  <li><b>tag &lt;!--more--&gt;</b></li>
+</ul>
+<code>short description &lt;!--more--&gt; descri&ccedil;&atilde;o longa</code>
+<p>Apenas a descri&ccedil;&atilde;o curta &eacute; exibida fora do album. Na p&aacute;gina do album, ver-se-&aacute; a descri&ccedil;&atilde;o curta +  a descri&ccedil;&atilde;o extensa.</p>
 
-Esconder um álbum
-Use etiqueta <!--hidden-->  no nome do álbum:
+<ul>
+<li><b>tag &lt;!--complete--&gt;</b></li>
+</ul>
+<code>short description &lt;!--complete--&gt; long description</code>
+<p> apenas a descri&ccedil;&atilde;o curta &eacute; exibida fora do album. Na p&aacute;gina do album,  ver-se--&aacute; a descri&ccedil;&atilde;o longa, ent&atilde;o temos 2 descri&ccedil;&otilde;es distintas.</p>
 
--Não será exibido no menú do album
--Mantém-se visível no menu album pai
+<ul>
+<li><b>tag &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>top description &lt;!--up-down--&gt; bottom description</code>
+<p> Apenas descri&ccedil;&atilde;o topo &eacute; exibida fora do album. Na p&aacute;gina do album, a descri&ccedil;&atilde;o topo &eacute; exibida acima das miniaturas, a descri&ccedil;&atilde;o inferior &eacute; exibida abaixo das miniaturas.</p>
 
-Esconder um album no menu
-Use a etiqueta <!--mb-hidden-->  no nome do album:
--Não será exibido no menu album
--Mantém-se visível no album pai
+<h3>Inserir um album ou uma foto</h3>
 
-Esconder uma foto
-Use a etiqueta <!--hidden-->  no nome da foto:
-- Não será exibida na página de miniaturas
-- Mantém-se visível no interior do álbum
+<ul>
+  <li><b>tag [cat=xx]</b></li>
+</ul>
+<p> Esta etiqueta insere um album na descri&ccedil;&atilde;o, onde xx &eacute; o identificador do album.</p>
 
-Álbum redirecionado
-[Redirecionar http://piwigo.org]
-Insira esta etiqueta na descrição do album para o redirecionar para a URL de sua escolha.
+<ul>
+  <li><b>[photo id=xx album=yy size=M  html=yes link=yes]</b></li>
+</ul>
+<p>Esta etiqueta permite inserir uma imagem de qualquer tamanho que você queira, com:<br><br>
+- <code>id</code> identificador da foto <br>
+- <code>album</code> (opcional) o identificador do album pai<br>
+- <code>size</code> (opcional) o tamanho da foto, entre <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (opcional) se definido para NÃO retorna a URL da foto, sem HTML<br>
+- <code>link</code> (opcional) se definido para SIM a foto é incluida num link para a página da foto</p>
 
-[redirect img=xx]
-Redirecionar para uma foto da sua galeria, onde xx é o identificador da foto. Você pode adicionar o identificador do álbum próximo do identificador da foto.
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>A Mesma coisa que acima, exceto que a foto é escolhida aleatoriamente em random dentro <code>album</code></p>
 
-[redirect cat=xx] 
-Redirecionar para um álbum de sua galeria, onde xx é o identificador do album.
+<ul>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+</ul>
+<p>Esta etiqueta permite inserir um slideshow (NivoSlider), com (você deve definir<code>album</code> OR <code>list</code>):<br><br>
+- <code>album</code> (opcional)fonte album<br>
+- <code>nb_images</code> (opcional)máximo numero de fotos para exibir no slideshow<br>
+- <code>random</code> (opcional) escolhe fotos aleatoriamente no álbum<br>
+- <code>list</code> (opcional) uma lista de fotos com ids separados por vírgula<br>
+- <code>size</code> (opcional) o tamanho das fotos, entre <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>speed</code> (opcional) Velocidade de transição<br>
+- <code>title</code> (opcional) mostra título da foto.<br>
+- <code>effect</code> (opcional) efeito de transição (opcional) (ver <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">NivoSlider doc</a>)<br>
+- <code>arrows</code> (opcional) mostra setas de navegação<br>
+- <code>control</code> (opcional) exibe os controles de navegação<br>
+- <code>elastic</code> (opcional) adapta o tamanho do slideshow para cada foto</p>
 
-[redirect search=xx] 
-Redirecionar para uma página de pesquisa de sua galeria, onde xx é o identificador de busca.
+
+<h3>Hide an album</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the album name:<br>
+<br>
+- it won't be displayed in the parent album<br>
+- it remains visible in the album menu</p>
+
+<h3>Hide an album from the menu</h3>
+
+<p>Use tag <b>&lt;!--mb-hidden--&gt;</b> in the album name:<br>
+<br>
+- it won't be displayed in the album menu<br>
+- it remains visible in the parent album</p>
+
+<h3>Hide a photo</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the photo name:<br>
+<br>
+- it won't be displayed on the thumbnails page<br>
+- it remains visible inside the album</p>
+
+<h3>Redirected album</h3>
+
+<ul>
+  <li><b>[redirect http://piwigo.org]</b></li>
+</ul>
+<p>Insert this tag into a album description to redirect it to the URL of your choice.</p>
+
+<ul>
+  <li><b>[redirect img=xx]</b></li>
+</ul>
+<p>Redirect to a photo of your gallery where xx is the photo identifier; you can add the album identifier next to the photo identifier: <code>xx.ccc</code>.</p>
+
+<ul>
+  <li><b>[redirect cat=xx]</b></li>
+</ul>
+<p>Redirect to a album of your gallery where xx the album identifier.</p>
+
+<ul>
+  <li><b>[redirect search=xx]</b></li>
+</ul>
+<p>Redirect to a search page of your gallery where xx is the search identifier.</p>
+</div>
