@@ -10,7 +10,7 @@
   <br>
 <code>[lang=default] default description [/lang]<br>
 [lang=en] description in english [/lang]<br>
-[lang=uk] опис на українській [/lang]</code>
+[lang=uk] опис українською [/lang]</code>
 </li>
 </ul>
 
@@ -54,6 +54,37 @@
   <li><b>теґ [cat=xx]</b></li>
 </ul>
 <p>Цей теґ вставляє альбом в описі, де хх це ідентифікатор альбому.</p>
+
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>This tag allows to insert one picture at any size you want, with:<br><br>
+- <code>id</code> the photo identifier<br>
+- <code>album</code> (optional) the parent album identifier<br>
+- <code>size</code> (optional) the size of the photo, among <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (optional) if set to <i>no</i> the tag only returns the URL of the photo, without HTML<br>
+- <code>link</code> (optional) if set to <i>yes</i> the photo is wrapped into a link to the picture page</p>
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Same thing as above, except that the photo is choosed randomly into <code>album</code></p>
+
+<ul>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+</ul>
+<p>This tag allows to insert a slideshow (NivoSlider), with (you must set <code>album</code> OR <code>list</code>):<br><br>
+- <code>album</code> (optional) source album<br>
+- <code>nb_images</code> (optional) max number of photos to display in the slideshow<br>
+- <code>random</code> (optional) choose photos randomly in the album<br>
+- <code>list</code> (optional) a list of photos ids separated by a comma<br>
+- <code>size</code> (optional) the size of the photos, among <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>speed</code> (optional) the slideshow speed (in seconds)<br>
+- <code>title</code> (optional) display photo title<br>
+- <code>effect</code> (optional) transition effect (see <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">NivoSlider doc</a>)<br>
+- <code>arrows</code> (optional) display navigation arrows<br>
+- <code>control</code> (optional) display navigation controls<br>
+- <code>elastic</code> (optional) adapt slideshow size to each photo</p>
 
 
 <h3>Приховати альбом</h3>
