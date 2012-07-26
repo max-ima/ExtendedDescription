@@ -57,6 +57,37 @@ Ul>
 </Ul>
 <p>tag indsætter et album i beskrivelsen, hvor xx er albummet identifikator.</p>
 
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Dette tag giver mulighed for at indsætte et billede i enhver størrelse med:<br><br>
+- <code>id</code> billedets id<br>
+- <code>album</code> (valgfrit) id for den kategori billedet er placeret i<br>
+- <code>size</code> (valgfrit) størrelse på billedet, vælg imellem <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (valgfrit) hvis værdien sættes til <i>no</i> returnerer tag'en kun URL'en for billedet, uden HTML<br>
+- <code>link</code> (valgfrit) hvis værdien sættes til <i>yes</i> bliver billedet forsynet med en link til billedsiden</p>
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Samme funktion som ovenfor, dog vælges billedet tilfældigt fra kategorien <code>album</code></p>
+
+<ul>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+</ul>
+<p>Dette tabgiver mulighed for at indsætte et slideshow (NivoSlider), med (du skal vælge enten <code>album</code> ELLER <code>list</code>):<br><br>
+- <code>album</code> (valgfrit) Kategori hvorfra der vælges billeder<br>
+- <code>nb_images</code> (valgfrit) maks. antal billeder der skal vises i slideshow'et<br>
+- <code>random</code> (valgfrit) vælg tilfældigt blandt billederne i kategorien<br>
+- <code>list</code> (valgfrit) en liste af billed id'er adskilt med kommaer<br>
+- <code>size</code> (valgfrit) størrelse på billeder, vælg imellem <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>speed</code> (valgfrit) hastighed for slideshow (visning af billeder i sekunder)<br>
+- <code>title</code> (valgfrit) vis billedets titel<br>
+- <code>effect</code> (valgfrit) transition effekt (se <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">NivoSlider doc</a>)<br>
+- <code>arrows</code> (valgfrit) vis navigations pile<br>
+- <code>control</code> (valgfrit) vis funktioner for kontrol af afvikling af slideshow<br>
+- <code>elastic</code> (valgfrit) tilpas slideshow størrelse til hvert billede</p>
+
 
 <h3>Skjule et album</h3>
 
