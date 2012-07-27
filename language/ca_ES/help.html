@@ -3,7 +3,7 @@
 
 <h3>Descripcions multiling&uuml;es</h3>
 
-<p>Las descripciones multiling&uuml;es es col&middot;loquen entre les etiquetes [lang=xx] i [/lang], O xx &eacute;s el c&oacute;di de l'idioma (per exemple ca, fr, en, es, it, de...)
+<p>Les descripcions multiling&uuml;es es col&middot;loquen entre les etiquetes [lang=xx] i [/lang], O xx &eacute;s el c&oacute;di de l'idioma (per exemple ca, fr, en, es, it, de...)
 Existeixen tamb&eacute; 2 etiquetes especials: [lang=default] i [lang=all]</p>
 
 <ul>
@@ -25,7 +25,7 @@ Aix&ograve; &eacute;s especialment pr&agrave;ctic per a incloure codi html o jav
 
 <h3>Descripcions extenses</h3>
 
-<p>Les etiquetes de descripci&oacute; extensa permeten tindre una descripci&oacute; redu&iuml;da per a la presentaci&oacute; d'un &agrave;lbum, una descripci&oacute; extensa per  la descripcio que s'exibeix sobre la p&agrave;gina de l'&agrave;lbum, o dos descripcions diferents sobre la p&agrave;gina de l'&agrave;lbum.</p>
+<p>Les etiquetes de descripci&oacute; extensa permeten tindre una descripci&oacute; redu&iuml;da per a la presentaci&oacute; d'un &agrave;lbum, una descripci&oacute; extensa per la descripció que s'exibeix sobre la p&agrave;gina de l'&agrave;lbum, o dos descripcions diferents sobre la p&agrave;gina de l'&agrave;lbum.</p>
 
 <p>L'etiqueta &lt;!--more--&gt; permet afegir text a la descripci&oacute; redu&iuml;da.<br>
 L'etiqueta &lt;!--complete--&gt; permet a l'usuari tenir 2 descripcions diferents.<br>
@@ -55,6 +55,39 @@ L'etiqueta &lt;!--up-down--&gt; permet a l'usuari posar una descripci&oacute; pe
   <li><b>Etiqueta [cat=xx]</b></li>
 </ul>
 <p>Aquesta etiqueta permet insertar un &agrave;lbum en la descripci&oacute;n, on xx &eacute;s l'&agrave;lbum identificador</p>
+
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Aqiesta etiqueta perment inserir una imatge amb la mida que vulguis, amb:</p>
+
+- <code>id</code> identificador de la imatge</br>
+- <code>album</code> (opcional) identificador de l'&agrave;lbum pare</br>
+- <code>size</code> (opcional) mida de la imatge, entre {SQ, TH, XXS, S, M, L, XL, XXL}</br>
+- <code>html</code> (optional) if set to <i>no</i> the tag only returns the URL of the photo, without HTML</br>
+- <code>link</code> (optional) if set to <i>yes</i> the photo is wrapped into a link to the picture page</p>
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>De la mateixa manera, excepte que la imatge s'esculli de forma aleatòria en l'àlbum</p>
+
+<ul>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+</ul>
+<p>Aquesta etiqueta permet inserir una reproducció de diapositives (NivoSlider), amb (cal establir l'àlbum O llista):</p>
+
+- <code>album</code> (opcional: font de l'àlbum</br>
+- <code>nb_images</code> (opcioanl) màxim nombre d'imatges a visualitzar en la reproducció de diapositives de l'àlbum</br>
+- <code>random</code> (opcioanl): escull imatges aleatòriament en l'àlbum</br>
+- <code>list</code> (opcioanl): una llista de id d'imatges separades per comes</br>
+- <code>size</code> (opcional): mida de les imatges, entre {SQ, TH, XXS, S, M, L, XL, XXL}</br>
+- <code>speed</code> (opcional): la velocitat de reproducció de diapositives (en segons)</br>
+- <code>title</code> (opcional): mostra el títol de la imatge</br>
+- <code>effect</code> (opcional): efecte de transició (veure NivoSlider doc)</br>
+- <code>arrows</code> (opcioanl: mostra fletxes de navegació</br>
+- <code>control</code> (opcioanl): mostra controls de navegació</br>
+- <code>elastic</code> (opcioanl): s'adapta la reproducció de diapositives a la mida de cada imatge</p>
 
 
 <h3>Ocultar un &agrave;lbum</h3>
