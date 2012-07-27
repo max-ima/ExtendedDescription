@@ -441,11 +441,10 @@ function get_photo_sized($param)
     $selected_derivative = $derivatives[$deriv_type];
 
     $template->assign(array(
-      'current' => array(
+      'ed_image' => array(
         'selected_derivative' => $selected_derivative,
-        ),
-      'ALT_IMG' => $picture['file'],
-      ));
+        'ALT_IMG' => $picture['file'],
+      )));
 
     // output
     if ($params['html']) 
