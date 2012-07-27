@@ -529,7 +529,7 @@ SELECT id
  */
 function get_slider($param)
 {
-  global $template, $conf;
+  global $template, $conf, $ids; // global $ids for the callback
   
   $default_params = array(
     'album' =>     array('\d+', null),
@@ -593,22 +593,35 @@ SELECT image_id
   ORDER BY '.$order_by.'
   LIMIT '.$params['nb_images'].'
 ;';
-    $params['list'] = implode(',', array_from_query($query, 'image_id'));
+    $ids = array_from_query($query, 'image_id');
   }
   // ...or pictures list
-  if (empty($params['list']))
+  else if (empty($params['list']))
   {
     return 'missing album id or empty picture list';
   }
+  else
+  {
+    $ids = explode(',', $params['list']);
+  }
+  
   
   // get pictures
   $query = '
 SELECT *
   FROM '.IMAGES_TABLE.'
-  WHERE id IN ('.$params['list'].')
+  WHERE id IN ('.implode(',', $ids).')
 ;';
   $pictures = hash_from_query($query, 'id');
-    
+  
+  // sort pictures
+  function rank_sort($a, $b)
+  {
+    global $ids;
+    return array_search($a, $ids) > array_search($b, $ids);
+  }
+  uksort($pictures, 'rank_sort');
+  
   foreach ($pictures as $row)
   {
     // url
