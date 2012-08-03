@@ -8,11 +8,15 @@
  */
  
 /* The Nivo Slider styles */
+.slider-wrapper {
+	margin:0 auto;
+}
 .nivoSlider {
 	position:relative;
 	width:100%;
 	height:auto;
 	overflow: hidden;
+	margin: 0 auto;
 }
 .nivoSlider img {
 	position:absolute;
@@ -22,7 +26,8 @@
 .nivo-main-image {
 	display: block !important;
 	position: relative !important; 
-	width: 100% !important;
+	//width: 100% !important;
+	margin: 0 auto;
 }
 
 /* If an image is wrapped in a link */

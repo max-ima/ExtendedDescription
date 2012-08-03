@@ -615,12 +615,15 @@ SELECT *
   $pictures = hash_from_query($query, 'id');
   
   // sort pictures
-  function rank_sort($a, $b)
+  if (!function_exists('ed_rank_sort'))
   {
-    global $ids;
-    return array_search($a, $ids) > array_search($b, $ids);
+    function ed_rank_sort($a, $b)
+    {
+      global $ids;
+      return array_search($a, $ids) > array_search($b, $ids);
+    }
   }
-  uksort($pictures, 'rank_sort');
+  uksort($pictures, 'ed_rank_sort');
   
   foreach ($pictures as $row)
   {

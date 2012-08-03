@@ -10,7 +10,13 @@
 /**
  * July 25th 2012
  * Damien (Mistic) Sorel
- * ability to stop slideshow with beforeChange (line 318)
+ * ability to stop slideshow with beforeChange (line 343)
+ */
+ 
+/**
+ * August 3rd 2012
+ * Damien (Mistic) Sorel (from http://joshfester.com/differing-image-heights-in-nivo-slider)
+ * dynamic width (lines 95 & 102 & 322-338)
  */
 
 (function($) {
@@ -86,12 +92,14 @@
 
         // Detect Window Resize
         $(window).resize(function() {
-            slider.children('img').width(slider.width());
+            //slider.children('img').width(slider.width());
             sliderImg.attr('src', vars.currentImage.attr('src'));
             sliderImg.stop().height('auto');
             $('.nivo-slice').remove();
             $('.nivo-box').remove();
         });
+        
+        slider.width($(kids[vars.currentSlide]).width());
 
         //Create caption
         slider.append($('<div class="nivo-caption"></div>'));
@@ -311,6 +319,23 @@
                 settings.lastSlide.call(this);
             }
             
+            // resize the slider (don't resize for diff < 20px)
+            if (vars.currentSlide+1 == vars.totalSlides) {
+                next_width = $(kids[0]).width();
+            }
+            else {
+                next_width = $(kids[vars.currentSlide + 1]).width();
+            }
+            if (Math.abs(next_width - slider.width()) > 20) {
+                slider.animate({width: next_width}, 'fast', function() { nivoRun2(slider, kids, settings, nudge) });
+            }
+            else {
+                nivoRun2(slider, kids, settings, nudge);
+            }
+            
+        };
+        
+        var nivoRun2 = function(slider, kids, settings, nudge){       
             // Stop
             if((!vars || vars.stop) && !nudge) { return false; }
             
