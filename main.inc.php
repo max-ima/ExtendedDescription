@@ -421,12 +421,19 @@ function get_photo_sized($param)
     {
       if (!empty($params['album']))
       {
+        $query = '
+SELECT id, name, permalink
+  FROM '.CATEGORIES_TABLE.'
+  WHERE id = '.$params['album'].'
+;';
+        $category = pwg_db_fetch_assoc(pwg_query($query));
+        
         $url = make_picture_url(array(
           'image_id' => $picture['id'],
           'category' => array(
-            'id' => $params['album'],
-            'name' => '',
-            'permalink' => '',
+            'id' => $category['id'],
+            'name' => $category['name'],
+            'permalink' => $category['permalink'],
             )));
       }
       else
