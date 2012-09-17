@@ -743,6 +743,7 @@ add_event_handler ('render_category_description', 'get_extended_desc', EVENT_HAN
 add_event_handler ('render_tag_name', 'get_user_language_desc');
 add_event_handler ('render_tag_url', 'get_user_language_tag_url', 40);
 add_event_handler ('get_tag_alt_names', 'ed_get_all_alt_names', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
+add_event_handler ('render_element_name', 'get_user_language_desc');
 add_event_handler ('render_element_description', 'get_extended_desc');
 add_event_handler ('nbm_render_user_customize_mail_content', 'get_extended_desc');
 add_event_handler ('mail_group_assign_vars', 'extended_desc_mail_group_assign_vars');
