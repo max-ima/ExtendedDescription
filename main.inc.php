@@ -624,25 +624,14 @@ SELECT image_id
     $ids = explode(',', $params['list']);
   }
   
-  
   // get pictures
   $query = '
 SELECT *
   FROM '.IMAGES_TABLE.'
   WHERE id IN ('.implode(',', $ids).')
+  ORDER BY FIND_IN_SET(id, "'.implode(',', $ids).'")
 ;';
   $pictures = hash_from_query($query, 'id');
-  
-  // sort pictures
-  if (!function_exists('ed_rank_sort'))
-  {
-    function ed_rank_sort($a, $b)
-    {
-      global $ids;
-      return array_search($a, $ids) > array_search($b, $ids);
-    }
-  }
-  uksort($pictures, 'ed_rank_sort');
   
   foreach ($pictures as $row)
   {
@@ -737,17 +726,25 @@ if (script_basename() == 'admin' or script_basename() == 'popuphelp')
   include(EXTENDED_DESC_PATH . 'admin.inc.php');
 }
 
+// main
+add_event_handler ('get_extended_desc',  'get_extended_desc');
 add_event_handler ('render_page_banner', 'get_extended_desc');
-add_event_handler ('render_category_name', 'get_user_language_desc');
+// categories
+add_event_handler ('render_category_name',        'get_user_language_desc');
 add_event_handler ('render_category_description', 'get_extended_desc', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
-add_event_handler ('render_tag_name', 'get_user_language_desc');
-add_event_handler ('render_tag_url', 'get_user_language_tag_url', 40);
+// tags
+add_event_handler ('render_tag_name',   'get_user_language_desc');
+add_event_handler ('render_tag_url',    'get_user_language_tag_url', 40);
 add_event_handler ('get_tag_alt_names', 'ed_get_all_alt_names', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
-add_event_handler ('render_element_name', 'get_user_language_desc');
+// element
+add_event_handler ('render_element_name',        'get_user_language_desc');
 add_event_handler ('render_element_description', 'get_extended_desc');
+// mail/nbm
 add_event_handler ('nbm_render_user_customize_mail_content', 'get_extended_desc');
-add_event_handler ('mail_group_assign_vars', 'extended_desc_mail_group_assign_vars');
+add_event_handler ('mail_group_assign_vars',                 'extended_desc_mail_group_assign_vars');
+// removals
 add_event_handler ('loc_end_index_category_thumbnails', 'ext_remove_cat', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
-add_event_handler ('loc_end_index_thumbnails', 'ext_remove_image', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
-add_event_handler ('get_categories_menu_sql_where', 'ext_remove_menubar_cats');
+add_event_handler ('loc_end_index_thumbnails',          'ext_remove_image', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
+add_event_handler ('get_categories_menu_sql_where',     'ext_remove_menubar_cats');
+
 ?>
