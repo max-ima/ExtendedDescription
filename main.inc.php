@@ -82,7 +82,7 @@ function get_extended_desc($desc, $param='')
 {
   global $conf, $page;
 
-  if ($param == 'main_page_category_description' and isset($page['category']) and !isset($page['image_id']) and preg_match('#\[redirect (.*?)\]#i', $desc, $m1))
+  if ($param != 'subcatify_category_description' and preg_match('#\[redirect (.*?)\]#i', $desc, $m1))
   {
     if (preg_match('#^(img|cat|search)=(\d*)\.?(\d*|)$#i', $m1[1], $m2))
     {
