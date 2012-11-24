@@ -81,8 +81,12 @@ function ed_get_all_alt_names($arr, $name)
 function get_extended_desc($desc, $param='')
 {
   global $conf, $page;
-
-  if ($param != 'subcatify_category_description' and preg_match('#\[redirect (.*?)\]#i', $desc, $m1))
+  
+  if (
+    $param != 'subcatify_category_description'
+    and ( script_basename() != 'picture' or $param != 'main_page_category_description' )
+    and preg_match('#\[redirect (.*?)\]#i', $desc, $m1)
+  )
   {
     if (preg_match('#^(img|cat|search)=(\d*)\.?(\d*|)$#i', $m1[1], $m2))
     {
@@ -198,7 +202,7 @@ function add_bottom_description()
 }
 
 // Remove a category
-function ext_remove_cat($tpl_var, $categories)
+function ext_remove_cat($tpl_var)
 {
   global $conf;
 
