@@ -136,22 +136,18 @@ function get_extended_desc($desc, $param='')
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_cat_thumb("$1")';
 
   // Balises [img=xx.yy,xx.yy,xx.yy;left|right|;name|titleName|]
-  //$patterns[] = '#\[img=(\d*)\.?(\d*|);?(left|right|);?(name|titleName|)\]#ie';
   $patterns[] = '#\[img=([\d\s\.,]*);?(left|right|);?(name|titleName|)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_img_thumb("$1", "$2", "$3")';
   
   // Balises [photo id=xx album=yy size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
-  // $patterns[] = '#\[photo(?:(?:\s+(id)=(\d+))|(?:\s+(album)=(\d+))|(?:\s+(size)=(SQ|TH|XXS|XS|S|M|L|XL|XXL))|(?:\s+(html)=(yes|no))|(?:\s+(link)=(yes|no))){1,5}\s*\]#ie'; //10
   $patterns[] = '#\[photo ([^\]]+)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1")';
 
   // Balises [random album=xx size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
-  // $patterns[] = '#\[random(?:(?:\s+(album|cat)=(\d+))|(?:\s+(size)=(SQ|TH|XXS|XS|S|M|L|XL|XXL))|(?:\s+(html)=(yes|no))|(?:\s+(link)=(yes|no))){1,4}\s*\]#ie'; //8
-  $patterns[] = '#\[random ([^\]]+)\]#ie';
+  $patterns[] = '#\[random([^\]]*)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'extdesc_get_random_photo("$1")';
   
   // Balises [slider album=xx nb_images=yy random=yes|no list=aa,bb,cc size=SQ|TH|XXS|XS|S|M|L|XL|XXL speed=z title=yes|no effect=... arrows=yes|no control=yes|no elastic=yes|no]
-  // $patterns[] = '#\[slider(?:(?:\s+(album)=(\d+))|(?:\s+(nb_images)=(\d+))|(?:\s+(random)=(yes|no))|(?:\s+(list)=([\d,]+))|(?:\s+(size)=(SQ|TH|XXS|XS|S|M|L|XL|XXL))|(?:\s+(speed)=(\d+))|(?:\s+(title)=(yes|no))|(?:\s+(effect)=([a-zA-Z]+))|(?:\s+(arrows)=(yes|no))|(?:\s+(control)=(yes|no))|(?:\s+(elastic)=(yes|no))){1,11}\s*\]#ie'; //22
   $patterns[] = '#\[slider ([^\]]+)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_slider("$1")';
 
@@ -489,7 +485,7 @@ SELECT id, name, permalink
 /**
  * Return html code for a random photo
  *
- * @int    album: select picture from this album
+ * @int    album: select picture from this album (default: all)
  * @string size:  picture size                   (default: M)
  * @string html:  return complete html structure (default: yes)
  * @string link:  add a link to the picture      (default: no)
@@ -507,18 +503,28 @@ function extdesc_get_random_photo($param)
   $params = parse_parameters($param, $default_params);
   
   // check album id
-  if (empty($params['album']))
+  if ( empty($params['album']) and !empty($params['cat']) )
   {
-    if (empty($params['cat'])) return 'missing album id';
     $params['album'] = $params['cat'];
   }
   
   // get picture id
   $query = '
-SELECT id
+SELECT id, category_id
   FROM '.IMAGES_TABLE.'
     JOIN '.IMAGE_CATEGORY_TABLE.' ON image_id = id
-  WHERE category_id = '.$params['album'].'
+  WHERE 
+    '.(empty($params['album']) ? '1=1': 'category_id = '.$params['album']);
+    
+  $query.= ' '.get_sql_condition_FandF(array(
+                  'forbidden_categories' => 'category_id',
+                  'visible_categories' => 'category_id',
+                  'visible_images' => 'id'
+                  ),
+                'AND'
+                );
+  
+  $query.= '
   ORDER BY '.DB_RANDOM_FUNCTION.'()
   LIMIT 1
 ;';
@@ -526,8 +532,8 @@ SELECT id
   
   if (pwg_db_num_rows($result))
   {
-    list($img_id) = pwg_db_fetch_row($result);
-    return get_photo_sized('id='.$img_id.' album='.$params['album'].' size='.$params['size'].' html='.$params['html'].' link='.$params['link']);
+    list($params['id'], $params['album']) = pwg_db_fetch_row($result);
+    return get_photo_sized($params);
   }
 
   return '';
@@ -548,7 +554,7 @@ SELECT id
  * @string effect:    transition effect                 (default: fade)
  * @string arrows:    display navigation arrows         (default: yes)
  * @string control:   display navigation bar            (default: yes)
- * @string elastic:   adapt slider size to each picture (default: no)
+ * @string elastic:   adapt slider size to each picture (default: yes)
  */
 function get_slider($param)
 {
@@ -565,7 +571,7 @@ function get_slider($param)
     'effect' =>    array('[a-zA-Z]+', 'fade'),
     'arrows' =>    array('yes|no', 'yes'),
     'control' =>   array('yes|no', 'yes'),
-    'elastic' =>   array('yes|no', 'no'),
+    'elastic' =>   array('yes|no', 'yes'),
     );
     
   $params = parse_parameters($param, $default_params);
@@ -576,17 +582,15 @@ function get_slider($param)
   if (empty($enabled[ $deriv_type ])) return 'size disabled';
   
   // parameters
-  $params['arrows'] = $params['arrows']==='no' ? 'false' : 'true';
-  $params['control'] = $params['control']==='no' ? 'false' : 'true';
+  $params['arrows'] = $params['arrows']==='yes' ? 'true' : 'false';
+  $params['control'] = $params['control']==='yes' ? 'true' : 'false';
   $params['elastic'] = $params['elastic']==='yes' ? true : false;
   $params['title'] = $params['title']==='yes' ? true : false;
+  $params['random'] = $params['random']==='yes' ? true : false;
   
   // pictures from album...
   if (!empty($params['album']))
   {
-    // parameters
-    $params['random'] = $params['random']==='yes' ? true : false;
-    
     // get image order inside category
     if ($params['random'])
     {
@@ -688,6 +692,11 @@ SELECT *
 
 function parse_parameters($param, $default_params)
 {
+  if (is_array($param))
+  {
+    return $param;
+  }
+  
   $params = array();
   
   foreach ($default_params as $name => $value)

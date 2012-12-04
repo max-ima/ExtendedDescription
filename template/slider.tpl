@@ -23,13 +23,16 @@ $("#slider{$slider_id}").nivoSlider({ldelim}
 });
 {/footer_script}
 
-{if not $elastic_size}
-{assign var=slider_min_h value=$img_size.h}
+{if $elastic_size}
+{assign var=slider_full_height value=0}
+{else}
+{assign var=slider_full_height value=$img_size.h}
 {/if}
+{assign var=slider_full_width value=0}
 
-<div class="slider-wrapper theme-default" style="width:{$img_size.w}px;{if $elastic_size}height:{math equation='x+y' x=$img_size.h y=40}px;{/if}">
-  <div id="slider{$slider_id}" class="nivoSlider" style="width:{$img_size.w}px;{if $elastic_size}height:{$img_size.h}px;{/if}">
-  {foreach from=$slider_content item=thumbnail}{strip}
+<div class="slider-wrapper theme-default">
+  <div id="slider{$slider_id}" class="nivoSlider">
+  {foreach from=$slider_content item=thumbnail name=slider}{strip}
     {assign var=derivative value=$pwg->derivative($derivative_params, $thumbnail.src_image)}
     {if !$derivative->is_cached()}
     {combine_script id='jquery.ajaxmanager' path='themes/default/js/plugins/jquery.ajaxmanager.js' load='footer'}
@@ -38,18 +41,30 @@ $("#slider{$slider_id}").nivoSlider({ldelim}
     
     <img {if $derivative->is_cached()}src="{$derivative->get_url()}"{else}src="" data-src="{$derivative->get_url()}"{/if} alt="{$thumbnail.TN_ALT}" {$derivative->get_size_htm()} {if $show_title}title="<a href='{$thumbnail.URL}'>{$thumbnail.NAME|replace:'"':"'"}</a>"{/if}>
     
-    {if not $elastic_size}
     {assign var=derivative_size value=$derivative->get_size()}
-    {math assign=slider_min_h equation="min(x,y)" x=$slider_min_h y=$derivative_size[1]}
-    {/if}
-  {/strip}{/foreach}
+    {math assign=slider_full_width equation="max(x,y)" x=$slider_full_width y=$derivative_size[0]}
+  {if $elastic_size}
+    {math assign=slider_full_height equation="max(x,y)" x=$slider_full_height y=$derivative_size[1]}
+  {else}
+    {math assign=slider_full_height equation="min(x,y)" x=$slider_full_height y=$derivative_size[1]}
+  {/if}
+  {if $smarty.foreach.slider.first}
+    {assign var=slider_init_width value=$derivative_size[0]}
+    {assign var=slider_init_height value=$derivative_size[1]}
+  {/if}
+  
+  {/strip}
+  {/foreach}
   </div>
 </div>
 
-{if not $elastic_size}
 {footer_script}
+$("#slider{$slider_id}").parent(".slider-wrapper").css({ldelim}
+  height: {$slider_full_height}{if $controlNav=='true'}+40{/if},
+  width: {$slider_full_width}
+});
 $("#slider{$slider_id}").css({ldelim}
-  height: {$slider_min_h}
+  height: {if $elastic_size}{$slider_init_height}{else}{$slider_full_height}{/if},
+  width: {$slider_init_width}
 });
 {/footer_script}
-{/if}
