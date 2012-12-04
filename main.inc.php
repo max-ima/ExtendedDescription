@@ -558,7 +558,7 @@ SELECT id, category_id
  */
 function get_slider($param)
 {
-  global $template, $conf, $ids; // global $ids for the callback
+  global $template, $conf;
   
   $default_params = array(
     'album' =>     array('\d+', null),
