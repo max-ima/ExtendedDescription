@@ -228,7 +228,7 @@ function ext_remove_menubar_cats($where)
     WHERE name LIKE "%'.$conf['ExtendedDescription']['mb_not_visible'].'%"';
 
   $result = pwg_query($query);
-  while ($row = mysql_fetch_assoc($result))
+  while ($row = pwg_db_fetch_assoc($result))
   {
     $ids[] = $row['id'];
     $where .= '
@@ -288,7 +288,7 @@ FROM ' . CATEGORIES_TABLE . ' AS cat
 WHERE cat.id = ' . $elem_id . ';';
   $result = pwg_query($query);
 
-  if($result and $category = mysql_fetch_array($result))
+  if($result and $category = pwg_db_fetch_array($result))
   {
     $template->set_filename('extended_description_content', dirname(__FILE__) . '/template/cat.tpl');
 
@@ -349,7 +349,7 @@ function get_img_thumb($elem_ids, $align='', $name='')
     $template->set_filename('extended_description_content', dirname(__FILE__) . '/template/img.tpl');
 
     $imglist=array();
-    while ($picture = mysql_fetch_array($result))
+    while ($picture = pwg_db_fetch_array($result))
     {
       $imglist[$picture["id"]]=$picture;
     }
@@ -621,6 +621,7 @@ SELECT image_id
   LIMIT '.$params['nb_images'].'
 ;';
     $ids = array_from_query($query, 'image_id');
+    $ids = implode(',', $ids);
   }
   // ...or pictures list
   else if (empty($params['list']))
@@ -629,15 +630,15 @@ SELECT image_id
   }
   else
   {
-    $ids = explode(',', $params['list']);
+    $ids = $params['list'];
   }
   
   // get pictures
   $query = '
 SELECT *
   FROM '.IMAGES_TABLE.'
-  WHERE id IN ('.implode(',', $ids).')
-  ORDER BY FIND_IN_SET(id, "'.implode(',', $ids).'")
+  WHERE id IN ('.$ids.')
+  ORDER BY FIND_IN_SET(id, "'.$ids.'")
 ;';
   $pictures = hash_from_query($query, 'id');
   
@@ -716,6 +717,8 @@ function parse_parameters($param, $default_params)
 
 function get_deriv_type($size)
 {
+  $size = strtoupper($size);
+  
   $size_map = array(
     'SQ' => IMG_SQUARE,
     'TH' => IMG_THUMB,
@@ -730,7 +733,7 @@ function get_deriv_type($size)
     
   if (!array_key_exists($size, $size_map)) $size = 'M';
   
-  return $size_map[ strtoupper($size) ];
+  return $size_map[$size];
 }
 
 
