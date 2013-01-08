@@ -32,20 +32,23 @@ function get_user_language_desc($desc, $user_lang=null)
   if (is_null($user_lang))
   {
     global $user;
-    $user_lang = substr($user['language'], 0, 2);
+    $user_lang = $user['language'];
   }
 
-  if (!substr_count(strtolower($desc), '[lang=' . $user_lang . ']'))
+  $small_user_lang = substr($user['language'], 0, 2);
+
+  if (!preg_match('#\[lang=('.$user_lang.'|'.$small_user_lang.')\]#i', $desc))
   {
     $user_lang = 'default';
+    $small_user_lang = 'default';
   }
 
-  if (substr_count(strtolower($desc), '[lang=' . $user_lang . ']'))
+  if (preg_match('#\[lang=('.$user_lang.'|'.$small_user_lang.')\]#i', $desc))
   {
     // la balise avec la langue de l'utilisateur a été trouvée
-    $patterns[] = '#(^|\[/lang\])(.*?)(\[lang=(' . $user_lang . '|all)\]|$)#is';
+    $patterns[] = '#(^|\[/lang\])(.*?)(\[lang=(' . $user_lang . '|' . $small_user_lang . '|all)\]|$)#is';
     $replacements[] = '';
-    $patterns[] = '#\[lang=(' . $user_lang . '|all)\](.*?)\[/lang\]#is';
+    $patterns[] = '#\[lang=(' . $user_lang . '|' . $small_user_lang . '|all)\](.*?)\[/lang\]#is';
     $replacements[] = '\\1';
   }
   else
