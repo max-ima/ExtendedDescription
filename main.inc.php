@@ -29,9 +29,10 @@ $conf['ExtendedDescription'] = isset($conf['ExtendedDescription']) ?
 // Traite les balises [lang=xx]
 function get_user_language_desc($desc, $user_lang=null)
 {
+  global $user;
+  
   if (is_null($user_lang))
   {
-    global $user;
     $user_lang = $user['language'];
   }
 
