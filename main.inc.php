@@ -515,17 +515,24 @@ function extdesc_get_random_photo($param)
   $query = '
 SELECT id, category_id
   FROM '.IMAGES_TABLE.'
-    JOIN '.IMAGE_CATEGORY_TABLE.' ON image_id = id
-  WHERE 
-    '.(empty($params['album']) ? '1=1': 'category_id = '.$params['album']);
-    
-  $query.= ' '.get_sql_condition_FandF(array(
-                  'forbidden_categories' => 'category_id',
-                  'visible_categories' => 'category_id',
-                  'visible_images' => 'id'
-                  ),
-                'AND'
-                );
+    JOIN '.IMAGE_CATEGORY_TABLE.' ON image_id = id';
+  if (empty($params['album']))
+  {
+    $query = '
+  WHERE 1=1 '
+      .get_sql_condition_FandF(array(
+        'forbidden_categories' => 'category_id',
+        'visible_categories' => 'category_id',
+        'visible_images' => 'id'
+        ),
+      'AND'
+      );
+  }
+  else
+  {
+    $query.= '
+  WHERE category_id = '.$params['album'];
+  }
   
   $query.= '
   ORDER BY '.DB_RANDOM_FUNCTION.'()
