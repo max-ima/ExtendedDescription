@@ -20,6 +20,6 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['ExtendedDesc_help'] = 'Use marcas Extended Description...';
-$lang['This category is redirected to %s'] = 'Este álbum é redirecionado para %s';
+$lang['ExtendedDesc_help'] = 'Use marcas Descrição Extendida...';
+$lang['This category is redirected to %s'] = 'Este álbum foi redirecionado para %s';
 ?>
