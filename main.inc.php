@@ -36,7 +36,7 @@ function get_user_language_desc($desc, $user_lang=null)
     $user_lang = $user['language'];
   }
 
-  $small_user_lang = substr($user['language'], 0, 2);
+  $small_user_lang = substr($user_lang, 0, 2);
 
   if (!preg_match('#\[lang=('.$user_lang.'|'.$small_user_lang.')\]#i', $desc))
   {
