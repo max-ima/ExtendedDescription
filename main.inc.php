@@ -292,7 +292,7 @@ FROM ' . CATEGORIES_TABLE . ' AS cat
 WHERE cat.id = ' . $elem_id . ';';
   $result = pwg_query($query);
 
-  if($result and $category = pwg_db_fetch_array($result))
+  if($result and $category = pwg_db_fetch_assoc($result))
   {
     $template->set_filename('extended_description_content', dirname(__FILE__) . '/template/cat.tpl');
 
@@ -353,7 +353,7 @@ function get_img_thumb($elem_ids, $align='', $name='')
     $template->set_filename('extended_description_content', dirname(__FILE__) . '/template/img.tpl');
 
     $imglist=array();
-    while ($picture = pwg_db_fetch_array($result))
+    while ($picture = pwg_db_fetch_assoc($result))
     {
       $imglist[$picture["id"]]=$picture;
     }
