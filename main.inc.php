@@ -71,11 +71,11 @@ function get_user_language_tag_url($tag)
 
 function ed_get_all_alt_names($arr, $name)
 {
-  if (preg_match_all('#\[lang=(.*?)\](.*?)\[/lang\]#is', $name, $matches))
+  if (preg_match_all('#\[lang=(.*?)\](.*?)\[/lang\]#is', $name, $matches, PREG_SET_ORDER))
   {
-    foreach ($matches[2] as $alt)
+    foreach ($matches as $match)
     {
-      $arr[] = $alt;
+      @$arr[$match[1]] .= $match[2];
     }
   }
   return $arr;
