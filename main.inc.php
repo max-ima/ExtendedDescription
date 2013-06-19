@@ -632,12 +632,16 @@ SELECT image_id
   LIMIT '.$params['nb_images'].'
 ;';
     $ids = array_from_query($query, 'image_id');
+    if (empty($ids))
+    {
+      return '(nivoSlider) no photos in album #'.$params['album'];
+    }
     $ids = implode(',', $ids);
   }
   // ...or pictures list
   else if (empty($params['list']))
   {
-    return 'missing album id or empty picture list';
+    return '(nivoSlider) missing album id or photos list';
   }
   else
   {
