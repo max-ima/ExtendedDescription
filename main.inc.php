@@ -88,6 +88,7 @@ function get_extended_desc($desc, $param='')
   
   if (
     $param != 'subcatify_category_description'
+    and $param != 'main_page_element_description'
     and ( script_basename() != 'picture' or $param != 'main_page_category_description' )
     and preg_match('#\[redirect (.*?)\]#i', $desc, $m1)
   )
@@ -769,7 +770,7 @@ add_event_handler ('render_tag_url',    'get_user_language_tag_url', 40);
 add_event_handler ('get_tag_alt_names', 'ed_get_all_alt_names', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
 // element
 add_event_handler ('render_element_name',        'get_user_language_desc');
-add_event_handler ('render_element_description', 'get_extended_desc');
+add_event_handler ('render_element_description', 'get_extended_desc', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
 // mail/nbm
 add_event_handler ('nbm_render_user_customize_mail_content', 'get_extended_desc');
 add_event_handler ('mail_group_assign_vars',                 'extended_desc_mail_group_assign_vars');
