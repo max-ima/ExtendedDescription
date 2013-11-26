@@ -1,0 +1,134 @@
+<div style="text-align:left;">
+<h2>Etendita Priskribo</h2>
+
+<h3>Pluralingvaj priskriboj</h3>
+
+<p>Pluralingvaj priskriboj troviĝas inter la etikedoj [lang=xx] kaj [/lang], kie xx estas la lingva kodo (ekzemple eo, en, es, fr). Estas ankaŭ 2 specialaj lingvoj: [lang=default] kaj [lang=all]</p>
+
+<ul>
+  <li><b>Ekzemple</b>:<br>
+<code>[lang=default] apriora priskribo [/lang]<br>
+[lang=eo] priskribo en esperanto [/lang]<br>
+[lang=en] description in english [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+<p>La apriora priskribo ne uziĝos se la priskribo ne disponeblas ĉe la lingvo selektita de la konektita uzanto.
+Se [lang=default] ne ekzistas, ĉio ajn krom la [lang] etikedoj estos considerata kiel la apriora priskribo.</p>
+
+<p><u>Speciala lingvo <i>ĉio</i></u>: ĉio ajn ene de [lang=all] estos inkluzivita en la priskribo, kia ajn estu la elektita lingvo de la konektita uzanto.
+Tio ĉefe utilas por inkluzivi HTML/JavaScript-kodo ene de priskribo.</p>
+
+<h3>Etenditaj priskriboj</h3>
+
+*******************************************************************
+
+<p>Extended description tags make it possible to have a short description for the album outside the album,
+a longer description for the album inside the album page,
+or even 2 distinct descriptions inside the album page.</p>
+
+<p>tag &lt;!--more--&gt; adds text to the short description.<br>
+tag &lt;!--complete--&gt; lets the user have 2 distinct descriptions.<br>
+tag &lt;!--up-down--&gt; lets the user have a top and a bottom description.</p>
+
+<ul>
+  <li><b>&lt;!--more--&gt;</b></li>
+</ul>
+<code>short description &lt;!--more--&gt; long description</code>
+<p>Only the short description is displayed outside the album. On the album page, you will see short description + long description.</p>
+
+<ul>
+  <li><b>&lt;!--complete--&gt;</b></li>
+</ul>
+<code>short description &lt;!--complete--&gt; long description</code>
+<p>Only the short description is displayed outside the album. On the album page, you will only see the long description, so you have 2 distinct descriptions.</p>
+
+<ul>
+  <li><b>&lt;!--up-down--&gt;</b></li>
+</ul>
+<code>top description &lt;!--up-down--&gt; bottom description</code>
+<p>Only the top description is displayed outside the album.  On the album page, the top description is displayed above the thumbnails, the bottom description is displayed below the thumbnails.</p>
+
+<h3>Insert an album or a photo</h3>
+
+<ul>
+  <li><b>[cat=xx]</b></li>
+</ul>
+<p>This tag inserts an album in the description, where xx is the album identifier.</p>
+
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>This tag allows you to insert one picture of any size you want, with:<br><br>
+- <code>id</code> the photo identifier<br>
+- <code>album</code> (optional) the parent album identifier<br>
+- <code>size</code> (optional) the size of the photo, from <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (optional) if set to <i>no</i> the tag only returns the URL of the photo, without HTML<br>
+- <code>link</code> (optional) if set to <i>yes</i> the photo is wrapped into a link to the picture page</p>
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Same thing as above, except that the photo is chosen randomly from <code>album</code></p>
+
+<ul>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+</ul>
+<p>This tag allows to insert a slideshow (NivoSlider). (you must set <code>album</code> OR <code>list</code>):<br><br>
+- <code>album</code> (optional) source album<br>
+- <code>nb_images</code> (optional) max number of photos to display in the slideshow<br>
+- <code>random</code> (optional) choose photos randomly in the album<br>
+- <code>list</code> (optional) a list of photos ids separated by a comma<br>
+- <code>size</code> (optional) the size of the photos, from <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
+- <code>speed</code> (optional) the slideshow speed (in seconds)<br>
+- <code>title</code> (optional) display photo title<br>
+- <code>effect</code> (optional) transition effect (see <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">NivoSlider doc</a>)<br>
+- <code>arrows</code> (optional) display navigation arrows<br>
+- <code>control</code> (optional) display navigation controls<br>
+- <code>elastic</code> (optional) adapt slideshow size to each photo</p>
+
+
+<h3>Hide an album</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the album name:<br>
+<br>
+- it won't be displayed in the parent album<br>
+- it remains visible in the album menu</p>
+
+<h3>Hide an album from the menu</h3>
+
+<p>Use tag <b>&lt;!--mb-hidden--&gt;</b> in the album name:<br>
+<br>
+- it won't be displayed in the album menu<br>
+- it remains visible in the parent album</p>
+
+<h3>Hide a photo</h3>
+
+<p>Use tag <b>&lt;!--hidden--&gt;</b> in the photo name:<br>
+<br>
+- it won't be displayed on the thumbnails page<br>
+- it remains visible inside the album</p>
+
+<h3>Redirected album</h3>
+
+<ul>
+  <li><b>[redirect http://piwigo.org]</b></li>
+</ul>
+<p>Insert this tag into a album description to redirect it to the URL of your choice.</p>
+
+<ul>
+  <li><b>[redirect img=xx]</b></li>
+</ul>
+<p>Redirect to a photo of your gallery where xx is the photo identifier; you can add the album identifier next to the photo identifier: <code>xx.ccc</code>.</p>
+
+<ul>
+  <li><b>[redirect cat=xx]</b></li>
+</ul>
+<p>Redirect to a album of your gallery where xx the album identifier.</p>
+
+<ul>
+  <li><b>[redirect search=xx]</b></li>
+</ul>
+<p>Redirect to a search page of your gallery where xx is the search identifier.</p>
+</div>
