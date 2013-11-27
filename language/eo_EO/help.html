@@ -48,29 +48,29 @@ etikedo &lt;!--supra-malsupra--&gt; lasas la uzanto havi priskribojn ĉe la supr
 <code>supra priskribo &lt;!--supra-malsupra--&gt; malsupra priskribo</code>
 <p>Nur la supra priskribo vidiĝas ekster la fotaro. Nur la fotara paĝo, la supra priskribo vidiĝas super la miniaturoj, la malsupra priskribo vidiĝas sub la miniaturoj.</p>
 
+<h3>Enŝovi fotaron aŭ foton</h3>
+
+<ul>
+  <li><b>[kat=xx]</b></li>
+</ul>
+<p>Tiu etikedo enŝovas fotaron en la priskribon, kie xx estas la fotara identigilo.</p>
+
+<ul>
+  <li><b>[foto id=xx fotaro=yy grandeco=M html=yes ligilo=yes]</b></li>
+</ul>
+<p>Tiu etikedo permesas al vi enŝovi unu bildon je iu ajn grandeco, kiun vi deziras, kun:<br><br>
+- <code>id</code> la foto identigilo<br>
+- <code>fotaro</code> (opciona) la identigilo de la patra fotaro<br>
+- <code>grandeco</code> (opciona) la grandeco de la foto, inter (de la plej eta al la plej granda) <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (opciona) se agordita al <i>ne</i> la etikedo montras nur la URL de la foto, sen HTML<br>
+- <code>ligilo</code> (opciona) se agordita al <i>jes</i> la foton ĉirkaŭfluas ligilo al la bildopaĝo</p>
+
+<ul>
+  <li><b>[hazarda fotaro=yy grandeco=M html=jes ligilo=jes]</b></li>
+</ul>
+<p>Samo kiel ĉisupre, krom ke la foto estas hazarde elektita en la <code>fotaro</code></p>
+
 *******************************************************************
-
-<h3>Insert an album or a photo</h3>
-
-<ul>
-  <li><b>[cat=xx]</b></li>
-</ul>
-<p>This tag inserts an album in the description, where xx is the album identifier.</p>
-
-<ul>
-  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
-</ul>
-<p>This tag allows you to insert one picture of any size you want, with:<br><br>
-- <code>id</code> the photo identifier<br>
-- <code>album</code> (optional) the parent album identifier<br>
-- <code>size</code> (optional) the size of the photo, from <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
-- <code>html</code> (optional) if set to <i>no</i> the tag only returns the URL of the photo, without HTML<br>
-- <code>link</code> (optional) if set to <i>yes</i> the photo is wrapped into a link to the picture page</p>
-
-<ul>
-  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
-</ul>
-<p>Same thing as above, except that the photo is chosen randomly from <code>album</code></p>
 
 <ul>
   <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
@@ -130,5 +130,5 @@ etikedo &lt;!--supra-malsupra--&gt; lasas la uzanto havi priskribojn ĉe la supr
 <ul>
   <li><b>[redirect search=xx]</b></li>
 </ul>
-<p>Redirect to a search page of your gallery where xx is the search identifier.</p>
+<p>Alidirekti al serĉopaĝo de via galerio kie xx estas la serĉoidentigilo.</p>
 </div>
