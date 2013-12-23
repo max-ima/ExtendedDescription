@@ -70,20 +70,21 @@ tag &lt;!--up-down--&gt; permite que o utilizador tenha uma descri&ccedil;&atild
 <p>A Mesma coisa que acima, exceto que a foto é escolhida aleatoriamente em random dentro <code>album</code></p>
 
 <ul>
-  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no thumbs_size=80]</b></li>
 </ul>
 <p>Esta etiqueta permite inserir um slideshow (NivoSlider), com (você deve definir<code>album</code> OR <code>list</code>):<br><br>
 - <code>album</code> (opcional)fonte album<br>
 - <code>nb_images</code> (opcional)máximo numero de fotos para exibir no slideshow<br>
-- <code>random</code> (opcional) escolhe fotos aleatoriamente no álbum<br>
+- <code>random</code> (opcional) escolhe fotos aleatoriamente no álbum <i>{yes, no}</i><br>
 - <code>list</code> (opcional) uma lista de fotos com ids separados por vírgula<br>
 - <code>size</code> (opcional) o tamanho das fotos, entre <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
 - <code>speed</code> (opcional) Velocidade de transição<br>
-- <code>title</code> (opcional) mostra título da foto.<br>
-- <code>effect</code> (opcional) efeito de transição (opcional) (ver <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">NivoSlider doc</a>)<br>
-- <code>arrows</code> (opcional) mostra setas de navegação<br>
-- <code>control</code> (opcional) exibe os controles de navegação<br>
-- <code>elastic</code> (opcional) adapta o tamanho do slideshow para cada foto</p>
+- <code>title</code> (opcional) mostra título da foto <i>{yes, no}</i><br>
+- <code>effect</code> (opcional) efeito de transição (opcional) (ver <a href="http://docs.dev7studios.com/jquery-plugins/nivo-slider">NivoSlider doc</a>)<br>
+- <code>arrows</code> (opcional) mostra setas de navegação <i>{yes, no}</i><br>
+- <code>control</code> (opcional) exibe os controles de navegação <i>{yes, no, thumb}</i><br>
+- <code>elastic</code> (opcional) adapta o tamanho do slideshow para cada foto <i>{yes, no}</i><br>
+- <code>thumbs_size</code> (optional) thumbnails size in pixel if <code>control=thumb</code><p>
 
 
 <h3>Hide an album</h3>

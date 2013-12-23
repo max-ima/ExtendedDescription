@@ -70,20 +70,21 @@ element &lt;!--up-down--&gt; umožňuje vytvořit popis do horní a dolní čás
 <p>Stejné jako výše, jen obrázek je vybírán náhodně ze složky <code>album</code></p>
 
 <ul>
-  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no thumbs_size=80]</b></li>
 </ul>
 <p>Tento element umožní vložit slideshow (NivoSlider), s parametry (musíte nastavit <code>album</code> NEBO <code>list</code>):<br><br>
 - <code>album</code> (nepovinný) zdrojové album<br>
 - <code>nb_images</code> (nepovinný) max. počet obrázků, které se mají zobrazit ve slideshow<br>
-- <code>random</code> (nepovinný) náhodný výběr obrázků z alba<br>
+- <code>random</code> (nepovinný) náhodný výběr obrázků z alba <i>{yes, no}</i><br>
 - <code>list</code> (nepovinný) seznam id (identifikátorů) obrázků oddělený čárkami<br>
 - <code>size</code> (nepovinný) velikost obrázků, (<i>SQ, TH, XXS, S, M, L, XL, XXL</i>)<br>
 - <code>speed</code> (nepovinný) rychlost slideshow (v sekundách)<br>
-- <code>title</code> (nepovinný) zobrazovat název obrázku<br>
-- <code>effect</code> (nepovinný) přechodový efekt (viz <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">NivoSlider dokument</a>)<br>
-- <code>arrows</code> (nepovinný) zobrazovat navigační šipky<br>
-- <code>control</code> (nepovinný) zobrazovat ovládání navigace<br>
-- <code>elastic</code> (nepovinný) přizpůsobit velikost slideshow velikosti jednotlivých obrázkůo</p>
+- <code>title</code> (nepovinný) zobrazovat název obrázku <i>{yes, no}</i><br>
+- <code>effect</code> (nepovinný) přechodový efekt (viz <a href="http://docs.dev7studios.com/jquery-plugins/nivo-slider">NivoSlider dokument</a>)<br>
+- <code>arrows</code> (nepovinný) zobrazovat navigační šipky <i>{yes, no}</i><br>
+- <code>control</code> (nepovinný) zobrazovat ovládání navigace <i>{yes, no, thumb}</i><br>
+- <code>elastic</code> (nepovinný) přizpůsobit velikost slideshow velikosti jednotlivých obrázkůo <i>{yes, no}</i><br>
+- <code>thumbs_size</code> (optional) thumbnails size in pixel if <code>control=thumb</code><p>
 
 <h3>Skrytí kategorie</h3>
 

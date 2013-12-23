@@ -70,20 +70,21 @@ tag &lt;!--up-down--&gt; lets the user have a top and a bottom description.</p>
 <p>Same thing as above, except that the photo is chosen randomly from <code>album</code></p>
 
 <ul>
-  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no thumbs_size=80]</b></li>
 </ul>
 <p>This tag allows to insert a slideshow (NivoSlider). (you must set <code>album</code> OR <code>list</code>):<br><br>
 - <code>album</code> (optional) source album<br>
 - <code>nb_images</code> (optional) max number of photos to display in the slideshow<br>
-- <code>random</code> (optional) choose photos randomly in the album<br>
+- <code>random</code> (optional) choose photos randomly in the album <i>{yes, no}</i><br>
 - <code>list</code> (optional) a list of photos ids separated by a comma<br>
 - <code>size</code> (optional) the size of the photos, from <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
 - <code>speed</code> (optional) the slideshow speed (in seconds)<br>
-- <code>title</code> (optional) display photo title<br>
-- <code>effect</code> (optional) transition effect (see <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">NivoSlider doc</a>)<br>
-- <code>arrows</code> (optional) display navigation arrows<br>
-- <code>control</code> (optional) display navigation controls<br>
-- <code>elastic</code> (optional) adapt slideshow size to each photo</p>
+- <code>title</code> (optional) display photo title <i>{yes, no}</i><br>
+- <code>effect</code> (optional) transition effect (see <a href="http://docs.dev7studios.com/jquery-plugins/nivo-slider">NivoSlider doc</a>)<br>
+- <code>arrows</code> (optional) display navigation arrows <i>{yes, no}</i><br>
+- <code>control</code> (optional) display navigation controls <i>{yes, no, thumb}</i><br>
+- <code>elastic</code> (optional) adapt slideshow size to each photo <i>{yes, no}</i><br>
+- <code>thumbs_size</code> (optional) thumbnails size in pixel if <code>control=thumb</code><p>
 
 
 <h3>Hide an album</h3>

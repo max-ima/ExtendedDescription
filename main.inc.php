@@ -152,7 +152,7 @@ function get_extended_desc($desc, $param='')
   $patterns[] = '#\[random([^\]]*)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'extdesc_get_random_photo("$1")';
   
-  // Balises [slider album=xx nb_images=yy random=yes|no list=aa,bb,cc size=SQ|TH|XXS|XS|S|M|L|XL|XXL speed=z title=yes|no effect=... arrows=yes|no control=yes|no elastic=yes|no]
+  // Balises [slider album=xx nb_images=yy random=yes|no list=aa,bb,cc size=SQ|TH|XXS|XS|S|M|L|XL|XXL speed=z title=yes|no effect=... arrows=yes|no control=yes|no|thumb elastic=yes|no thumbs_size=xx]
   $patterns[] = '#\[slider ([^\]]+)\]#ie';
   $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_slider("$1")';
 
@@ -567,6 +567,7 @@ SELECT id, category_id
  * @string arrows:    display navigation arrows         (default: yes)
  * @string control:   display navigation bar            (default: yes)
  * @string elastic:   adapt slider size to each picture (default: yes)
+ * @int thumbs_size:  size of thumbnails if control=thumb (default: 80)
  */
 function get_slider($param)
 {
@@ -582,8 +583,9 @@ function get_slider($param)
     'title' =>     array('yes|no', 'no'),
     'effect' =>    array('[a-zA-Z]+', 'fade'),
     'arrows' =>    array('yes|no', 'yes'),
-    'control' =>   array('yes|no', 'yes'),
+    'control' =>   array('yes|no|thumb', 'yes'),
     'elastic' =>   array('yes|no', 'yes'),
+    'thumbs_size' => array('\d+', 80),
     );
     
   $params = parse_parameters($param, $default_params);
@@ -591,14 +593,28 @@ function get_slider($param)
   // check size
   $deriv_type = get_deriv_type($params['size']);
   $enabled = ImageStdParams::get_defined_type_map();
-  if (empty($enabled[ $deriv_type ])) return 'size disabled';
+  if (empty($enabled[ $deriv_type ]))
+  {
+    return '(nivoSlider) size disabled';
+  }
   
   // parameters
-  $params['arrows'] = $params['arrows']==='yes' ? 'true' : 'false';
-  $params['control'] = $params['control']==='yes' ? 'true' : 'false';
-  $params['elastic'] = $params['elastic']==='yes' ? true : false;
-  $params['title'] = $params['title']==='yes' ? true : false;
-  $params['random'] = $params['random']==='yes' ? true : false;
+  if ($params['control'] === 'thumb')
+  {
+    $params['control'] = 'yes';
+    $params['control_thumbs'] = true;
+  }
+  else
+  {
+    $params['control_thumbs'] = false;
+  }
+  $params['arrows'] = $params['arrows']==='yes';
+  $params['control'] = $params['control']==='yes';
+  $params['elastic'] = $params['elastic']==='yes';
+  $params['title'] = $params['title']==='yes';
+  $params['random'] = $params['random']==='yes';
+  
+  $tpl_vars = $params;
   
   // pictures from album...
   if (!empty($params['album']))
@@ -678,28 +694,32 @@ SELECT *
 
     $name = render_element_name($row);
     
-    $tpl_vars[] = array_merge($row, array(
+    $tpl_vars['elements'][] = array(
+      'ID' => $row['id'],
       'TN_ALT' => htmlspecialchars(strip_tags($name)),
       'NAME' => $name,
       'URL' => $url,
       'src_image' => new SrcImage($row),
-      ));
+      );
   }
   
-  list($img_size['w'], $img_size['h']) = $enabled[ $deriv_type ]->sizing->ideal_size;
+  list($tpl_vars['img_size']['w'], $tpl_vars['img_size']['h']) =
+    $enabled[ $deriv_type ]->sizing->ideal_size;
+  
+  $tpl_vars['id'] = crc32(uniqid($ids)); // need a unique id if we have multiple sliders
+  $tpl_vars['derivative_params'] = ImageStdParams::get_by_type($deriv_type);
+    
+  if ($params['control_thumbs'])
+  {
+    $tpl_vars['derivative_params_thumb'] = ImageStdParams::get_custom(
+      $params['thumbs_size'], $params['thumbs_size'], 1,
+      $params['thumbs_size'], $params['thumbs_size']
+      );
+  }
   
   $template->assign(array(
     'EXTENDED_DESC_PATH' => EXTENDED_DESC_PATH,
-    'slider_id' => crc32(uniqid($params['list'])), // need a unique id if we have multiple sliders
-    'slider_content' => $tpl_vars,
-    'derivative_params' => ImageStdParams::get_by_type( $deriv_type ),
-    'img_size' => $img_size,
-    'pauseTime' => $params['speed']*1000,
-    'controlNav' => $params['control'],
-    'effect' => $params['effect'],
-    'directionNav' => $params['arrows'],
-    'elastic_size' => $params['elastic'],
-    'show_title' => $params['title'],
+    'SLIDER'=> $tpl_vars,
     ));
   
   $template->set_filename('extended_description_content', dirname(__FILE__).'/template/slider.tpl');

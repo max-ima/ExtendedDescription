@@ -73,21 +73,22 @@ L'etiqueta &lt;!--up-down--&gt; permet a l'usuari posar una descripci&oacute; pe
 <p>De la mateixa manera, excepte que la imatge s'esculli de forma aleatòria en l'àlbum</p>
 
 <ul>
-  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no thumbs_size=80]</b></li>
 </ul>
 <p>Aquesta etiqueta permet inserir una reproducció de diapositives (NivoSlider), amb (cal establir l'àlbum O llista):</p>
 
 - <code>album</code> (opcional: font de l'àlbum</br>
 - <code>nb_images</code> (opcioanl) màxim nombre d'imatges a visualitzar en la reproducció de diapositives de l'àlbum</br>
-- <code>random</code> (opcioanl): escull imatges aleatòriament en l'àlbum</br>
+- <code>random</code> (opcioanl): escull imatges aleatòriament en l'àlbum <i>{yes, no}</i></br>
 - <code>list</code> (opcioanl): una llista de id d'imatges separades per comes</br>
 - <code>size</code> (opcional): mida de les imatges, entre {SQ, TH, XXS, S, M, L, XL, XXL}</br>
 - <code>speed</code> (opcional): la velocitat de reproducció de diapositives (en segons)</br>
-- <code>title</code> (opcional): mostra el títol de la imatge</br>
+- <code>title</code> (opcional): mostra el títol de la imatge <i>{yes, no}</i></br>
 - <code>effect</code> (opcional): efecte de transició (veure NivoSlider doc)</br>
-- <code>arrows</code> (opcional): mostra fletxes de navegació</br>
-- <code>control</code> (opcioanl): mostra controls de navegació</br>
-- <code>elastic</code> (opcioanl): s'adapta la reproducció de diapositives a la mida de cada imatge</p>
+- <code>arrows</code> (opcional): mostra fletxes de navegació <i>{yes, no}</i></br>
+- <code>control</code> (opcioanl): mostra controls de navegació <i>{yes, no, thumb}</i></br>
+- <code>elastic</code> (opcioanl): s'adapta la reproducció de diapositives a la mida de cada imatge <i>{yes, no}</i><br>
+- <code>thumbs_size</code> (optional) thumbnails size in pixel if <code>control=thumb</code><p>
 
 
 <h3>Ocultar un &agrave;lbum</h3>

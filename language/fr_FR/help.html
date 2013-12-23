@@ -76,20 +76,21 @@ Sur l'album lui-même, la description haute sera affichée au-dessus des miniatu
 <p>Même chose, sauf que la photo est prise aléatoirement dans <code>album</code></p>
 
 <ul>
-  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no]</b></li>
+  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no thumbs_size=80]</b></li>
 </ul>
 <p>Permet d'insérer un diaporama (NivoSlider), avec (vous devez renseigner <code>album</code> OU <code>list</code>):<br><br>
 - <code>album</code> (facultatif) album source<br>
 - <code>nb_images</code> (facultatif) nombre maximal de photos dans le diaporama<br>
-- <code>random</code> (facultatif) choisir les photos aléatoirement dans l'album<br>
+- <code>random</code> (facultatif) choisir les photos aléatoirement dans l'album <i>{yes, no}</i><br>
 - <code>list</code> (facultatif) une liste de photos séparées par une virgule<br>
 - <code>size</code> (facultatif) la taille des photos, parmi <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
 - <code>speed</code> (facultatif) la vitesse du diaporama (en secondes)<br>
 - <code>title</code> (facultatif) afficher le nom de la photo<br>
-- <code>effect</code> (facultatif) effet de transition (voir <a href="http://nivo.dev7studios.com/support/jquery-plugin-usage/">la doc de NivoSlider</a>)<br>
-- <code>arrows</code> (facultatif) afficher les flèches de navigations<br>
-- <code>control</code> (facultatif) afficher la barre de navigation<br>
-- <code>elastic</code> (facultatif) adapter la taille du diaporama à chaque photo</p>
+- <code>effect</code> (facultatif) effet de transition (voir <a href="http://docs.dev7studios.com/jquery-plugins/nivo-slider">la doc de NivoSlider</a>)<br>
+- <code>arrows</code> (facultatif) afficher les flèches de navigations <i>{yes, no}</i><br>
+- <code>control</code> (facultatif) afficher la barre de navigation <i>{yes, no, thumb}</i><br>
+- <code>elastic</code> (facultatif) adapter la taille du diaporama à chaque photo <i>{yes, no}</i><br>
+- <code>thumbs_size</code> (facultatif) taille des miniatures en pixel si <code>control=thumb</code><p>
 
 
 <h3>Masquer un album</h3>
