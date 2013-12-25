@@ -46,7 +46,7 @@
 </div>
 
 {footer_script require='jquery.nivo.slider'}
-(function($){
+(function($){ldelim}
   var $slider = $("#slider{$SLIDER.id} .nivoSlider");
   
   $slider.nivoSlider({ldelim}
