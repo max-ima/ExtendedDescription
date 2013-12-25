@@ -53,9 +53,9 @@
     pauseTime: {$SLIDER.speed}*1000,
     animSpeed: {$SLIDER.speed}*1000/6,
     effect: '{$SLIDER.effect}',
-    directionNav: {intval($SLIDER.arrows)},
-    controlNav: {intval($SLIDER.control)},
-    controlNavThumbs: {intval($SLIDER.control_thumbs)},
+    directionNav: {if $SLIDER.arrows}true{else}false{/if},{*intval($SLIDER.arrows)*}
+    controlNav: {if $SLIDER.control}true{else}false{/if},{*intval($SLIDER.control)*}
+    controlNavThumbs: {if $SLIDER.control_thumbs}true{else}false{/if},{*intval($SLIDER.control_thumbs)*}
     beforeChange: function() {ldelim}
       if ($slider.data('nivo:vars').currentImage.attr('src') == "") {ldelim}
         return false;
