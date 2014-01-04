@@ -26,9 +26,9 @@
       {combine_script id='jquery.ajaxmanager' path='themes/default/js/plugins/jquery.ajaxmanager.js' load='footer'}
       {combine_script id='thumbnails.loader' path='themes/default/js/thumbnails.loader.js' require='jquery.ajaxmanager' load='footer'}
     {/if}
-    
+
     <img {if $derivative->is_cached()}src="{$derivative->get_url()}"{else}src="" data-src="{$derivative->get_url()}"{/if} alt="{$thumbnail.TN_ALT}" {$derivative->get_size_htm()} {if $show_title}title="<a href='{$thumbnail.URL}'>{$thumbnail.NAME|replace:'"':"'"}</a>"{/if} {if $SLIDER.control_thumbs}data-thumb="{$derivative_thumb}"{/if}>
-    
+
     {assign var=derivative_size value=$derivative->get_size()}
     {math assign=slider_full_width equation="max(x,y)" x=$slider_full_width y=$derivative_size[0]}
     {if $SLIDER.elastic}
@@ -48,7 +48,7 @@
 {footer_script require='jquery.nivo.slider'}
 (function($){ldelim}
   var $slider = $("#slider{$SLIDER.id} .nivoSlider");
-  
+
   $slider.nivoSlider({ldelim}
     pauseTime: {$SLIDER.speed}*1000,
     animSpeed: {$SLIDER.speed}*1000/6,
