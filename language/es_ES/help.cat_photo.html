@@ -1,0 +1,21 @@
+<ul>
+  <li><b>[cat=xx]</b></li>
+</ul>
+<p>Esta etiqueta se inserta un álbum en la descripción, donde xx es el identificador del álbum.</p>
+
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Esta etiqueta le permite insertar una imagen de cualquier tamaño que desee, con:<br><br>
+- <code>id</code> el identificador de la foto<br>
+- <code>album</code> (opcional) el identificador del álbum padre<br>
+- <code>size</code> (optional) el tamaño de la foto, desde <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
+
+- <code>html</code> (optional) if set to <i>no</i> (opcional) si se establece en <i> no </i> la etiqueta sólo devuelve la dirección URL de la foto, sin HTML<br>
+- <code>link</code> (opcional) si se establece en <i> sí </i> la foto estará envuelta en un enlace a la página de la imagen</p>
+
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Lo mismo que el anterior, excepto que la foto es elegida al azar <code>album</code></p>

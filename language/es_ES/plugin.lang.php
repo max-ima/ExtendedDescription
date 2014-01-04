@@ -7,4 +7,7 @@ $lang['Multilingual descriptions'] = 'Descripciones multilingües';
 $lang['Extended descriptions'] = 'Descripciones extensas';
 $lang['Insert an album or a photo'] = 'Insertar una categoría o una imagen';
 
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Las descripciones se instalaron con éxito. Ahora usted puede utilizar todas sus funciones en la mayoría de los cuadros de texto de Piwigo.';
+$lang['Hide elements'] = 'Esconder elementos';
+$lang['Redirect elements'] = 'Redirigir elementos';
 ?>
