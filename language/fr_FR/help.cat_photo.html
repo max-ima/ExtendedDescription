@@ -1,0 +1,19 @@
+<ul>
+  <li><b>[cat=xx]</b></li>
+</ul>
+<p>Cette balise permet d'insérer un album dans la description, avec xx le numéro de l'album</p>
+
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Cette balise permet d'insérer une photo de n'importe quelle taille, avec:<br><br>
+- <code>id</code> le numéro de la photo<br>
+- <code>album</code> (facultatif) le numéro de l'album parent<br>
+- <code>size</code> (facultatif) la taille de la photo, parmi <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (facultatif) si <i>no</i>, la balise ne retourne que l'URL de la photo, sans HTML<br>
+- <code>link</code> (facultatif) si <i>yes</i>, la photo est cliquable, vers sa page</p>
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Même chose, sauf que la photo est prise aléatoirement dans <code>album</code></p>

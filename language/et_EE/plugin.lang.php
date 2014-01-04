@@ -20,6 +20,6 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['ExtendedDesc_help'] = 'Kasuta Laiendatud Kirjeldused tagi..';
+$lang['Use Extended Description tags...'] = 'Kasuta Laiendatud Kirjeldused tagi..';
 $lang['This category is redirected to %s'] = 'See album on ümber suunatud %s';
 ?>

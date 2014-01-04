@@ -1,0 +1,15 @@
+<p>Viacjazyčné popisy sú umiestnené medzi [lang=xx] a [/lang] kľúčovými slovami, kde xx je kód jazyka (napríklad en, sk, fr). Sú 2 špeciálne jazyky: [lang=default] a [lang=all]</p>
+
+<ul>
+  <li><b>Príklad</b>:<br>
+<code>[lang=default] východzí popis [/lang]<br>
+[lang=sk] popis v slovenčine [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+<p>Východzí popis bude použitý, ak popis v jazyku zvolenom používateľom nie je k dispozícii.
+Ak [lang=default] neexistuje, čokoľvek mimo [lang] kľúčových slov bude použité ako východzí popis.</p>
+
+<p><u>Špeciálny jazyk <i>all</i></u>: čokoľvek v [lang=all] bude vrátane popisu, kdekoľvek popísané v jazyku, ktorý zvilil používateľ.
+To je hlavne užitočné v HTML/JavaScript popise.</p>

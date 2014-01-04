@@ -1,0 +1,17 @@
+<p>Flerspråklig beskrivelse er plassert mellom [lang=xx] og [/lang] tagger, hvor xx er språk koden (for eksempel en, es, fr).
+Det er også 2 spesial språk : [lang=default] og [lang=all]</p>
+
+<ul>
+  <li><b>Eksampel</b>:<br>
+  <br>
+<code>[lang=default] standard beskrivelse [/lang]<br>
+[lang=en] beskrivelse på engelsk [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+<p>Standard beskrivelse vil bli bruktom beskrivelsen ikke er tilgjengelig på den tilkoblede brukers valgte språk.
+Om [lang=default] ikke eksisterer, alt utenom [lang] tagger vil bli satt som standard beskrivelse.</p>
+
+<p><u>Spesial språk <i>alle</i></u>: Alt inne i [lang=all] vil bli inkludert i beskrivelsen, uansett hvilket tilknyttet språ brukeren har.
+Dette er hovedsaklig nyttig for å inkludere HTML/JavaScript kode inne i en beskrivelse.</p>

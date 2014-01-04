@@ -1,0 +1,29 @@
+<p>Las balizas de descripción extensa permiten tener una descripción reducida para la presentación de una categoría,
+ una descripción extendida para la descripción que se exhibe sobre la página de la categoría,
+ o dos descripciones diferentes sobre la página de la categoría.</p>
+
+<p>La baliza &lt;!--more--&gt; permite añadir del texto a la descripción reducida.<br>
+La baliza &lt;!--complete--&gt; permite tener 2 descripciones distintas.<br>
+La baliza &lt;!--up-down--&gt; Permite tener una descripción alta y un descrition bajo.</p>
+
+<ul>
+  <li><b>Baliza &lt;!--more--&gt;</b></li>
+</ul>
+<code>descripción reducida &lt;!--more--&gt; descripción detallada</code>
+<p>Sólo la descripción reducida será fijada para la presentación de la categoría.
+Sobre la categoría misma, la descripción será la descripción reducida + la descripción detallada.</p>
+
+<ul>
+  <li><b>Baliza &lt;!--complete--&gt;</b></li>
+</ul>
+<code>descripción reducida &lt;!--complete--&gt; descripción detallada</code>
+<p>Sólo la descripción reducida será fijada para la presentación de la categoría.
+En cambio, sobre la categoría misma, la descripción únicamente será la descripción detallada, es decir 2 descripciones diferentes.</p>
+
+<ul>
+  <li><b>Baliza &lt;!--up-down--&gt;</b></li>
+</ul>
+<code>descripción alta &lt;!--up-down--&gt; descripción baja</code>
+<p>Sólo la descripción alta será fijada para la presentación de la categoría.
+Sobre la categoría misma, la descripción alta será fijada por encima de las miniaturas, mientras que
+ la descripción baja sea fijada debajo (en el emplazamiento normal de la descripción).</p>

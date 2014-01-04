@@ -1,0 +1,15 @@
+<p>Flerspråkiga beskrivningar placeras mellan [lang=xx] och [/lang] tag, där xx är språkkoden (t.ex. EN, ES, FR). Det finns också 2 särskilda språk : [lang=default] och [lang=all]</p>
+
+<ul>
+  <li><b>Exempel</b>:<br>
+<code>[lang=default] standard beskrivning [/lang]<br>
+[lang=sv] beskrivningen på engelska [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+<p>Den förvalda beskrivning ska användas om beskrivningen är inte tillgänglig i den anslutna användaren valda språket.
+om [lang=default] inte finns, något utanför [lang] taggar kommer att betraktas som standard beskrivning.</p>
+
+<p><u>speciella språk <i>alla</i></u>: något inuti [lang=all] kommer att ingå i beskrivningen, 0avsätt vad den anslutna användar definierade språk är.
+Detta är främst användbart att inkludera HTML/JavaScript-kod i en beskrivning.</p>

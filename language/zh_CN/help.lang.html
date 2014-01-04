@@ -1,0 +1,15 @@
+<p>多语言描述可放在[lang=xx] 和 [/lang] 标签之间, 其中 xx 是语言代码（如 en,es,cn,fr)。另外还有2个特别的语言: [lang=default] 和 [lang=all]</p>
+
+<ul>
+  <li><b>例如</b>:<br>
+<code>[lang=default] 默认描述 [/lang]<br>
+[lang=en] description in english [/lang]<br>
+[lang=de] deutsche Beschreibung [/lang]</code>
+</li>
+</ul>
+
+<p>
+如果用户选择的语言不能使用，将显示默认描述。如果没有 [lang=default] 标签，所有在 [lang] 外的将会以默认描述显示。
+</p>
+
+<p><u> 特别语言<i>all</i></u>: 所有在 [lang=all] 标签里的将被包含进描述，不论用户指定了什么语言。这个主要的用处是对于 HTML/JavaScript 等代码在描述里的显示。</p>

@@ -20,6 +20,6 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['ExtendedDesc_help'] = 'ใช้การอธิบายเพิ่มเติมสำหรับแท็ก';
+$lang['Use Extended Description tags...'] = 'ใช้การอธิบายเพิ่มเติมสำหรับแท็ก';
 $lang['This category is redirected to %s'] = 'อัลบั้มนี้จะถูกนำไปยัง %s';
 ?>

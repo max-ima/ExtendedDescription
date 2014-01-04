@@ -20,6 +20,9 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['ExtendedDesc_help'] = 'Bruk Extended Description stikkord...';
+$lang['Use Extended Description tags...'] = 'Bruk Extended Description stikkord...';
 $lang['This category is redirected to %s'] = 'Dette albumet er vidaresendt til %s';
+
+$lang['Multilingual descriptions'] = 'Fleirspråklege skildringar';
+$lang['Extended descriptions'] = 'Utvida skildringar';
 ?>

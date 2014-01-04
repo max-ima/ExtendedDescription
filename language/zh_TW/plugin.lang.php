@@ -20,6 +20,12 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['ExtendedDesc_help'] = '使用擴展說明標籤...';
+$lang['Use Extended Description tags...'] = '使用擴展說明標籤...';
 $lang['This category is redirected to %s'] = '此相簿中將被重定向到 %s';
+
+$lang['Multilingual descriptions'] = '';
+$lang['Extended descriptions'] = '';
+$lang['Insert an album or a photo'] = '';
+$lang['Hide elements'] = '';
+$lang['Redirect elements'] = '';
 ?>

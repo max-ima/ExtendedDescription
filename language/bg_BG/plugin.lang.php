@@ -21,5 +21,9 @@
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
 $lang['This category is redirected to %s'] = 'Този албум препраща към %s';
-$lang['ExtendedDesc_help'] = 'Използване Разширени описателни тагове...';
+$lang['Use Extended Description tags...'] = 'Използване Разширени описателни тагове...';
+
+$lang['Multilingual descriptions'] = 'Многоезиково описание';
+$lang['Extended descriptions'] = 'Разширени описания';
+$lang['Insert an album or a photo'] = 'Въведете Албум или Снимка';
 ?>

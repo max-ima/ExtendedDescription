@@ -1,0 +1,25 @@
+<p>Extended description tags make it possible to have a short description for the album outside the album,
+a longer description for the album inside the album page,
+or even 2 distinct descriptions inside the album page.</p>
+
+<p>tag &lt;!--more--&gt; adds text to the short description.<br>
+tag &lt;!--complete--&gt; lets the user have 2 distinct descriptions.<br>
+tag &lt;!--up-down--&gt; lets the user have a top and a bottom description.</p>
+
+<ul>
+  <li><b>&lt;!--more--&gt;</b></li>
+</ul>
+<code>short description &lt;!--more--&gt; long description</code>
+<p>Only the short description is displayed outside the album. On the album page, you will see short description + long description.</p>
+
+<ul>
+  <li><b>&lt;!--complete--&gt;</b></li>
+</ul>
+<code>short description &lt;!--complete--&gt; long description</code>
+<p>Only the short description is displayed outside the album. On the album page, you will only see the long description, so you have 2 distinct descriptions.</p>
+
+<ul>
+  <li><b>&lt;!--up-down--&gt;</b></li>
+</ul>
+<code>top description &lt;!--up-down--&gt; bottom description</code>
+<p>Only the top description is displayed outside the album.  On the album page, the top description is displayed above the thumbnails, the bottom description is displayed below the thumbnails.</p>
