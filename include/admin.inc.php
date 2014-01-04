@@ -19,8 +19,11 @@ function extdesc_admin_menu($menu)
 function add_ed_help()
 {
   global $page, $template;
+  
+  load_language('plugin.lang', EXTENDED_DESC_PATH);
+  $template->set_filename('extdesc_button', realpath(EXTENDED_DESC_PATH . 'template/help_button.tpl'));
+  $template->assign_var_from_handle('EXTDESC_BUTTON', 'extdesc_button');
 
-  $target = null;
   switch ($page['page'])
   {
     case 'album':
@@ -35,30 +38,17 @@ function add_ed_help()
     case 'notification_by_mail':
       $target = 'notification_by_mail';
       break;
-    case 'plugin':
-      if ($_GET['section'] == 'AdditionalPages/admin.php') $target = 'plugin_admin_content';
-      if ($_GET['section'] == 'header_manager/admin.php')  $target = 'header_manager';
-      break;
   }
 
-  if (!empty($target))
+  if (isset($target))
   {
-    load_language('plugin.lang', EXTENDED_DESC_PATH);
     $template->set_prefilter($target, 'add_ed_help_prefilter');
   }
 }
 
 function add_ed_help_prefilter($content)
 {
-  global $template;
-  $themeconf = $template->get_template_vars('themeconf');
-
-  $search = '</textarea>';
-  $add = '
-{combine_script id=\'core.scripts\' load=\'async\' path=\'themes/default/js/scripts.js\'}
-<a href="./admin/popuphelp.php?page=extended_desc" onclick="popuphelp(this.href); return false;" title="'.l10n('Use Extended Description tags...').'" style="vertical-align: middle; border: 0; margin: 0.5em;"><img src="'.$themeconf['admin_icon_dir'].'/help.png" class="button" alt="'.l10n('Use Extended Description tags...').'"></a>';
-
-  return str_replace($search, $search.$add, $content);
+  return str_replace('</textarea>', '</textarea> {$EXTDESC_BUTTON}', $content);
 }
 
 
