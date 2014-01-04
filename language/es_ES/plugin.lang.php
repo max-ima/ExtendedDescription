@@ -1,10 +1,10 @@
 <?php
 
 $lang['Use Extended Description tags...'] = 'Utilizar las balizas de...';
-$lang['This category is redirected to %s'] = 'Esta categoría está redirigida a %s';
+$lang['This category is redirected to %s'] = 'Esta categorÃ­a estÃ¡ redirigida a %s';
 
-$lang['Multilingual descriptions'] = 'Descripciones multilingües';
+$lang['Multilingual descriptions'] = 'Descripciones multilingÃ¼es';
 $lang['Extended descriptions'] = 'Descripciones extensas';
-$lang['Insert an album or a photo'] = 'Insertar una categoría o una imagen';
+$lang['Insert an album or a photo'] = 'Insertar una categorÃ­a o una imagen';
 
 ?>
