@@ -26,4 +26,7 @@ $lang['This category is redirected to %s'] = 'Este álbum redirecciona para %s';
 $lang['Multilingual descriptions'] = 'Descrições multi-idioma';
 $lang['Extended descriptions'] = 'Descrições extensas';
 $lang['Insert an album or a photo'] = 'Inserir um album ou uma foto';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Descrição alargada foi instalada com sucesso. Agora pode usar todas as suas características na maioria das caixas de texto de Piwigo.';
+$lang['Hide elements'] = 'Ocultar elementos';
+$lang['Redirect elements'] = 'Redirecionar elementos';
 ?>
