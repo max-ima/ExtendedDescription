@@ -22,4 +22,8 @@
 // +-----------------------------------------------------------------------+
 $lang['ExtendedDesc_help'] = 'Uzi etikedojn por etendita priskribo...';
 $lang['This category is redirected to %s'] = 'Tiu fotaro alidirektas al %s';
+
+$lang['Multilingual descriptions'] = 'Pluralingvaj priskriboj';
+$lang['Extended descriptions'] = 'Etenditaj priskriboj';
+$lang['Insert an album or a photo'] = 'Enŝovi fotaron aŭ foton';
 ?>
