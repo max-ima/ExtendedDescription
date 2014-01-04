@@ -26,4 +26,7 @@ $lang['This category is redirected to %s'] = 'Αυτό το λεύκωμα αν�
 $lang['Multilingual descriptions'] = 'Πολυγλωσσικές Περιγραφές';
 $lang['Extended descriptions'] = 'Εκτεταμένες Περιγραφές';
 $lang['Insert an album or a photo'] = 'Εισάγετε ένα λεύκωμα ή μια φωτογραφία';
+$lang['Redirect elements'] = 'Ανακατεύθυνση στοιχείων';
+$lang['Hide elements'] = 'Απόκρυψη στοιχείων';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description εγκαταστάθηκε με επιτυχία. Τώρα μπορείτε να χρησιμοποιήσετε όλες τις δυνατότητες του στα πλαίσια κειμένου του Piwigo.';
 ?>
