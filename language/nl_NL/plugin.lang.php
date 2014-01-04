@@ -20,10 +20,13 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['Use Extended Description tags...'] = 'Gebruik uitgebreide omschrijvings labels..';
+$lang['Use Extended Description tags...'] = 'Gebruik Uitgebreide Beschrijvings-labels...';
 $lang['This category is redirected to %s'] = 'Dit album wordt doorgestuurd naar %s';
 
-$lang['Multilingual descriptions'] = 'Multilanguage beschrijvingen';
-$lang['Extended descriptions'] = 'Uitgebreide omschrijvingen';
+$lang['Multilingual descriptions'] = 'Meertalige beschrijvingen';
+$lang['Extended descriptions'] = 'Uitgebreide Beschrijvingen';
 $lang['Insert an album or a photo'] = 'Invoegen van foto of album';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Uitgebreide Beschrijving is met succes geïnstalleerd. U kunt nu alle functies gebruiken in de meeste tekstvakken van Piwigo.';
+$lang['Hide elements'] = 'Verberg elementen';
+$lang['Redirect elements'] = 'Stuur elementen door';
 ?>
