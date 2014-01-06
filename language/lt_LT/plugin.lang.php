@@ -21,5 +21,11 @@
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
 $lang['This category is redirected to %s'] = 'Šis albumas bus nukreiptas į %s';
-$lang['ExtendedDesc_help'] = 'Naudoti Išplėstinio Aprašymo žymas...';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Išplėstiniai Aprašymai sėkmingai instaliuoti. Dabar galite naudoti visas jų galimybes daugumoje Piwigo teksto laukelių.';
+$lang['Use Extended Description tags...'] = 'Naudokite Išplėstinių Aprašymų žymas...';
+$lang['Extended descriptions'] = 'Išplėstiniai aprašymai';
+$lang['Hide elements'] = 'Slėpti elementus';
+$lang['Insert an album or a photo'] = 'Įterpti albumą ar nuotrauką';
+$lang['Multilingual descriptions'] = 'Daugiakalbiai aprašymai';
+$lang['Redirect elements'] = 'Nukreipti elementus';
 ?>
