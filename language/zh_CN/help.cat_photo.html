@@ -1,0 +1,19 @@
+<ul>
+  <li><b>[cat=xx]</b></li>
+</ul>
+<p>此tag标签可在描述中插入一个相册，xx为相册id。</p>
+
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>此tag标签可在描述中插入一张任意尺寸的图片：<br><br>
+- <code>id</code> 图片id <br>
+- <code>album</code> (可选) 当前相册id <br>
+- <code>size</code> (可选) 图片尺寸，有 <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (可选) 如果设为 <i>no</i> 则tag标签仅给出图片的URL，不包含HTML<br>
+- <code>link</code> (可选) 如果设为 <i>yes</i> 则点击图片可进入该图片所在页面</p>
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>同上，只是图片是从<code>album</code>中随机抽选的</p>
