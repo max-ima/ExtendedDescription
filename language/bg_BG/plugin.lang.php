@@ -26,4 +26,7 @@ $lang['Use Extended Description tags...'] = 'Използване Разшире
 $lang['Multilingual descriptions'] = 'Многоезиково описание';
 $lang['Extended descriptions'] = 'Разширени описания';
 $lang['Insert an album or a photo'] = 'Въведете Албум или Снимка';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description се инсталира успешно. Вече може да използвате всички възможности в повечето текстови полета на Piwigo.';
+$lang['Hide elements'] = 'Скриване на елементи';
+$lang['Redirect elements'] = 'Пренасочване на елементи';
 ?>
