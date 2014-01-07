@@ -22,4 +22,11 @@
 // +-----------------------------------------------------------------------+
 $lang['This category is redirected to %s'] = '  %sاین البوم بازگشت به ';
 $lang['Use Extended Description tags...'] = 'استفاده از تگ های گسترده';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'موضوعات ویژه بدرستی نصب شد. 
+حالا شما می توانید تمام ویژگی های آن است در اکثر جعبه متن از Piwigo استفاده کنید.';
+$lang['Extended descriptions'] = 'موضوعات گسترده';
+$lang['Hide elements'] = 'مخفی کردن عناصر';
+$lang['Insert an album or a photo'] = 'جادادن یک عکس ویا تصویر';
+$lang['Multilingual descriptions'] = 'افزود موضوعات چند زبانه';
+$lang['Redirect elements'] = 'تغیرمسیر ';
 ?>
