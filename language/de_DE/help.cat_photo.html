@@ -1,0 +1,19 @@
+<ul>
+  <li><b>[cat=xx]</b></li>
+</ul>
+<p>This tag inserts an album in the description, where xx is the album identifier.</p>
+
+<ul>
+  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>This tag allows you to insert one picture of any size you want, with:<br><br>
+- <code>id</code> the photo identifier<br>
+- <code>album</code> (optional) the parent album identifier<br>
+- <code>size</code> (optional) the size of the photo, from <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
+- <code>html</code> (optional) if set to <i>no</i> the tag only returns the URL of the photo, without HTML<br>
+- <code>link</code> (optional) if set to <i>yes</i> the photo is wrapped into a link to the picture page</p>
+
+<ul>
+  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
+</ul>
+<p>Same thing as above, except that the photo is chosen randomly from <code>album</code></p>
