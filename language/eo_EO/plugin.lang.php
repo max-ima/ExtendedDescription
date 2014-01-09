@@ -20,10 +20,13 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['ExtendedDesc_help'] = 'Uzi etikedojn por etendita priskribo...';
 $lang['This category is redirected to %s'] = 'Tiu fotaro alidirektas al %s';
 
 $lang['Multilingual descriptions'] = 'Pluralingvaj priskriboj';
 $lang['Extended descriptions'] = 'Etenditaj priskriboj';
 $lang['Insert an album or a photo'] = 'Enŝovi fotaron aŭ foton';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Etendita priskribo sukcese instaliĝis. Nun vi povas uzi ĉiujn funkciojn en plejparte da la tekstujoj de Piwigo.';
+$lang['Hide elements'] = 'Kaŝi elementojn';
+$lang['Redirect elements'] = 'Alidirekti elementojn';
+$lang['Use Extended Description tags...'] = 'Uzi etikedojn kun etendita priskribo...';
 ?>
