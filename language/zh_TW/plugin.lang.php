@@ -28,4 +28,5 @@ $lang['Extended descriptions'] = '';
 $lang['Insert an album or a photo'] = '';
 $lang['Hide elements'] = '';
 $lang['Redirect elements'] = '';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = '擴展說明已成功安裝。現在，您可以使用在Piwigo的大多數文本框裡的所有功能。';
 ?>
