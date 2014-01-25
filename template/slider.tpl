@@ -67,7 +67,7 @@
   });
 
   $slider.parent().css({ldelim}
-    height: {$slider_full_height}{if $SLIDER.control_thumbs}+20+{$SLIDER.thumbs_size}{else if $SLIDER.control}+40{/if},
+    height: {$slider_full_height}{if $SLIDER.control_thumbs}+20+{$SLIDER.thumbs_size}{elseif $SLIDER.control}+40{/if},
     width: {$slider_full_width}
   });
   $slider.css({ldelim}
