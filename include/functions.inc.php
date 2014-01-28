@@ -257,7 +257,7 @@ function get_slider($param)
     'random' =>    array('yes|no', 'no'),
     'list' =>      array('[\d,]+', null),
     'size' =>      array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
-    'speed' =>     array('\d+', 3),
+    'speed' =>     array('\d+', 5),
     'title' =>     array('yes|no', 'no'),
     'effect' =>    array('[a-zA-Z]+', 'fade'),
     'arrows' =>    array('yes|no', 'yes'),

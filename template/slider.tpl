@@ -1,14 +1,14 @@
-{combine_script id='jquery.nivo.slider' path=$EXTENDED_DESC_PATH|cat:'template/nivoslider/jquery.nivo.slider.pack.js' require='jquery' load='footer'}
+{combine_script id='jquery.nivo.slider' path=$EXTENDED_DESC_PATH|cat:'template/nivoslider/jquery.nivo.slider.js' require='jquery' load='footer'}
 {combine_css id='nivoslider' path=$EXTENDED_DESC_PATH|cat:'template/nivoslider/nivo-slider.css'}
 {combine_css id='nivoslider_theme' path=$EXTENDED_DESC_PATH|cat:'template/nivoslider/default.css'}
 
+{if $SLIDER.control_thumbs}
 {html_style}
-#slider{$SLIDER.id} {ldelim} margin:0 auto; }
-#slider{$SLIDER.id} .nivoSlider img {ldelim} border:none !important; }
 #slider{$SLIDER.id} .nivo-controlNav.nivo-thumbs-enabled img {ldelim}
   width: {$SLIDER.thumbs_size}px; height: {$SLIDER.thumbs_size}px;
 }
 {/html_style}
+{/if}
 
 {if $SLIDER.elastic}
 {assign var=slider_full_height value=0}
