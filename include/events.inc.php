@@ -128,38 +128,27 @@ function get_extended_desc($desc, $param='')
   $replacements[] = '';
 
   // [cat=xx]
-  $patterns[] = '#\[cat=(\d*)\]#ie';
-  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_cat_thumb("$1")';
-
   // [img=xx.yy,xx.yy,xx.yy;left|right|;name|titleName|]
-  $patterns[] = '#\[img([^\]]*)\]#ie';
-  $replacements[] = ($param == 'subcatify_category_description') ? '' : '[img] must be replaced by [photo]';
-
   // [photo id=xx album=yy size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
-  $patterns[] = '#\[photo ([^\]]+)\]#ie';
-  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_photo_sized("$1")';
-
   // [random album=xx size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
-  $patterns[] = '#\[random([^\]]*)\]#ie';
-  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'extdesc_get_random_photo("$1")';
-
   // [slider album=xx nb_images=yy random=yes|no list=aa,bb,cc size=SQ|TH|XXS|XS|S|M|L|XL|XXL speed=z title=yes|no effect=... arrows=yes|no control=yes|no|thumb elastic=yes|no thumbs_size=dd]
-  $patterns[] = '#\[slider ([^\]]+)\]#ie';
-  $replacements[] = ($param == 'subcatify_category_description') ? '' : 'get_slider("$1")';
+  $generic_pattern = '#\[(cat=|img|photo|random|slider)([^\]]*)\]#i';
 
   // <!--complete-->, <!--more--> et <!--up-down-->
   switch ($param)
   {
     case 'subcatify_category_description' :
       $patterns[] = '#^(.*?)(' . preg_quote($conf['ExtendedDescription']['complete']) . '|' . preg_quote($conf['ExtendedDescription']['more']) . '|' . preg_quote($conf['ExtendedDescription']['up-down']) . ').*$#is';
-      $replacements[] = '$1';
+      $replacement = '$1';
       $desc = preg_replace($patterns, $replacements, $desc);
+      $desc = preg_replace($generic_pattern, '', $desc);
       break;
 
     case 'main_page_category_description' :
       $patterns[] = '#^.*' . preg_quote($conf['ExtendedDescription']['complete']) . '|' . preg_quote($conf['ExtendedDescription']['more']) . '#is';
       $replacements[] = '';
       $desc = preg_replace($patterns, $replacements, $desc);
+      $desc = preg_replace_callback($generic_pattern, 'extended_desc_generic_callback', $desc);
 
       if (substr_count($desc, $conf['ExtendedDescription']['up-down']))
       {
@@ -169,10 +158,36 @@ function get_extended_desc($desc, $param='')
       break;
 
     default:
-      $desc = preg_replace($patterns, $replacements, $desc);
+      $desc = preg_replace_callback($generic_pattern, 'extended_desc_generic_callback', $desc);
   }
 
   return $desc;
+}
+
+function extended_desc_generic_callback($matches)
+{
+  switch ($matches[1])
+  {
+    case 'cat=':
+      return get_cat_thumb($matches[2]);
+      break;
+      
+    case 'img':
+      return '[img] must be replaced by [photo]';
+      break;
+      
+    case 'photo':
+      return get_photo_sized($matches[2]);
+      break;
+      
+    case 'random':
+      return extdesc_get_random_photo($matches[2]);
+      break;
+      
+    case 'slider':
+      return get_slider($matches[2]);
+      break;
+  }
 }
 
 /**
@@ -194,10 +209,14 @@ function add_bottom_description()
 {
   global $template, $conf;
 
-  $template->concat('PLUGIN_INDEX_CONTENT_END', '
-    <div class="additional_info">
-    ' . $conf['ExtendedDescription']['bottom_comment'] . '
-    </div>');
+  if (!empty($conf['ExtendedDescription']['bottom_comment']))
+  {
+    $template->concat('PLUGIN_INDEX_CONTENT_END', '
+      <div class="additional_info">
+      ' . $conf['ExtendedDescription']['bottom_comment'] . '
+      </div>'
+      );
+  }
 }
 
 /**

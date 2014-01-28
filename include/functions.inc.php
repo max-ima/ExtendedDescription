@@ -8,6 +8,12 @@ function get_cat_thumb($elem_id)
 {
   global $template, $user;
 
+  $elem_id = intval($elem_id);
+  if ($elem_id<=0)
+  {
+    return '';
+  }
+
   $query = '
 SELECT
   cat.id,
@@ -192,7 +198,7 @@ SELECT id, category_id
     JOIN '.IMAGE_CATEGORY_TABLE.' ON image_id = id';
   if (empty($params['album']))
   {
-    $query = '
+    $query.= '
   WHERE 1=1 '
       .get_sql_condition_FandF(array(
         'forbidden_categories' => 'category_id',
