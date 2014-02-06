@@ -8,7 +8,7 @@ function get_user_language_desc($desc, $user_lang=null)
 {
   global $user;
 
-  if (is_null($user_lang))
+  if (!is_string($user_lang))
   {
     $user_lang = $user['language'];
   }
