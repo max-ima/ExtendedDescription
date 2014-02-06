@@ -139,7 +139,7 @@ function get_extended_desc($desc, $param='')
   {
     case 'subcatify_category_description' :
       $patterns[] = '#^(.*?)(' . preg_quote($conf['ExtendedDescription']['complete']) . '|' . preg_quote($conf['ExtendedDescription']['more']) . '|' . preg_quote($conf['ExtendedDescription']['up-down']) . ').*$#is';
-      $replacement = '$1';
+      $replacements[] = '$1';
       $desc = preg_replace($patterns, $replacements, $desc);
       $desc = preg_replace($generic_pattern, '', $desc);
       break;
