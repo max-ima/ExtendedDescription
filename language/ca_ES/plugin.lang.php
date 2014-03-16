@@ -20,10 +20,13 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['Use Extended Description tags...'] = 'Utilitzar etiquetes ampliant la descripció...';
-$lang['This category is redirected to %s'] = 'Àlbum redirigit a %s';
+$lang['Use Extended Description tags...'] = 'Utilitza les etiquetes Extended Description ...';
+$lang['This category is redirected to %s'] = 'Aquest àlbum està redirigit a %s';
 
 $lang['Multilingual descriptions'] = 'Descripcions multilingües';
 $lang['Extended descriptions'] = 'Descripcions extenses';
-$lang['Insert an album or a photo'] = 'Insertar un àlbum o una imatge';
+$lang['Insert an album or a photo'] = 'Insereix un àlbum o una imatge';
+$lang['Redirect elements'] = 'Redirigeix elements';
+$lang['Hide elements'] = 'Oculta els elements';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description s\'ha instal·lat correctament. Ara podeu utilitzar aquesta funcionalitat en la majoria de les caixes de text de Piwigo.';
 ?>
