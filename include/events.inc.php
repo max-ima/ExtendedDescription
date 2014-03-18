@@ -4,6 +4,11 @@ defined('EXTENDED_DESC_PATH') or die('Hacking attempt!');
 /**
  * Parse [lang] tags
  */
+function parse_lang_tag($desc)
+{
+  return get_user_language_desc($desc);
+}
+
 function get_user_language_desc($desc, $user_lang=null)
 {
   global $user;
