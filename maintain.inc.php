@@ -14,7 +14,7 @@ function plugin_activate()
       $datas,
       array(
         'id' => $row['id'],
-        'url_name' => trigger_event('render_tag_url', $row['name'])
+        'url_name' => trigger_change('render_tag_url', $row['name'])
         )
       );
   }

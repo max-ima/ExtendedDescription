@@ -53,11 +53,11 @@ WHERE cat.id = ' . $elem_id . ';';
                                   '<br />'
                                 ),
         'DESCRIPTION' =>
-          trigger_event('render_category_literal_description',
-            trigger_event('render_category_description',
+          trigger_change('render_category_literal_description',
+            trigger_change('render_category_description',
               @$category['comment'],
               'subcatify_category_description')),
-        'NAME'  => trigger_event(
+        'NAME'  => trigger_change(
                      'render_category_name',
                      $category['name'],
                      'subcatify_category_name'
