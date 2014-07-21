@@ -71,6 +71,16 @@ function ed_get_all_alt_names($arr, $name)
 }
 
 /**
+ * Where clause to find tag by name
+ */
+function ed_name_like_where($where, $str)
+{
+  $where[] = 'name LIKE \''.$str.'[lang=%\'
+  OR name LIKE \'%]'.$str.'[/lang]%\'';
+  return $where;
+}
+
+/**
  * Parse all ED tags
  */
 function get_extended_desc($desc, $param='')

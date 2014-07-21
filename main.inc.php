@@ -50,6 +50,7 @@ add_event_handler ('render_category_description', 'get_extended_desc', EVENT_HAN
 add_event_handler ('render_tag_name',   'parse_lang_tag');
 add_event_handler ('render_tag_url',    'get_user_language_tag_url', 40);
 add_event_handler ('get_tag_alt_names', 'ed_get_all_alt_names', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
+add_event_handler ('get_tag_name_like_where', 'ed_name_like_where');
 // element
 add_event_handler ('render_element_name',        'parse_lang_tag');
 add_event_handler ('render_element_description', 'get_extended_desc', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
