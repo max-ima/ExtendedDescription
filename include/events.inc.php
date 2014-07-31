@@ -81,6 +81,28 @@ function ed_name_like_where($where, $str)
 }
 
 /**
+ * Parse [logged] tag
+ */
+function get_loggedin_desc($desc)
+{
+  $patterns[] = '#\[logged(?:=true|=yes)?\](.*?)\[/logged\]#is';
+  $patterns[] = '#\[logged(?:=false|=no)\](.*?)\[/logged\]#is';
+  
+  if (is_a_guest())
+  {
+    $replacements[] = '';
+    $replacements[] = '\\1';
+  }
+  else
+  {
+    $replacements[] = '\\1';
+    $replacements[] = '';
+  }
+
+  return preg_replace($patterns, $replacements, $desc);
+}
+
+/**
  * Parse all ED tags
  */
 function get_extended_desc($desc, $param='')
@@ -136,6 +158,7 @@ function get_extended_desc($desc, $param='')
     }
   }
 
+  $desc = get_loggedin_desc($desc);
   $desc = get_user_language_desc($desc);
 
   // Remove unparsed redirect tag
@@ -147,7 +170,8 @@ function get_extended_desc($desc, $param='')
   // [photo id=xx album=yy size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
   // [random album=xx size=SQ|TH|XXS|XS|S|M|L|XL|XXL html=yes|no link=yes|no]
   // [slider album=xx nb_images=yy random=yes|no list=aa,bb,cc size=SQ|TH|XXS|XS|S|M|L|XL|XXL speed=z title=yes|no effect=... arrows=yes|no control=yes|no|thumb elastic=yes|no thumbs_size=dd]
-  $generic_pattern = '#\[(cat=|img|photo|random|slider)([^\]]*)\]#i';
+  // [login-link html=yes|no text="log in[lang=fr]connectez-vous[/lang]"]
+  $generic_pattern = '#\[(cat=|img|photo|random|slider|login-link)([^\]]*)\]#i';
 
   // <!--complete-->, <!--more--> et <!--up-down-->
   switch ($param)
@@ -184,7 +208,7 @@ function extended_desc_generic_callback($matches)
   switch ($matches[1])
   {
     case 'cat=':
-      return get_cat_thumb($matches[2]);
+      return extdesc_get_cat_thumb($matches[2]);
       break;
       
     case 'img':
@@ -192,7 +216,7 @@ function extended_desc_generic_callback($matches)
       break;
       
     case 'photo':
-      return get_photo_sized($matches[2]);
+      return extdesc_get_photo_sized($matches[2]);
       break;
       
     case 'random':
@@ -200,7 +224,11 @@ function extended_desc_generic_callback($matches)
       break;
       
     case 'slider':
-      return get_slider($matches[2]);
+      return extdesc_get_slider($matches[2]);
+      break;
+    
+    case 'login-link':
+      return extdesc_get_login_link($matches[2]);
       break;
   }
 }

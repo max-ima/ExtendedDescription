@@ -17,6 +17,7 @@ $template->assign(array(
     'slider' =>     load_language('help.slider.html', EXTENDED_DESC_PATH, array('return'=>true)),
     'hide' =>       load_language('help.hide.html', EXTENDED_DESC_PATH, array('return'=>true)),
     'redirect' =>   load_language('help.redirect.html', EXTENDED_DESC_PATH, array('return'=>true)),
+    'logged' =>     load_language('help.logged.html', EXTENDED_DESC_PATH, array('return'=>true)),
     ),
   ));
 

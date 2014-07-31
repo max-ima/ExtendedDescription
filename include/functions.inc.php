@@ -4,7 +4,7 @@ defined('EXTENDED_DESC_PATH') or die('Hacking attempt!');
 /**
  * Return html code for  category thumb
  */
-function get_cat_thumb($elem_id)
+function extdesc_get_cat_thumb($elem_id)
 {
   global $template, $user;
 
@@ -77,10 +77,10 @@ WHERE cat.id = ' . $elem_id . ';';
  * @int    id:    picture id
  * @int    album: album to display picture in    (default: null)
  * @string size:  picture size                   (default: M)
- * @string html:  return complete html structure (default: yes)
- * @string link:  add a link to the picture      (default: yes)
+ * @bool   html:  return complete html structure (default: true)
+ * @bool   link:  add a link to the picture      (default: true)
  */
-function get_photo_sized($param)
+function extdesc_get_photo_sized($param)
 {
   global $template;
 
@@ -88,8 +88,8 @@ function get_photo_sized($param)
     'id' =>    array('\d+', null),
     'album' => array('\d+', null),
     'size' =>  array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
-    'html' =>  array('yes|no', 'yes'),
-    'link' =>  array('yes|no', 'yes'),
+    'html' =>  array('boolean', true),
+    'link' =>  array('boolean', true),
     );
 
   $params = extdesc_parse_parameters($param, $default_params);
@@ -98,8 +98,6 @@ function get_photo_sized($param)
   if (empty($params['id'])) return 'missing picture id';
 
   // parameters
-  $params['link'] = $params['link']=='no' ? false : true;
-  $params['html'] = $params['html']=='no' ? false : true;
   $deriv_type = extdesc_get_deriv_type($params['size']);
 
   // get picture
@@ -170,8 +168,8 @@ SELECT id, name, permalink
  *
  * @int    album: select picture from this album (default: all)
  * @string size:  picture size                   (default: M)
- * @string html:  return complete html structure (default: yes)
- * @string link:  add a link to the picture      (default: no)
+ * @bool   html:  return complete html structure (default: true)
+ * @bool   link:  add a link to the picture      (default: false)
  */
 function extdesc_get_random_photo($param)
 {
@@ -179,8 +177,8 @@ function extdesc_get_random_photo($param)
     'album' => array('\d+', null),
     'cat' =>   array('\d+', null), // historical
     'size' =>  array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
-    'html' =>  array('yes|no', 'yes'),
-    'link' =>  array('yes|no', 'no'),
+    'html' =>  array('boolean', true),
+    'link' =>  array('boolean', false),
     );
 
   $params = extdesc_parse_parameters($param, $default_params);
@@ -223,7 +221,7 @@ SELECT id, category_id
   if (pwg_db_num_rows($result))
   {
     list($params['id'], $params['album']) = pwg_db_fetch_row($result);
-    return get_photo_sized($params);
+    return extdesc_get_photo_sized($params);
   }
 
   return '';
@@ -240,29 +238,29 @@ SELECT id, category_id
  *
  * @string size:      picture size                      (default: M)
  * @int    speed:     slideshow duration                (default: 3)
- * @string title:     display picture name              (default: no)
+ * @bool   title:     display picture name              (default: false)
  * @string effect:    transition effect                 (default: fade)
- * @string arrows:    display navigation arrows         (default: yes)
- * @string control:   display navigation bar            (default: yes)
- * @string elastic:   adapt slider size to each picture (default: yes)
+ * @bool   arrows:    display navigation arrows         (default: true)
+ * @string control:   display navigation bar            (default: true)
+ * @bool   elastic:   adapt slider size to each picture (default: true)
  * @int thumbs_size:  size of thumbnails if control=thumb (default: 80)
  */
-function get_slider($param)
+function extdesc_get_slider($param)
 {
   global $template, $conf;
 
   $default_params = array(
     'album' =>     array('\d+', null),
     'nb_images' => array('\d+', 10),
-    'random' =>    array('yes|no', 'no'),
+    'random' =>    array('boolean', false),
     'list' =>      array('[\d,]+', null),
     'size' =>      array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
     'speed' =>     array('\d+', 5),
-    'title' =>     array('yes|no', 'no'),
+    'title' =>     array('boolean', false),
     'effect' =>    array('[a-zA-Z]+', 'fade'),
-    'arrows' =>    array('yes|no', 'yes'),
-    'control' =>   array('yes|no|thumb', 'yes'),
-    'elastic' =>   array('yes|no', 'yes'),
+    'arrows' =>    array('boolean', true),
+    'control' =>   array('yes|no|true|false|thumb', true),
+    'elastic' =>   array('boolean', true),
     'thumbs_size' => array('\d+', 80),
     );
 
@@ -279,18 +277,14 @@ function get_slider($param)
   // parameters
   if ($params['control'] === 'thumb')
   {
-    $params['control'] = 'yes';
+    $params['control'] = true;
     $params['control_thumbs'] = true;
   }
   else
   {
+    $params['control'] = filter_var($params['control'], FILTER_VALIDATE_BOOLEAN);
     $params['control_thumbs'] = false;
   }
-  $params['arrows'] = $params['arrows']==='yes';
-  $params['control'] = $params['control']==='yes';
-  $params['elastic'] = $params['elastic']==='yes';
-  $params['title'] = $params['title']==='yes';
-  $params['random'] = $params['random']==='yes';
 
   $tpl_vars = $params;
 
@@ -405,6 +399,45 @@ SELECT *
 }
 
 /**
+ * Return html code for login link
+ *
+ * @bool   html: return complete html structure (default: true)
+ * @string text: link text, translatable        (default: Login)
+ */
+function extdesc_get_login_link($param)
+{
+  $default_params = array(
+    'html' => array('boolean', true),
+    'text' => array('".*"', ''),
+    );
+
+  $params = extdesc_parse_parameters($param, $default_params);
+  
+  $url =
+      get_root_url().'identification.php?redirect='
+      .urlencode(urlencode($_SERVER['REQUEST_URI']));
+  
+  if ($params['html'])
+  {
+    if (empty($params['text']))
+    {
+      $params['text'] = l10n('Login');
+    }
+    else
+    {
+      $params['text'] = get_user_language_desc(mb_substr($params['text'], 1, -1));
+    }
+  
+    return '<a href="' . $url . '">' . $params['text'] . '</a>';
+  }
+  else
+  {
+    return $url;
+  }
+  
+}
+
+/**
  * Parse tags parameters
  */
 function extdesc_parse_parameters($param, $default_params)
@@ -418,9 +451,20 @@ function extdesc_parse_parameters($param, $default_params)
 
   foreach ($default_params as $name => $value)
   {
+    $is_bool = false;
+    if ($value[0] == 'boolean')
+    {
+      $is_bool = true;
+      $value[0] = 'yes|no|true|false';
+    }
+    
     if (preg_match('#'.$name.'=('.$value[0].')#', $param, $matches))
     {
       $params[$name] = $matches[1];
+      if ($is_bool)
+      {
+        $params[$name] = filter_var($params[$name], FILTER_VALIDATE_BOOLEAN);
+      }
     }
     else
     {

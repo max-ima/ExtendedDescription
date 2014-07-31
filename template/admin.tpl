@@ -28,3 +28,8 @@ fieldset, h4 { text-align:left !important; }
   <legend>{'Redirect elements'|translate}</legend>
   {$EXTDESC_HELP.redirect}
 </fieldset>
+
+<fieldset>
+  <legend>{'Login link & logged in block'|translate}</legend>
+  {$EXTDESC_HELP.logged}
+</fieldset>

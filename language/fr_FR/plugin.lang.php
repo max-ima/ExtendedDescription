@@ -9,5 +9,4 @@ $lang['Extended descriptions'] = 'Descriptions étendues';
 $lang['Insert an album or a photo'] = 'Insérer un album ou une photo';
 $lang['Hide elements'] = 'Masquer un élément';
 $lang['Redirect elements'] = 'Rediriger un élément';
-
-?>
+$lang['Login link & logged in block'] = 'Lien de connexion & block authentifié';
