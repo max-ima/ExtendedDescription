@@ -25,8 +25,8 @@ $lang['This category is redirected to %s'] = 'Dit album wordt doorgestuurd naar 
 
 $lang['Multilingual descriptions'] = 'Meertalige beschrijvingen';
 $lang['Extended descriptions'] = 'Uitgebreide Beschrijvingen';
-$lang['Insert an album or a photo'] = 'Invoegen van foto of album';
+$lang['Insert an album or a photo'] = 'Voeg een album of een foto toe';
 $lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Uitgebreide Beschrijving is met succes geïnstalleerd. U kunt nu alle functies gebruiken in de meeste tekstvakken van Piwigo.';
 $lang['Hide elements'] = 'Verberg elementen';
 $lang['Redirect elements'] = 'Stuur elementen door';
-?>
+$lang['Login link & logged in block'] = 'Aanmeld-link & Aangemeld-blok';
