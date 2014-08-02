@@ -1,19 +1,29 @@
-<ul>
-  <li><b>[cat=xx]</b></li>
-</ul>
-<p>Този таг добавя албум в описанието, където xx е номера (индетификатора) на албума.</p>
+<h4>[photo id=xx]</h4>
+<p>Този таг ви позволява да добавяте една снимка от какъвто размер искате.</p>
 
+<b>Options:</b>
 <ul>
-  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+  <li><code>id</code> Номер на снимка</li>
+  <li><code>album</code> (optional) под албум</li>
+  <li><code>size</code> (optional) размер на снимка, от <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i></li>
+  <li><code>html</code> (optional) Ако е <code>false</code> тага само връщя URL адреса на снимката, без HTML</li>
+  <li><code>link</code> (optional) Ако е <code>true</code> снимката е свързана с линк към страница</li>
 </ul>
-<p>Този таг ви позволява да добавяте една снимка от какъвто размер искате, с:<br><br>
-- <code>id</code> Номер на снимка<br>
-- <code>album</code> (optional) под албум <br>
-- <code>size</code> (optional) размер на снимка, от <i>{SQ, TH, XXS, XS, S, M, L, XL, XXL}</i><br>
-- <code>html</code> (optional) Ако е <i>no</i> тага само връщя URL адреса на снимката, без HTML<br>
-- <code>link</code> (optional) Ако е <i>yes</i> снимката е свързана с линк към страница</p>
 
-<ul>
-  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
-</ul>
-<p>Също като горното но е свързан с случайна снимка от линка за албум <code>album</code></p>
+<pre>
+[photo id=46]
+
+[photo id=46 album=22 size=M html=true link=true]
+</pre>
+
+<h4>[random album=xx]</h4>
+<p>Също като горното но е свързан с случайна снимка от линка за албум <code>album</code>.</p>
+
+<pre>
+[random]
+
+[random album=123 size=M html=yes link=yes]
+</pre>
+
+<h4>[cat=xx]</h4>
+<p>Този таг добавя албум в описанието, където <code>xx</code> е номера (индетификатора) на албума.</p>

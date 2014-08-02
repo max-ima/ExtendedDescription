@@ -1,19 +1,29 @@
-<ul>
-  <li><b>tag [cat=xx]</b></li>
-</ul>
-<p>tag'et indsætter et album i beskrivelsen, hvor xx er albumidentikatoren.</p>
+<h4>[photo id=xx]</h4>
+<p>Tag'et giver mulighed for at indsætte et billede i enhver størrelse.</p>
 
+<b>Indstillinger:</b>
 <ul>
-  <li><b>[photo id=xx album=yy size=M html=yes link=yes]</b></li>
+  <li><code>id</code> billedets id</li>
+  <li><code>album</code> (valgfrit) id for det album billedet er placeret i</li>
+  <li><code>size</code> (valgfrit) størrelse på billedet, vælg mellem <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i></li>
+  <li><code>html</code> (valgfrit) hvis værdien sættes til <code>false</code> returnerer tag'en kun billed-URL'en, uden HTML</li>
+  <li><code>link</code> (valgfrit) hvis værdien sættes til <code>true</code> bliver billedet forsynet med et link til billedsiden</li>
 </ul>
-<p>Tag'et giver mulighed for at indsætte et billede i enhver størrelse med:<br><br>
-- <code>id</code> billedets id<br>
-- <code>album</code> (valgfrit) id for det album billedet er placeret i<br>
-- <code>size</code> (valgfrit) størrelse på billedet, vælg mellem <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
-- <code>html</code> (valgfrit) hvis værdien sættes til <i>no</i> returnerer tag'en kun billed-URL'en, uden HTML<br>
-- <code>link</code> (valgfrit) hvis værdien sættes til <i>yes</i> bliver billedet forsynet med et link til billedsiden</p>
 
-<ul>
-  <li><b>[random album=yy size=M html=yes link=yes]</b></li>
-</ul>
-<p>Samme funktion som oven for, dog vælges billedet tilfældigt fra <code>album</code></p>
+<pre>
+[photo id=46]
+
+[photo id=46 album=22 size=M html=true link=true]
+</pre>
+
+<h4>[random album=xx]</h4>
+<p>Samme funktion som oven for, dog vælges billedet tilfældigt fra <code>album</code>.</p>
+
+<pre>
+[random]
+
+[random album=123 size=M html=yes link=yes]
+</pre>
+
+<h4>[cat=xx]</h4>
+<p>Tag'et indsætter et album i beskrivelsen, hvor <code>xx</code> er albumidentikatoren.</p>
