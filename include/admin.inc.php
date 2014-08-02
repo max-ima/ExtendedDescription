@@ -64,7 +64,7 @@ function extended_desc_popup($help_content, $get)
     load_language('plugin.lang', EXTENDED_DESC_PATH);
 
     $template->assign(array(
-      'EXTENDED_DESC_PATH' => EXTENDED_DESC_PATH,
+      'EXTENDED_DESC_PATH' => 'admin/'.EXTENDED_DESC_PATH,
       'EXTDESC_HELP' => array(
         'lang' =>       load_language('help.lang.html', EXTENDED_DESC_PATH, array('return'=>true)),
         'extdesc' =>    load_language('help.extdesc.html', EXTENDED_DESC_PATH, array('return'=>true)),
@@ -76,7 +76,7 @@ function extended_desc_popup($help_content, $get)
         ),
       ));
 
-    $template->set_filename('extdesc', realpath(EXTENDED_DESC_PATH . 'template/admin.tpl'));
+    $template->set_filename('extdesc', realpath(EXTENDED_DESC_PATH . 'template/admin/popup.tpl'));
     
     $help_content = '<h2>Extended Description</h2>' . $template->parse('extdesc', true);
   }

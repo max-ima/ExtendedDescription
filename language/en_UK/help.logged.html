@@ -1,18 +1,22 @@
+<h4>[login-link]</h4>
+<p>This tag allows to insert everywhere a login link with automatic redirection to the current age.</p>
+
+<b>Options:</b>
 <ul>
-  <li><b>[login-link html=true text="log in[lang=fr]connectez-vous[/lang]"]</b></li>
+  <li><code>html</code>: (optional) if set to <i>false</i> the tag only returns the login URL, without HTML</li>
+  <li><code>text</code>: (optional) link label, can contain <code>[lang]</code> tags</li>
 </ul>
 
-<p>This tag allow to insert everywhere a login link with automatic redirection to the current age.<br><br>
-- <code>html</code> (optional) if set to <i>false</i> the tag only returns the login URL, without HTML<br>
-- <code>text</code> (optional) link label, can contain <code>[lang]</code> tags<p>
+<pre>
+[login-link]
 
-<ul>
-  <li><b>[logged]</b></li>
-</ul>
+[login-link html=true text="log in[lang=fr]connectez-vous[/lang]"]
+</pre>
 
+<h4>[logged]</h4>
 <p>Display a block of text only if the current user is logged or not.</p>
 
-<p><b>Example</b>:<br>
-<code>[logged] Welcome back [/logged]<br>
-[logged=false] Please log in [/logged]</code>
-</p>
+<pre>
+[logged=true] Welcome back [/logged]
+[logged=false] Please log in [/logged]
+</pre>

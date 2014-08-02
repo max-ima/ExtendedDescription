@@ -1,6 +1,5 @@
-{html_style}{literal}
-fieldset, h4 { text-align:left !important; }
-{/literal}{/html_style}
+{combine_css id="ed" path=$EXTENDED_DESC_PATH|cat:'template/admin/style.css'}
+{combine_script id="ed" require="jquery" load="async" path=$EXTENDED_DESC_PATH|cat:'template/admin/script.js'}
 
 
 <fieldset>
@@ -16,6 +15,10 @@ fieldset, h4 { text-align:left !important; }
 <fieldset>
   <legend>{'Insert an album or a photo'|translate}</legend>
   {$EXTDESC_HELP.cat_photo}
+</fieldset>
+
+<fieldset>
+  <legend>{'Insert a carousel'|translate}</legend>
   {$EXTDESC_HELP.slider}
 </fieldset>
 
