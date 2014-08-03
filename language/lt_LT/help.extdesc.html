@@ -1,23 +1,22 @@
 <p>Išplėstinių aprašymų žymos leidžia kurti trumpus albumo aprašymus albumo išoreje ir ilgesnius albumo viduje. Galima netgi sukurti du skirtingus aprašymus albumo puslapyje.</p>
 
-<p>žyma &lt;!--more--&gt; prideda tekstą šalia trumpo aprašymo.<br>
-žyma &lt;!--complete--&gt; leidžia vartotojui turėti du skirtingus aprašymus.<br>
-žyma &lt;!--up-down--&gt; leidžia vartotojui turėti viršutinį ir apatinį aprašymus.</p>
-
-<ul>
-  <li><b>&lt;!--more--&gt;</b></li>
-</ul>
-<code>trumpas aprašymas &lt;!--more--&gt; ilgas aprašymas</code>
+<h4>&lt;!--more--&gt;</h4>
 <p>Tik trumpas aprašymas bus rodomas albumo išorėje. Albumo puslapyje matysite trumpą + ilgą aprašymus.</p>
 
-<ul>
-  <li><b>&lt;!--complete--&gt;</b></li>
-</ul>
-<code>trumpas aprašymas &lt;!--complete--&gt; ilgas aprašymas</code>
+<pre>
+trumpas aprašymas &lt;!--more--&gt; ilgas aprašymas
+</pre>
+
+<h4>&lt;!--complete--&gt;</h4>
 <p>Tik trumpas aprašymas bus rodomas albumo išorėje. Albumo puslapyje matysite tik ilgą aprašyma, taigi, realiai turite du skirtingus aprašymus.</p>
 
-<ul>
-  <li><b>&lt;!--up-down--&gt;</b></li>
-</ul>
-<code>viršutinis aprašymas &lt;!--up-down--&gt; apatinis aprašymas</code>
+<pre>
+trumpas aprašymas &lt;!--complete--&gt; ilgas aprašymas
+</pre>
+
+<h4>&lt;!--up-down--&gt;</h4>
 <p>Tik viršutinis aprašymas bus rodomas albumo išorėje. Albumo puslapyje viršutinis aprašymas bus rodomas virš sumažintos nuotraukos, o apatinis aprašymas bus rodomas po sumažinta nuotrauka.</p>
+
+<pre>
+viršutinis aprašymas &lt;!--up-down--&gt; apatinis aprašymas
+</pre>

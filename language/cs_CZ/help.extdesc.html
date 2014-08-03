@@ -1,25 +1,22 @@
 <p>Elementy rozšířených popisů umožňují vytvořit zkrácený popis pro kategorii pro použití mimo kategorii a podrobný popis pro použití uvnitř kategorie, nebo dokonce 2 rozdílné popisy pro použití uvnitř kategorie.</p>
 
-<p>Element &lt;!--more--&gt; definuje text pro zkrácený popis.<br>
-element &lt;!--complete--&gt; umožňuje vytvořit 2 rozdílné popisy.<br>
-element &lt;!--up-down--&gt; umožňuje vytvořit popis do horní a dolní části.</p>
-
-<ul>
-  <li><b>Element &lt;!--more--&gt;</b></li>
-</ul>
-<code>krátký popis &lt;!--more--&gt; dlouhý popis</code>
+<h4>&lt;!--more--&gt;</h4>
 <p>Krátký popis je potom zobrazen mimo kategorii, ale na stránce kategorie je jako popis zobrazen krátký popis + dlouhý popis.</p>
 
-<ul>
-  <li><b>Element &lt;!--complete--&gt;</b></li>
-</ul>
-<code>krátký popis &lt;!--complete--&gt; dlouhý popis</code>
+<pre>
+krátký popis &lt;!--more--&gt; dlouhý popis
+</pre>
+
+<h4>&lt;!--complete--&gt;</h4>
 <p>Krátký popis je potom zobrazen mimo kategorii, ale na stránce kategorie je jako popis uveden dlouhý popis. Takže pro kategorii existují 2 odlišné popisy.</p>
 
-<ul>
-  <li><b>Element &lt;!--up-down--&gt;</b></li>
-</ul>
-<code>horní popis &lt;!--up-down--&gt; dolní popis</code>
+<pre>
+krátký popis &lt;!--complete--&gt; dlouhý popis
+</pre>
+
+<h4>&lt;!--up-down--&gt;</h4>
 <p>Horní popis je potom zobrazen mimo kategorii, ale na stránce kategorie je jako popis zobrazen nahoře horní popis a dole, pod náhledy, dolní popis.</p>
 
-<h3>Vložení kategorie nebo fotografie</h3>
+<pre>
+horní popis &lt;!--up-down--&gt; dolní popis
+</pre>

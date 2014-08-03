@@ -1,25 +1,22 @@
-<p>Razširjene opisne oznake omogočajo kratek opis albuma izven albuma 
-in daljši opis za album na strani albuma 
-ali celo 2 različna opisa na strani albuma.</p>
+<p>Razširjene opisne oznake omogočajo kratek opis albuma izven albuma in daljši opis za album na strani albuma ali celo 2 različna opisa na strani albuma.</p>
 
-<p>tag &lt;!--več--&gt; doda besedilo v kratek opis.<br>
-tag &lt;!--popolno--&gt; dovoli da imajo uporabniki 2 dva različna opisa.<br>
-tag &lt;!--zgoraj-spodaj--&gt; dovoli da imajo uporabniki opis zgoraj in spodaj.</p>
-
-<ul>
-  <li><b>&lt;!--več--&gt;</b></li>
-</ul>
-<code>kratek opis &lt;!--več--&gt; daljši opis</code>
+<h4>&lt;!--more--&gt;</h4>
 <p>Izven albuma je prikazan le kratek opis. Na strani albuma bo viden kratek opis + daljši opis.</p>
 
-<ul>
-  <li><b>&lt;!--popolno--&gt;</b></li>
-</ul>
-<code>kratek opis &lt;!--popolno--&gt; daljši opis</code>
+<pre>
+kratek opis &lt;!--more--&gt; daljši opis
+</pre>
+
+<h4>&lt;!--complete--&gt;</h4>
 <p>Izven albuma je prikazan le kratek opis. Na strani albuma bo viden le daljši opis, tako imate 2 različna opisa.</p>
 
-<ul>
-  <li><b>&lt;!--zgoraj-spodaj--&gt;</b></li>
-</ul>
-<code>zgornji opis &lt;!--zgoraj-spodaj--&gt; spodnji opis</code>
+<pre>
+kratek opis &lt;!--complete--&gt; daljši opis
+</pre>
+
+<h4>&lt;!--up-down--&gt;</h4>
 <p>Izven albuma je prikazan le zgornji opis.  Na strani albuma, je zgornji opis prikazan nad sličicami, spodnji opis pa je prikazan pod sličicami.</p>
+
+<pre>
+zgornji opis &lt;!--up-down--&gt; spodnji opis
+</pre>

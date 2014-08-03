@@ -1,25 +1,22 @@
-<p>Etiquetas de descrição Extendidas torna possível ter uma breve descrição para o álbum fora do álbum,
-uma descrição mais longa para o álbum dentro da página do álbum,
-ou até 2 Descrições distintas dentro da página de álbum</p>
+<p>Etiquetas de descrição Extendidas torna possível ter uma breve descrição para o álbum fora do álbum, uma descrição mais longa para o álbum dentro da página do álbum, ou até 2 Descrições distintas dentro da página de álbum</p>
 
-<p>etiqueta &lt;!--more--&gt; acrescenta o texto para a descrição curta.<br>
-etiqueta &lt;!--complete--&gt; permite que o usuário tenha 2 descrições distintas.<br>
-etiqueta &lt;!--up-down--&gt; permite ao usuário ter um top e uma descrição em baixo.</p>
-
-<ul>
-  <li><b>&lt;!--more--&gt;</b></li>
-</ul>
-<code>descrição curta &lt;!--more--&gt; descrição longa</code>
+<h4>&lt;!--more--&gt;</h4>
 <p>Apenas a descrição curta é exibida fora do álbum. Na página do álbum, você vai ver breve descrição + descrição longa.</p>
 
-<ul>
-  <li><b>&lt;!--complete--&gt;</b></li>
-</ul>
-<code>descrição curta &lt;!--complete--&gt; descrição longa</code>
+<pre>
+descrição curta &lt;!--more--&gt; descrição longa
+</pre>
+
+<h4>&lt;!--complete--&gt;</h4>
 <p>Apenas a descrição curta é exibida fora do álbum. Na página do álbum, você só vai ver a descrição longa, então você tem duas descrições distintas.</p>
 
-<ul>
-  <li><b>&lt;!--up-down--&gt;</b></li>
-</ul>
-<code>descrição no topo &lt;!--up-down--&gt; descrição em baixo</code>
+<pre>
+descrição curta &lt;!--complete--&gt; descrição longa
+</pre>
+
+<h4>&lt;!--up-down--&gt;</h4>
 <p>Apenas a descrição superior é exibida fora do álbum. Na página do álbum, a descrição superior é exibido acima das miniaturas, a descrição inferior é exibida abaixo das miniaturas.</p>
+
+<pre>
+descrição no topo &lt;!--up-down--&gt; descrição em baixo
+</pre>
