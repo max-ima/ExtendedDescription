@@ -1,13 +1,33 @@
-<p>Flersprogede beskrivelser er placeret mellem tag'ene [lang=xx] og [/lang], hvor xx er sprogkoden (for eksempel en, da, fr). Der er også to særlige sprog: [lang=default] og [lang=all]</p>
+<p>Flersprogede beskrivelser er placeret mellem tag'ene <code>[lang=xx]</code> og <code>[/lang]</code>, hvor xx er sprogkoden (for eksempel da, en, fr, ...).</p>
 
-<p>Standardbeskrivelse anvendes hvis der ikke er en beskrivelse tilgængelig i den indloggede brugers sprog.
-Hvis [lang=default] ikke findes, vil alt uden for [lang]-tag'ene blive betragtet som standardbeskrivelsen.</p>
+<pre>
+[lang=en]Default description[/lang]
+[lang=fr]Description en français[/lang]
+[lang=de]Deutsche Beschreibung[/lang]
+</pre>
 
-<p><u>Særlige sprog <i>all</i></u>: alt inden for [lang=all] vil blive medtaget i beskrivelsen, uanset hvad den indloggede brugers sprog er opsat som.
+<h4>Særlige sprog <i>default</i></h4>
+<p>Standardbeskrivelse anvendes hvis der ikke er en beskrivelse tilgængelig i den indloggede brugers sprog.<br>
+Hvis <code>[lang=default]</code> ikke findes, vil alt uden for [lang]-tag'ene blive betragtet som standardbeskrivelsen.</p>
+
+<pre>
+[lang=default]Default description[/lang]
+[lang=fr]Description en français[/lang]
+
+// OR
+
+Default description
+[lang=fr]Description en français[/lang]
+</pre>
+
+<h4>Særlige sprog <i>all</i></h4>
+<p>alt inden for <code>[lang=all]</code> vil blive medtaget i beskrivelsen, uanset hvad den indloggede brugers sprog er opsat som.<br>
 Dette er især nyttigt til at medtage HTML-/JavaScript-kode i en beskrivelse.</p>
 
-<p><b>Eksempel</b>:<br>
-<code>[lang=default] standardbeskrivelse [/lang]<br>
-[lang=da] beskrivelse på dansk [/lang]<br>
-[lang=en] description in English [/lang]</code>
-</p>
+<pre>
+[lang=all]&lt;p&gt;[/lang]
+  [lang=default]Default description[/lang]
+  [lang=fr]Description en français[/lang]
+  [lang=de]Deutsche Beschreibung[/lang]
+[lang=all]&lt;/p&gt;[/lang]
+</pre>

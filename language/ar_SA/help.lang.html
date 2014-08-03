@@ -1,16 +1,36 @@
-<p>متعدد اللغات يوضع بين[lang=xx] و [/lang]
-دلائل, حيث xx هو رمزاللغة (مثال  en, es, fr). هنالك ايضا لغتين خاصتين : [lang=default] and [lang=all]</p>
+<p>متعدد اللغات يوضع بين<code>[lang=xx]</code> و <code>[/lang]</code> دلائل,
+حيث xx هو رمزاللغة (مثال  ar, en, fr, ...).</p>
 
+<pre>
+[lang=en]Default description[/lang]
+[lang=fr]Description en français[/lang]
+[lang=de]Deutsche Beschreibung[/lang]
+</pre>
+
+<h4>لغة خاصة <i>default</i></h4>
 <p>وسيتم استخدام الوصف الافتراضي إذا كان الوصف ليس
-المتاحة في اختيار لغة المستخدم المتصل.
-اذا [lang=default] لم يكن موجودا اي شيء خارج [lang] الدلائل سيعتبر الافتراضي.</p>
+المتاحة في اختيار لغة المستخدم المتصل.<br>
+اذا <code>[lang=default]</code> لم يكن موجودا اي شيء خارج <code>[lang]</code> الدلائل سيعتبر الافتراضي.</p>
 
-<p><u>لغة خاصة <i>all</i></u>: اي شيء داخل [lang=all] سوف
-يدخل بالوصف, باي لغة يعرف المستخدم
+<pre>
+[lang=default]Default description[/lang]
+[lang=fr]Description en français[/lang]
+
+// OR
+
+Default description
+[lang=fr]Description en français[/lang]
+</pre>
+
+<h4>لغة خاصة <i>all</i></h4>
+<p>اي شيء داخل <code>[lang=all]</code> سوف
+يدخل بالوصف, باي لغة يعرف المستخدم<br>
 هذا مفيد في HTML/JavaScript code داخل الوصف.</p>
 
-<p><b>مثال</b>:<br>
-<code>[lang=default] الوصف الافتراضي [/lang]<br>
-[lang=en] description in english [/lang]<br>
-[lang=de] deutsche Beschreibung [/lang]</code>
-</p>
+<pre>
+[lang=all]&lt;p&gt;[/lang]
+  [lang=default]Default description[/lang]
+  [lang=fr]Description en français[/lang]
+  [lang=de]Deutsche Beschreibung[/lang]
+[lang=all]&lt;/p&gt;[/lang]
+</pre>

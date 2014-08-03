@@ -1,13 +1,33 @@
-<p>Multi-językowe opisy umieszczami między tagami [lang=xx] i [/lang] ,gdzie xx to kod języka (na przykład en, es, fr, pl). Są również dwa specjalne tagi językowe : [lang=default] i [lang=all]</p>
+<p>Multi-językowe opisy umieszczami między tagami <code>[lang=xx]</code> i <code>[/lang]</code> ,gdzie xx to kod języka (na przykład pl, en, fr, ...).</p>
 
-<p>Opis domyślny używany będzie wtedy, gdy opis nie będzie zdefiniowany tagami w języku połączonego użytkownika.
-Jeżeli tag [lang=default] nie będzie istniał, wtedy wszystko poza tagami [lang] będzie uważane jako domyślny opis.</p>
+<pre>
+[lang=en]Default description[/lang]
+[lang=fr]Description en français[/lang]
+[lang=de]Deutsche Beschreibung[/lang]
+</pre>
 
-<p><u>Specjalny tag językowy <i>all</i></u>: wszystko co jest zawarte w opisie w obrębie [lang=all] będzie wyświetlane w języku jakim domyślnie posługuje się połączony użytkownik.
+<h4>Specjalny tag językowy <i>default</i></h4>
+<p>Opis domyślny używany będzie wtedy, gdy opis nie będzie zdefiniowany tagami w języku połączonego użytkownika.<br>
+Jeżeli tag <code>[lang=default]</code> nie będzie istniał, wtedy wszystko poza tagami <code>[lang]</code> będzie uważane jako domyślny opis.</p>
+
+<pre>
+[lang=default]Default description[/lang]
+[lang=fr]Description en français[/lang]
+
+// OR
+
+Default description
+[lang=fr]Description en français[/lang]
+</pre>
+
+<h4>Specjalny tag językowy <i>all</i></h4>
+<p>wszystko co jest zawarte w opisie w obrębie <code>[lang=all]</code> będzie wyświetlane w języku jakim domyślnie posługuje się połączony użytkownik.<br>
 Głównie jest to przydatne do implementowania kodu HTML/JavaScript w opisie.</p>
 
-<p><b>Przykład</b>:<br>
-<code>[lang=default] opis domyślny [/lang]<br>
-[lang=en] description in english [/lang]<br>
-[lang=de] deutsche Beschreibung [/lang]</code>
-</p>
+<pre>
+[lang=all]&lt;p&gt;[/lang]
+  [lang=default]Default description[/lang]
+  [lang=fr]Description en français[/lang]
+  [lang=de]Deutsche Beschreibung[/lang]
+[lang=all]&lt;/p&gt;[/lang]
+</pre>

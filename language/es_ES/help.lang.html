@@ -1,14 +1,33 @@
-<p>Las descripciones multilingües se hacen entre las balizas [lang=xx] y [/lang], O xx es el código de la lengua (por ejemplo fr, en, es, it, de ....)
-Existen también 2 balizas especiales: [lang=default] y [lang=all]</p>
+<p>Las descripciones multilingües se hacen entre las balizas <code>[lang=xx]</code> y <code>[/lang]</code>, O xx es el código de la lengua (por ejemplo es, en, fr, ...).</p>
 
-<p>La descripción por defecto será utilizada si la descripción en la lengua del usuario no es definida.
-Si [lang=default] no existe, todo lo que está situado aparte de las balizas de lenguas estará considerado como descripción por defecto.</p>
+<pre>
+[lang=en]Default description[/lang]
+[lang=fr]Description en français[/lang]
+[lang=de]Deutsche Beschreibung[/lang]
+</pre>
 
-<p><u>Baliza  <i>all</i></u>: Todo lo que está situado entre las balizas [lang=all] y [/lang] será incluido en la descripción, cualquiera que sea la lengua del usuario.
+<h4>Baliza <i>default</i></h4>
+<p>La descripción por defecto será utilizada si la descripción en la lengua del usuario no es definida.<br>
+Si <code>[lang=default]</code> no existe, todo lo que está situado aparte de las balizas de lenguas estará considerado como descripción por defecto.</p>
+
+<pre>
+[lang=default]Default description[/lang]
+[lang=fr]Description en français[/lang]
+
+// OR
+
+Default description
+[lang=fr]Description en français[/lang]
+</pre>
+
+<h4>Baliza <i>all</i></h4>
+<p>Todo lo que está situado entre las balizas <code>[lang=all]</code> y <code>[/lang]</code> será incluido en la descripción, cualquiera que sea la lengua del usuario.<br>
 Esto es particularmente práctico para incluir del código HTML o Javascript en una descripción.</p>
 
-<p><b>Ejemplo de utilización</b>:<br>
-<code>[lang=default] Descripción por defecto [/lang]<br>
-[lang=fr] Descripción ello francais [/lang]<br>
-[lang=it] Descripción en italiano [/lang]</code>
-</p>
+<pre>
+[lang=all]&lt;p&gt;[/lang]
+  [lang=default]Default description[/lang]
+  [lang=fr]Description en français[/lang]
+  [lang=de]Deutsche Beschreibung[/lang]
+[lang=all]&lt;/p&gt;[/lang]
+</pre>

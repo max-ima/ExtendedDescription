@@ -1,13 +1,33 @@
-<p>Többnyelvű leírások között találhatók a [lang=xx] és [/lang] tag-ek, ahol az  xx a nyelv kódja (például: en, es, fr). Két speciális nyelv van : [lang=default] és [lang=all]</p>
+<p>Többnyelvű leírások között találhatók a <code>[lang=xx]</code> és <code>[/lang]</code> tag-ek, ahol az  xx a nyelv kódja (például: hu, en, fr, ...).</p>
 
-<p>Az alapértelmezett nyelvet fogja használni, ha a leírás nem érhető el a csatlakozott felhasználó kiválasztott nyelvén.
-Amennyiben a [lang=default] nyelv nem érhető el, bármelyik további [lang] nyelv használata megfontolandó, mint alapértelmezett nyelv.</p>
+<pre>
+[lang=en]Default description[/lang]
+[lang=fr]Description en français[/lang]
+[lang=de]Deutsche Beschreibung[/lang]
+</pre>
 
-<p><u>Speciális nyelv <i>all</i></u>: Bármin belül a [lang=all] megjeleníti a leírást, függetlenül a felhasználó nyelvétől.
+<h4>Speciális nyelv <i>default</i></h4>
+<p>Az alapértelmezett nyelvet fogja használni, ha a leírás nem érhető el a csatlakozott felhasználó kiválasztott nyelvén.<br>
+Amennyiben a <code>[lang=default]</code> nyelv nem érhető el, bármelyik további <code>[lang]</code> nyelv használata megfontolandó, mint alapértelmezett nyelv.</p>
+
+<pre>
+[lang=default]Default description[/lang]
+[lang=fr]Description en français[/lang]
+
+// OR
+
+Default description
+[lang=fr]Description en français[/lang]
+</pre>
+
+<h4>Speciális nyelv <i>all</i></h4>
+<p>Bármin belül a <code>[lang=all]</code> megjeleníti a leírást, függetlenül a felhasználó nyelvétől.
 Különösen hasznos HTML/JavaScript kódok belsejében lévő leírásoknál.</p>
 
-<p><b>Példa</b>:<br>
-<code>[lang=default] alapértelmezett leírás [/lang]<br>
-[lang=en] angol leírás [/lang]<br>
-[lang=de] német leírás [/lang]</code>
-</p>
+<pre>
+[lang=all]&lt;p&gt;[/lang]
+  [lang=default]Default description[/lang]
+  [lang=fr]Description en français[/lang]
+  [lang=de]Deutsche Beschreibung[/lang]
+[lang=all]&lt;/p&gt;[/lang]
+</pre>

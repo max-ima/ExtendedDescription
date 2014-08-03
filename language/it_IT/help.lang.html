@@ -1,14 +1,33 @@
-<p>Le descrizioni multilingue si fanno tra i tag [lang=xx] e [/lang], dove xx è il codice della lingua (per esempio fr, en, es, it, ...)
-Esistono anche 2 elementi speciali: [lang=default] e [lang=all]</p>
+<p>Le descrizioni multilingue si fanno tra i tag <code>[lang=xx]</code> e <code>[/lang]</code>, dove xx è il codice della lingua (per esempio it, en, fr, ...).</p>
 
-<p>La descrizione predefinita sarà utilizata se la descrizione nella lingua dell'utente non è definita.
-Se [lang=default] non esiste, tutto ciò che si trova al difuori dei tag di lingua sarà considerato come descrizione predefinita.</p>
+<pre>
+[lang=en]Default description[/lang]
+[lang=fr]Description en français[/lang]
+[lang=de]Deutsche Beschreibung[/lang]
+</pre>
 
-<p><u>Tag <i>all</i></u>: Tutto ciò che si trova tra [lang=all] e [/lang] sarà incluso nella descrizione, qualsiasi sia la lingua dell'utente.
+<h4>Tag <i>default</i></h4>
+<p>La descrizione predefinita sarà utilizata se la descrizione nella lingua dell'utente non è definita.<br>
+Se <code>[lang=default]</code> non esiste, tutto ciò che si trova al difuori dei tag di lingua sarà considerato come descrizione predefinita.</p>
+
+<pre>
+[lang=default]Default description[/lang]
+[lang=fr]Description en français[/lang]
+
+// OR
+
+Default description
+[lang=fr]Description en français[/lang]
+</pre>
+
+<h4>Tag <i>all</i></h4>
+<p>Tutto ciò che si trova tra <code>[lang=all]</code> sarà incluso nella descrizione, qualsiasi sia la lingua dell'utente.<br>
 Ciò è molto pratico per includere del codice HTML o Javascript in una descrizione.</p>
 
-<p><b>Esempi d'uso</b>:<br>
-<code>[lang=default] descrizione predefinita [/lang]<br>
-[lang=fr] descrizione in francese [/lang]<br>
-[lang=it] descrizione in italiano [/lang]</code>
-</p>
+<pre>
+[lang=all]&lt;p&gt;[/lang]
+  [lang=default]Default description[/lang]
+  [lang=fr]Description en français[/lang]
+  [lang=de]Deutsche Beschreibung[/lang]
+[lang=all]&lt;/p&gt;[/lang]
+</pre>

@@ -1,13 +1,33 @@
-<p>Мультиязычные описания располагаются между тегами [lang=xx] и [/lang], где xx - код языка (например ru, en, es, fr). Также имеются 2 специальных языка: [lang=default] и [lang=all]</p>
+<p>Мультиязычные описания располагаются между тегами <code>[lang=xx]</code> и <code>[/lang]</code>, где xx   <li>код языка (например ru, en, fr, ...).</p>
 
-<p>Описание по умолчанию будет использовано в случае, если отсутствует описание на выбранном текущим пользователем языке.
-Если [lang=default] не существует, все снаружи тега [lang] будет считаться описанием по умолчанию.</p>
+<pre>
+[lang=en]Default description[/lang]
+[lang=fr]Description en français[/lang]
+[lang=de]Deutsche Beschreibung[/lang]
+</pre>
 
-<p><u>Специальный язык <i>all</i></u>: все внутри тега [lang=all] будет включено в описание независимо от выбранного текущим пользователем языка.
+<h4>Специальный язык <i>default</i></h4>
+<p>Описание по умолчанию будет использовано в случае, если отсутствует описание на выбранном текущим пользователем языке.<br>
+Если <code>[lang=default]</code> не существует, все снаружи тега <code>[lang]</code> будет считаться описанием по умолчанию.</p>
+
+<pre>
+[lang=default]Default description[/lang]
+[lang=fr]Description en français[/lang]
+
+// OR
+
+Default description
+[lang=fr]Description en français[/lang]
+</pre>
+
+<h4>Специальный язык <i>all</i></h4>
+<p>все внутри тега <code>[lang=all]</code> будет включено в описание независимо от выбранного текущим пользователем языка.<br>
 Чаще всего это используется для включения HTML/JavaScript кода в описание.</p>
 
-<p><b>Пример</b>:<br>
-<code>[lang=default] описание по умолчанию [/lang]<br>
-[lang=ru] описание на русском [/lang]<br>
-[lang=de] deutsche Beschreibung [/lang]</code>
-</p>
+<pre>
+[lang=all]&lt;p&gt;[/lang]
+  [lang=default]Default description[/lang]
+  [lang=fr]Description en français[/lang]
+  [lang=de]Deutsche Beschreibung[/lang]
+[lang=all]&lt;/p&gt;[/lang]
+</pre>
