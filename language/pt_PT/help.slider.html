@@ -1,16 +1,26 @@
+<h4>[slider album=xx]</h4>
+<p>Esta etiqueta permite inserir um slideshow.</p>
+
+<b>Opções:</b> (você deve definir <code>album</code> OR <code>list</code>)
 <ul>
-  <li><b>[slider album=xx nb_images=10 random=no list=aa,bb,cc size=M speed=3 title=no effect=fade arrows=yes control=yes elastic=no thumbs_size=80]</b></li>
+  <li><code>album</code> (opcional)fonte album</li>
+  <li><code>nb_images</code> (opcional)máximo numero de fotos para exibir no slideshow</li>
+  <li><code>random</code> (opcional) escolhe fotos aleatoriamente no álbum</li>
+  <li><code>list</code> (opcional) uma lista de fotos com ids separados por vírgula</li>
+  <li><code>size</code> (opcional) o tamanho das fotos, entre <i>(SQ, TH, XXS, XS, S, M, L, XL, XXL)</i></li>
+  <li><code>speed</code> (opcional) Velocidade de transição</li>
+  <li><code>title</code> (opcional) mostra título da foto</li>
+  <li><code>effect</code> (opcional) efeito de transição (ver <a href="http://docs.dev7studios.com/jquery-plugins/nivo-slider#jumpNav-5">NivoSlider doc</a>)</li>
+  <li><code>arrows</code> (opcional) mostra setas de navegação</li>
+  <li><code>elastic</code> (opcional) adapta o tamanho do slideshow para cada foto</li>
+  <li><code>control</code> (opcional) exibe os controles de navegação <i>(true, false, thumb)</i></li>
+  <li><code>thumbs_size</code> (optional) thumbnails size in pixel if <code>control=thumb</code></li>
 </ul>
-<p>Esta etiqueta permite inserir um slideshow (NivoSlider), com (você deve definir<code>album</code>OR <code>list</code>):<br><br>
-- <code>album</code>(opcional)fonte album<br>
-- <code>nb_images</code>(opcional)máximo numero de fotos para exibir no slideshow<br>
-- <code>random</code>(opcional) escolhe fotos aleatoriamente no álbum <i>{yes, no}</i><br>
-- <code>list</code>(opcional) uma lista de fotos com ids separados por vírgula<br>
-- <code>size</code>(opcional) o tamanho das fotos, entre <i>{SQ, TH, XXS, S, M, L, XL, XXL}</i><br>
-- <code>speed</code>(opcional) Velocidade de transição<br>
-- <code>title</code>(opcional) mostra título da foto <i>{yes, no}</i><br>
-- <code>effect</code>(opcional) efeito de transição (opcional) (ver <a href="http://docs.dev7studios.com/jquery-plugins/nivo-slider">NivoSlider doc</a>)<br>
-- <code>arrows</code>(opcional) mostra setas de navegação <i>{yes, no}</i><br>
-- <code>control</code>(opcional) exibe os controles de navegação <i>{yes, no, thumb}</i><br>
-- <code>elastic</code>(opcional) adapta o tamanho do slideshow para cada foto <i>{yes, no}</i><br>
-- <code>thumbs_size</code>(optional) thumbnails size in pixel if <code>control=thumb</code><p>
+
+<pre>
+[slider album=123]
+
+[slider list=46,47,52]
+
+[slider album=123 nb_images=10 random=false size=M speed=3 title=false effect=fade arrows=true elastic=false control=true thumbs_size=80]
+</pre>
