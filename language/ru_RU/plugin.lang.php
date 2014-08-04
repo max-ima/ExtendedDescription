@@ -30,3 +30,5 @@ $lang['Extended Description have been successfully installed. Now you can use al
 $lang['Hide elements'] = 'Скрыть элементы';
 $lang['Redirect elements'] = 'Перенаправление элементов';
 $lang['Login link & logged in block'] = 'Ссылка для входа в блок';
+$lang['Back'] = 'Назад';
+$lang['Insert a carousel'] = 'Вставка Карусели';
