@@ -30,3 +30,5 @@ $lang['Extended Description have been successfully installed. Now you can use al
 $lang['Hide elements'] = 'Verberg elementen';
 $lang['Redirect elements'] = 'Stuur elementen door';
 $lang['Login link & logged in block'] = 'Aanmeld-link & Aangemeld-blok';
+$lang['Insert a carousel'] = 'Voeg een carrousel toe';
+$lang['Back'] = 'Terug';
