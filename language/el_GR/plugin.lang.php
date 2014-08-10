@@ -30,3 +30,5 @@ $lang['Redirect elements'] = 'Ανακατεύθυνση στοιχείων';
 $lang['Hide elements'] = 'Απόκρυψη στοιχείων';
 $lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description εγκαταστάθηκε με επιτυχία. Τώρα μπορείτε να χρησιμοποιήσετε όλες τις δυνατότητες του στα πλαίσια κειμένου του Piwigo.';
 $lang['Login link & logged in block'] = 'Σύνδεσμος εισόδου & μπλοκ εισόδου ';
+$lang['Insert a carousel'] = 'Τοποθετήστε ένα καρουσέλ';
+$lang['Back'] = 'Πίσω';
