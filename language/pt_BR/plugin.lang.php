@@ -29,4 +29,6 @@ $lang['Insert an album or a photo'] = 'Insira um álbum ou uma foto';
 $lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Foi instalada com sucesso Descrições Prolongadas. Agora você pode usar todas as suas características na maioria das caixas de texto do Piwigo.';
 $lang['Hide elements'] = 'Ocultar elementos';
 $lang['Redirect elements'] = 'Redirecionar elementos';
-?>
+$lang['Back'] = 'Voltar';
+$lang['Insert a carousel'] = 'Insira um carrossel';
+$lang['Login link & logged in block'] = 'Link de conexão & conectado em bloco';
