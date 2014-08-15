@@ -7,7 +7,7 @@
 </pre>
 
 <h4>特殊语言 <i>default</i></h4>
-<p>如果用户选择的语言不能使用，将显示默认描述。如果没有 <code>[lang=default]</code> 标签，所有在 <code>[lang]</code> 外的将会以默认描述显示。</p>
+<p>如果用户选择的语言不能使用，将显示默认描述。如果 <code>[lang=default]</code> 标签不存在，所有在 <code>[lang]</code> 标签外的内容将被视为默认描述。</p>
 
 <pre>
 [lang=default]Default description[/lang]
@@ -20,7 +20,7 @@ Default description
 </pre>
 
 <h4>特殊语言 <i>all</i></h4>
-<p>所有在 <code>[lang=all]</code> 标签里的将被包含进描述，不论用户指定了什么语言。这个主要的用处是对于 HTML/JavaScript 等代码在描述里的显示。</p>
+<p>所有在 <code>[lang=all]</code> 标签里的内容将被包含进描述，不论用户指定了什么语言。这主要用于将 HTML/JavaScript 代码写进描述。</p>
 
 <pre>
 [lang=all]&lt;p&gt;[/lang]
