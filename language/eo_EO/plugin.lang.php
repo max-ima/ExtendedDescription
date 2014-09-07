@@ -29,4 +29,6 @@ $lang['Extended Description have been successfully installed. Now you can use al
 $lang['Hide elements'] = 'Kaŝi elementojn';
 $lang['Redirect elements'] = 'Alidirekti elementojn';
 $lang['Use Extended Description tags...'] = 'Uzi etikedojn kun etendita priskribo...';
-?>
+$lang['Back'] = 'Retroe';
+$lang['Insert a carousel'] = 'Enŝovu karuselon';
+$lang['Login link & logged in block'] = 'Salutligilo & bloko ensalutita';
