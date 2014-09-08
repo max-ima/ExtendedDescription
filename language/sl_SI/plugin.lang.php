@@ -28,4 +28,6 @@ $lang['Multilingual descriptions'] = 'Večjezični opis';
 $lang['Redirect elements'] = 'Preusmeri predmete';
 $lang['This category is redirected to %s'] = 'Ta album je preusmerjen na %s';
 $lang['Use Extended Description tags...'] = 'Uporabi oznake Razširjen opis...';
-?>
+$lang['Back'] = 'Nazaj';
+$lang['Insert a carousel'] = 'Vstavi vrtiljak';
+$lang['Login link & logged in block'] = 'Povezava prijave & sklop prijavljen';
