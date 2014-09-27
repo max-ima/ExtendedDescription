@@ -26,4 +26,9 @@ $lang['This category is redirected to %s'] = 'Цей альбом буде пе�
 $lang['Multilingual descriptions'] = 'Багатомовні описи';
 $lang['Extended descriptions'] = 'Розширені описи';
 $lang['Insert an album or a photo'] = 'Вставте альбом або зображення';
-?>
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description було успішно встановленно. Відтепер ви можете користуватися усіма можливостями текстових блоків Piwigo.';
+$lang['Login link & logged in block'] = 'Посилання на вхід & увійшли у блок';
+$lang['Redirect elements'] = 'Перенаправлення елементів';
+$lang['Insert a carousel'] = 'Вставити карусель';
+$lang['Hide elements'] = 'Сховати елементи';
+$lang['Back'] = 'Назад';
