@@ -10,4 +10,4 @@ $lang['Insert an album or a photo'] = 'Infoga en kategori eller ett foto';
 $lang['Hide elements'] = 'Dölj element';
 $lang['Redirect elements'] = 'Omdirigera element';
 $lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description har istallerats med lyckat resultat. Nu kan du använda alla dess funktioner i Piwigos flesta textrutor.';
-?>
+$lang['Back'] = 'Tillbaka';
