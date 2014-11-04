@@ -4,7 +4,7 @@ $lang['Use Extended Description tags...'] = 'Sử dụng Thẻ mô tả mở r�
 $lang['This category is redirected to %s'] = 'Đề mục này được điều hướng đến đề mục %s';
 
 $lang['Multilingual descriptions'] = 'Mô tả đa ngôn ngữ';
-$lang['Extended descriptions'] = '>Mô tả mở rộng';
+$lang['Extended descriptions'] = 'Mô tả mở rộng';
 $lang['Insert an album or a photo'] = 'Chèn thêm một đề mục hoặc một tấm ảnh';
 
 $lang['Insert a carousel'] = 'Chèn một băng chuyền';
