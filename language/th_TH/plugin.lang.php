@@ -22,4 +22,12 @@
 // +-----------------------------------------------------------------------+
 $lang['Use Extended Description tags...'] = 'ใช้การอธิบายเพิ่มเติมสำหรับแท็ก';
 $lang['This category is redirected to %s'] = 'อัลบั้มนี้จะถูกนำไปยัง %s';
-?>
+$lang['Back'] = 'กลับ';
+$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description ได้ถูกติดตั้งเรียบร้อยแล้ว ตอนนี้คุณสามารถใช้ลูกเล่นเหล่านั้นได้ในกล่องข้อความของ Piwigo';
+$lang['Extended descriptions'] = 'รายละเอียดเพิ่มเติม';
+$lang['Hide elements'] = 'ซ่อนองค์ประกอบ';
+$lang['Insert a carousel'] = 'ใส่ Carousel';
+$lang['Insert an album or a photo'] = 'ใส่อัลบั้มหรือภาพถ่าย';
+$lang['Login link & logged in block'] = 'เชื่อมโยงการเข้าสู่ระบบและบันทึกไว้ในบล็อก';
+$lang['Multilingual descriptions'] = 'รายละเอียดแบบหลายภาษา';
+$lang['Redirect elements'] = 'เปลี่ยนเส้นทางองค์ประกอบ';
