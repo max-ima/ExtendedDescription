@@ -11,3 +11,5 @@ $lang['Extended Description have been successfully installed. Now you can use al
 $lang['Hide elements'] = 'Ukryj elementy';
 $lang['Redirect elements'] = 'Przekieruj elementy';
 $lang['Back'] = 'Wstecz';
+$lang['Insert a carousel'] = 'Wstaw w karuzeli';
+$lang['Login link & logged in block'] = 'Link do logowania oraz blok dot. stanu zalogowania';
