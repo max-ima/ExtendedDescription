@@ -11,3 +11,5 @@ $lang['Hide elements'] = 'Dölj element';
 $lang['Redirect elements'] = 'Omdirigera element';
 $lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description har istallerats med lyckat resultat. Nu kan du använda alla dess funktioner i Piwigos flesta textrutor.';
 $lang['Back'] = 'Tillbaka';
+$lang['Login link & logged in block'] = 'Login länk och login block';
+$lang['Insert a carousel'] = 'Sätt i en karusell';
