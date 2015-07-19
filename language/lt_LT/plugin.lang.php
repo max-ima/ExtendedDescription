@@ -28,4 +28,6 @@ $lang['Hide elements'] = 'Slėpti elementus';
 $lang['Insert an album or a photo'] = 'Įterpti albumą ar nuotrauką';
 $lang['Multilingual descriptions'] = 'Daugiakalbiai aprašymai';
 $lang['Redirect elements'] = 'Nukreipti elementus';
-?>
+$lang['Login link & logged in block'] = 'Prisijungimo nuoroda ir prisijungusiojo blokas';
+$lang['Back'] = 'Grįžti';
+$lang['Insert a carousel'] = 'Įterpti karuselę';
