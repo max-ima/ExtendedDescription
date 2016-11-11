@@ -87,7 +87,7 @@ function extdesc_get_photo_sized($param)
   $default_params = array(
     'id' =>    array('\d+', null),
     'album' => array('\d+', null),
-    'size' =>  array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
+    'size' =>  array(extdesc_get_deriv_regex(), 'M'),
     'html' =>  array('boolean', true),
     'link' =>  array('boolean', true),
     );
@@ -176,7 +176,7 @@ function extdesc_get_random_photo($param)
   $default_params = array(
     'album' => array('\d+', null),
     'cat' =>   array('\d+', null), // historical
-    'size' =>  array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
+    'size' =>  array(extdesc_get_deriv_regex(), 'M'),
     'html' =>  array('boolean', true),
     'link' =>  array('boolean', false),
     );
@@ -254,7 +254,7 @@ function extdesc_get_slider($param)
     'nb_images' => array('\d+', 10),
     'random' =>    array('boolean', false),
     'list' =>      array('[\d,]+', null),
-    'size' =>      array('SQ|TH|XXS|XS|S|M|L|XL|XXL', 'M'),
+    'size' =>      array(extdesc_get_deriv_regex(), 'M'),
     'speed' =>     array('\d+', 5),
     'title' =>     array('boolean', false),
     'effect' =>    array('[a-zA-Z]+', 'fade'),
@@ -458,7 +458,7 @@ function extdesc_parse_parameters($param, $default_params)
       $value[0] = 'yes|no|true|false';
     }
     
-    if (preg_match('#'.$name.'=('.$value[0].')#', $param, $matches))
+    if (preg_match('#'.$name.'=('.$value[0].')#i', $param, $matches))
     {
       $params[$name] = $matches[1];
       if ($is_bool)
@@ -483,15 +483,15 @@ function extdesc_get_deriv_type($size)
   $size = strtoupper($size);
 
   $size_map = array(
-    'SQ' => IMG_SQUARE,
-    'TH' => IMG_THUMB,
-    'XXS' => IMG_XXSMALL,
-    'XS' => IMG_XSMALL,
-    'S' => IMG_SMALL,
-    'M' => IMG_MEDIUM,
-    'L' => IMG_LARGE,
-    'XL' => IMG_XLARGE,
-    'XXL' => IMG_XXLARGE,
+    'SQ' => IMG_SQUARE, 'square' => IMG_SQUARE,
+    'TH' => IMG_THUMB, 'thumbnail' => IMG_THUMB,
+    'XXS' => IMG_XXSMALL, 'xxsmall' => IMG_XXSMALL,
+    'XS' => IMG_XSMALL, 'xsmall' => IMG_XSMALL,
+    'S' => IMG_SMALL, 'small' => IMG_SMALL,
+    'M' => IMG_MEDIUM, 'medium' => IMG_MEDIUM,
+    'L' => IMG_LARGE, 'large' => IMG_LARGE,
+    'XL' => IMG_XLARGE, 'xlarge' => IMG_XLARGE,
+    'XXL' => IMG_XXLARGE, 'xxlarge' => IMG_XXLARGE,
     );
 
   if (!array_key_exists($size, $size_map))
@@ -500,4 +500,19 @@ function extdesc_get_deriv_type($size)
   }
 
   return $size_map[$size];
+}
+
+function extdesc_get_deriv_regex()
+{
+  return join('|', array(
+    'SQ', 'square',
+    'TH', 'thumbnail',
+    'XXS', 'xxsmall',
+    'XS', 'xsmall',
+    'S', 'small',
+    'M', 'medium',
+    'L', 'large',
+    'XL', 'xlarge',
+    'XXL', 'xxlarge'
+    ));
 }
