@@ -29,4 +29,4 @@ $lang['Hide elements'] = 'مخفی کردن عناصر';
 $lang['Insert an album or a photo'] = 'جادادن یک عکس ویا تصویر';
 $lang['Multilingual descriptions'] = 'افزود موضوعات چند زبانه';
 $lang['Redirect elements'] = 'تغیرمسیر ';
-?>
+$lang['Back'] = 'برگشت';
