@@ -2,7 +2,7 @@
 // +-----------------------------------------------------------------------+
 // | Piwigo - a PHP based photo gallery                                    |
 // +-----------------------------------------------------------------------+
-// | Copyright(C) 2008-2013 Piwigo Team                  http://piwigo.org |
+// | Copyright(C) 2008-2016 Piwigo Team                  http://piwigo.org |
 // | Copyright(C) 2003-2008 PhpWebGallery Team    http://phpwebgallery.net |
 // | Copyright(C) 2002-2003 Pierrick LE GALL   http://le-gall.net/pierrick |
 // +-----------------------------------------------------------------------+
@@ -20,13 +20,4 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['This category is redirected to %s'] = '  %sاین البوم بازگشت به ';
-$lang['Use Extended Description tags...'] = 'استفاده از تگ های گسترده';
-$lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'موضوعات ویژه بدرستی نصب شد. 
-حالا شما می توانید تمام ویژگی های آن است در اکثر جعبه متن از Piwigo استفاده کنید.';
-$lang['Extended descriptions'] = 'موضوعات گسترده';
-$lang['Hide elements'] = 'مخفی کردن عناصر';
-$lang['Insert an album or a photo'] = 'جادادن یک عکس ویا تصویر';
-$lang['Multilingual descriptions'] = 'افزود موضوعات چند زبانه';
-$lang['Redirect elements'] = 'تغیرمسیر ';
 $lang['Back'] = 'برگشت';
