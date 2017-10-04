@@ -415,7 +415,9 @@ function extdesc_get_login_link($param)
   
   $url =
       get_root_url().'identification.php?redirect='
-      .urlencode(urlencode($_SERVER['REQUEST_URI']));
+      .urlencode(urlencode($_SERVER['REQUEST_URI']))
+      .'&amp;hide_redirect_error=1'
+  ;
   
   if ($params['html'])
   {
