@@ -4,7 +4,11 @@ $lang['Use Extended Description tags...'] = 'Use Extended Description tags...';
 $lang['This category is redirected to %s'] = 'This album is redirected to %s';
 $lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.';
 
-$lang['Back'] = 'Back';
+$lang['Multilingual'] = 'Multilingual';
+$lang['Descriptions'] = 'Descriptions';
+$lang['Carrousel'] = 'Carrousel';
+$lang['Redirects'] = 'Redirects';
+$lang['Login block'] = 'Login block';
 
 $lang['Multilingual descriptions'] = 'Multilingual descriptions';
 $lang['Extended descriptions'] = 'Extended descriptions';
