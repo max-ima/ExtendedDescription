@@ -11,3 +11,5 @@ $lang['Back'] = 'Vissza';
 $lang['Hide elements'] = 'Elemek elrejtése';
 $lang['Redirect elements'] = 'Elemek átirányítása';
 $lang['Extended Description have been successfully installed. Now you can use all its features in most text boxes of Piwigo.'] = 'Bővített Leírás sikeresen telepítve. Mostantól használhatod minden lehetőségét a Piwigo legtöbb szöbegdobozában.';
+$lang['Insert a carousel'] = 'Körhintamodul beszúrása';
+$lang['Login link & logged in block'] = 'Bejelentkezési link és blokk';
