@@ -2,18 +2,6 @@
 defined('EXTENDED_DESC_PATH') or die('Hacking attempt!');
 
 /**
- * Main help page on plugins list
- */
-function extdesc_admin_menu($menu) 
-{
-  $menu[] = array(
-    'NAME' => 'Extended Description',
-    'URL' => get_root_url() . 'admin.php?page=plugin-ExtendedDescription',
-    );
-  return $menu;
-}
-
-/**
  * Add link to help popup
  */
 function add_ed_help()

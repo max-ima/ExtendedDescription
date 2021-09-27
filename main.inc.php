@@ -5,6 +5,7 @@ Version: auto
 Description: Add multilinguale descriptions, banner, NMB, category name, etc...
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=175
 Author: P@t & Grum
+Has Settings: true
 */
 
 defined('PHPWG_ROOT_PATH') or die('Hacking attempt!');
@@ -36,7 +37,6 @@ if (script_basename() == 'admin' or script_basename() == 'popuphelp')
 
   add_event_handler('get_popup_help_content', 'extended_desc_popup', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
   add_event_handler('loc_begin_admin_page', 'add_ed_help');
-  add_event_handler('get_admin_plugin_menu_links', 'extdesc_admin_menu');
 }
 
 
