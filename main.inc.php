@@ -20,7 +20,8 @@ $extdesc_conf = array(
   'complete'       => '<!--complete-->',
   'up-down'        => '<!--up-down-->',
   'not_visible'    => '<!--hidden-->',
-  'mb_not_visible' => '<!--mb-hidden-->'
+  'mb_not_visible' => '<!--mb-hidden-->',
+  'redirect_admins' => false,
 );
 
 $conf['ExtendedDescription'] = isset($conf['ExtendedDescription']) ?

@@ -146,7 +146,8 @@ function get_extended_desc($desc, $param='')
     {
       $url = $m1[1];
     }
-    if (is_admin())
+    
+    if (is_admin() and !$conf['ExtendedDescription']['redirect_admins'])
     {
       global $header_notes;
       load_language('plugin.lang', EXTENDED_DESC_PATH);
