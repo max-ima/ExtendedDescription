@@ -155,7 +155,11 @@ function get_extended_desc($desc, $param='')
     }
     else
     {
-      redirect($url);
+      // never redirect on the API. It might break pwg.categories.getAdminList, for example.
+      if (script_basename() != 'ws')
+      {
+        redirect($url);
+      }
     }
   }
 
